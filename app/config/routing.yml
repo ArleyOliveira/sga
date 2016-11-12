@@ -1,0 +1,5 @@
+sistema_acesso_base:
+    resource: "@SistemaAcessoBaseBundle/Controller"
+    type:     annotation
+    prefix:   /
+

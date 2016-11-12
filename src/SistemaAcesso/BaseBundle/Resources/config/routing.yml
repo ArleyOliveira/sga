@@ -1,0 +1,3 @@
+sistema_acesso_base_homepage:
+    path:     /
+    defaults: { _controller: SistemaAcessoBaseBundle:Default:index }
