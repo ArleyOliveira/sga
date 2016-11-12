@@ -1,0 +1,32 @@
+user:
+    new:
+        success: Novo usuário adicionado com sucesso!
+        error: Houve um erro ao tentar adicionar um novo usuário!
+    edit:
+        success: Usuário editado com sucesso!
+        error: Houve um erro ao tentar editar um usuário!
+    delete:
+        success: Usuário excluído com sucesso!
+        error: Houve um erro ao tentar excluír um usuário!
+
+news:
+    new:
+        success: Nova notícia adicionado com sucesso!
+        error: Houve um erro ao tentar adicionar uma nova notícia!
+    edit:
+        success: Notícia editada com sucesso!
+        error: Houve um erro ao tentar editar uma notícia!
+    delete:
+        success: Notícia excluída com sucesso!
+        error: Houve um erro ao tentar excluír uma notícia!
+
+event:
+    new:
+        success: Novo evento adicionado com sucesso!
+        error: Houve um erro ao tentar adicionar um novo evento!
+    edit:
+        success: Evento editado com sucesso!
+        error: Houve um erro ao tentar editar um evento!
+    delete:
+        success: Evento excluído com sucesso!
+        error: Houve um erro ao tentar excluír um evento!

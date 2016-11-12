@@ -1,0 +1,30 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div style="padding: 20px;">
+    <h3>Esqueceu a senha?</h3>
+    <p>
+        Informe o e-mail da conta abaixo e enviaremos
+        para seu e-mail as instruções para mudar a senha.
+    </p>
+    {% if invalid_username is defined %}
+        <div class="alert alert-danger">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</div>
+    {% endif %}
+    <form
+            name="reset"
+            action="{{ path('fos_user_resetting_send_email') }}"
+            method="POST"
+            class="fos_user_resetting_request" >
+        <div class="form-group">
+            <label for="username">E-mail</label>
+            <input type="email" id="username" name="username" class="form-control" required>
+
+        </div>
+
+        <button
+                type="submit"
+                class="btn btn-success">
+            Recuperar
+        </button>
+    </form>
+</div>
+

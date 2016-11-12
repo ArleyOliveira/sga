@@ -1,0 +1,21 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block subject %}
+{% autoescape false %}
+{{ 'resetting.email.subject'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
+{% endautoescape %}
+{% endblock %}
+{% block body_text %}
+{% autoescape false %}
+Olá tudo bem?
+
+Você está recebendo esse email pois acabou de solicitar a redefinição de sua senha.
+
+Acesse {{ confirmationUrl }} para gerar uma nova senha de acesso.
+
+Qualquer dúvida que tiver, por favor, deixe-nos saber.
+
+Forte abraço,
+Equipe Mercado Bom Jardim
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}{% endblock %}

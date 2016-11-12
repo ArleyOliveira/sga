@@ -1,0 +1,20 @@
+user:
+    unique: Já existe um usuário com este e-mail!
+    black_name: Informe um nome para o usuário!
+    blank_email: Informe um e-mail para o usuário!
+    invalid_email: Endereço de e-mail inválido!
+    blank_cpf: Informe um cpf para o usuário!
+    blank_password: Informe uma senha para o usuário!
+    min_length_password: A senha deve ser maior que {{ limit }} caracteres!
+    blank_role: Informe um nível de acesso para o usuário!
+    black_date_birth: Informe uma data de nascimento para o usuário!
+    blank_sexy: Informe o seu sexo!
+
+news:
+    blank_title: Informe um título para a notícia!
+    blank_content: Informe um conteúdo para a notícia!100
+
+event:
+    blank_description: Informe uma descrição para o evento!
+    blank_start_date: Informe uma data para o evento!
+    blank_type: Informe o tipo do evento!

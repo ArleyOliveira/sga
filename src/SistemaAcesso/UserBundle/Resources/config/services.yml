@@ -1,0 +1,4 @@
+services:
+#    bate_papo_user.example:
+#        class: SistemaAcesso\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

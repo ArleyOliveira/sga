@@ -22,30 +22,29 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300,500' rel='stylesheet' type='text/css'>
 
-
-    <link rel="stylesheet" href="{{ asset('bundles/batepapobase/libs/bootstrap/css/bootstrap.min.css') }}"
-          type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/batepapobase/libs/metisMenu/metisMenu.min.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/batepapobase/libs/template/css/sb-admin-2.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/batepapobase/libs/morrisjs/morris.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/batepapobase/libs/font-awesome/css/font-awesome.min.css') }}"
-          type="text/css"/>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 
-<div id="wrapper">
+<div id="wrapper" class="wrapper">
     {% include 'SistemaAcessoBaseBundle::Layout/default.html.twig' %}
+
 
     {% block body %}
 
     {% endblock %}
+
+
+    <!-- Footer -->
+        <footer class="footer">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    &copy; Company 2016. All rights reserved.
+                    <a href="#">Terms of Service</a> |
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
 </div>
 <!-- JS Global -->
 
