@@ -2,29 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="982045b9-2ea0-4bfc-87ea-990ce68c6584" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/libs/confirm/jquery.confirm.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/libs/growl/css/jquery.growl.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/libs/growl/js/jquery.growl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/SemesterController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Entity/Semester.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Form/Type/SemesterType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Repository/SemesterRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/messages.pt_BR.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/validators.pt_BR.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/_form.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/edit.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/index.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/CourseController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Entity/Course.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Form/Type/CourseType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Repository/CourseRepository.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/_form.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/edit.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/index.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/new.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/scripts/app_form.js" afterPath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/scripts/app_form.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/styles/app.css" afterPath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/styles/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig" afterPath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/layout.html.twig" afterPath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/layout.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Controller/UserController.php" afterPath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Controller/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Resources/views/User/index.html.twig" afterPath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Resources/views/User/index.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/messages.pt_BR.yml" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/messages.pt_BR.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/validators.pt_BR.yml" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/validators.pt_BR.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/_form.html.twig" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/_form.html.twig" />
     </list>
     <ignored path="sistema-acesso.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,8 +40,8 @@
       <file leaf-file-name="layout.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="74" column="54" selection-start-line="74" selection-start-column="54" selection-end-line="74" selection-end-column="54" />
+            <state relative-caret-position="504">
+              <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -58,99 +50,110 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="36" column="67" selection-start-line="36" selection-start-column="67" selection-end-line="36" selection-end-column="67" />
+            <state relative-caret-position="288">
+              <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
               <folding>
-                <element signature="e#2133#2148#0#Twig" expanded="true" />
+                <element signature="e#12#60#0#Twig" expanded="false" />
+                <element signature="e#287#299#0#Twig" expanded="false" />
+                <element signature="e#896#951#0#Twig" expanded="false" />
+                <element signature="e#1740#1753#0#Twig" expanded="false" />
+                <element signature="e#2133#2148#0#Twig" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jquery.confirm.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/libs/confirm/jquery.confirm.min.js">
+      <file leaf-file-name="default.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-575">
+              <caret line="76" column="51" selection-start-line="76" selection-start-column="51" selection-end-line="76" selection-end-column="51" />
+              <folding>
+                <element signature="e#1380#1389#0#Twig" expanded="false" />
+                <element signature="e#1648#1672#0#Twig" expanded="false" />
+                <element signature="e#1943#1956#0#Twig" expanded="false" />
+                <element signature="e#2190#2204#0#Twig" expanded="false" />
+                <element signature="e#3437#3447#0#Twig" expanded="false" />
+                <element signature="e#4421#4445#0#Twig" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Course.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Entity/Course.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+              <folding>
+                <element signature="e#53#66#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="validators.pt_BR.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/validators.pt_BR.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/edit.html.twig">
+      <file leaf-file-name="Semester.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Entity/Semester.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+            <state relative-caret-position="144">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CourseType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Form/Type/CourseType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="22" column="85" selection-start-line="22" selection-start-column="85" selection-end-line="22" selection-end-column="85" />
               <folding>
-                <element signature="e#12#60#0#Twig" expanded="false" />
+                <element signature="e#137#182#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CourseController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/CourseController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+              <folding>
+                <element signature="e#138#183#0#PHP" expanded="true" />
+                <element signature="e#2466#2480#1#PHP" expanded="true" />
+                <element signature="e#3395#3409#1#PHP" expanded="true" />
+                <element signature="e#4194#4208#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="_form.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/_form.html.twig">
+        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/_form.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="612">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <file leaf-file-name="edit.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/edit.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="80" column="14" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SemesterType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Form/Type/SemesterType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
-              <folding>
-                <element signature="e#58#105#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messages.pt_BR.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/messages.pt_BR.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SemesterController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/SemesterController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="86" column="60" selection-start-line="86" selection-start-column="60" selection-end-line="86" selection-end-column="60" />
-              <folding>
-                <element signature="e#58#105#0#PHP" expanded="true" />
-                <element signature="e#2369#2385#1#PHP" expanded="true" />
-                <element signature="e#3320#3336#1#PHP" expanded="true" />
-                <element signature="e#4137#4153#1#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app_form.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/scripts/app_form.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="64" selection-start-line="0" selection-start-column="64" selection-end-line="0" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -192,7 +195,6 @@
         <option value="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Resources/views/User/_form.html.twig" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/TwigExtensions/StatusLabelExtension.php" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Resources/views/User/edit.html.twig" />
-        <option value="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/styles/app.css" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Resources/views/User/login.html.twig" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Resources/config/security.yml" />
         <option value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Controller/SecurityController.php" />
@@ -203,20 +205,29 @@
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/edit.html.twig" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/new.html.twig" />
-        <option value="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Resources/views/User/index.html.twig" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Entity/Semester.php" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Repository/SemesterRepository.php" />
-        <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/validators.pt_BR.yml" />
-        <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/messages.pt_BR.yml" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/layout.html.twig" />
-        <option value="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/scripts/app_form.js" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/SemesterController.php" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Form/Type/SemesterType.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/scripts/app_form.js" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/styles/app.css" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Repository/CourseRepository.php" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/messages.pt_BR.yml" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/_form.html.twig" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/edit.html.twig" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/new.html.twig" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/_form.html.twig" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Form/Type/CourseType.php" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/validators.pt_BR.yml" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Entity/Course.php" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/CourseController.php" />
       </list>
     </option>
   </component>
@@ -308,204 +319,6 @@
               <option name="myItemId" value="SistemaAcesso" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SistemaAcesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SistemaAcesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="User" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SistemaAcesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SistemaAcesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Repository" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SistemaAcesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Form" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SistemaAcesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SistemaAcesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -560,6 +373,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Semester" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema-acesso" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema-acesso" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SistemaAcesso" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SchoolBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Course" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -838,156 +685,6 @@
               <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SistemaAcesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BaseBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SistemaAcesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BaseBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SistemaAcesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BaseBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confirm" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SistemaAcesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BaseBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sistema-acesso" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -1001,11 +698,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course" />
       <recent name="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/libs" />
       <recent name="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester" />
       <recent name="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources" />
       <recent name="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/scripts" />
-      <recent name="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/scripts" />
@@ -1074,18 +771,18 @@
       <workItem from="1478950655968" duration="4492000" />
       <workItem from="1478955245101" duration="7724000" />
       <workItem from="1478977783479" duration="23296000" />
-      <workItem from="1479001161674" duration="7298000" />
+      <workItem from="1479001161674" duration="10599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42810000" />
+    <option name="totallyTimeSpent" value="46111000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="61" y="24" width="1859" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23110867" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23110867" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1120,73 +817,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/config/services.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Resources/translations/messages.pt_BR.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Resources/translations/validators.pt_BR.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/libs/angular-material/angular-material.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="368023" selection-start-line="5" selection-start-column="368023" selection-end-line="5" selection-end-column="368023" />
-          <folding>
-            <element signature="e#17035#17208#2" expanded="false" />
-            <element signature="e#18291#18464#2" expanded="false" />
-            <element signature="e#18992#19165#2" expanded="false" />
-            <element signature="e#130057#131146#2" expanded="false" />
-            <element signature="e#131262#132347#2" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/libs/waves/dist/waves.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="3647" selection-start-line="7" selection-start-column="3647" selection-end-line="7" selection-end-column="3647" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/libs/waves/dist/waves.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/scripts/ui-waves.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Model/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1281">
-          <caret line="481" column="20" selection-start-line="481" selection-start-column="20" selection-end-line="481" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/TwigExtensions/StatusLabelExtension.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -1227,14 +857,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="381">
           <caret line="1395" column="0" selection-start-line="1395" selection-start-column="0" selection-end-line="1397" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/styles/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -1342,7 +964,7 @@
         <state relative-caret-position="324">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <marker date="1479001939590" expanded="true" signature="37:76" ph="@SistemaAc..." />
+            <marker date="1479008491955" expanded="true" signature="37:76" ph="@SistemaAc..." />
           </folding>
         </state>
       </provider>
@@ -1360,28 +982,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
-          <folding>
-            <element signature="e#1380#1389#0#Twig" expanded="false" />
-            <element signature="e#1648#1672#0#Twig" expanded="false" />
-            <element signature="e#1943#1956#0#Twig" expanded="false" />
-            <element signature="e#3412#3422#0#Twig" expanded="false" />
-            <element signature="e#4396#4420#0#Twig" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1419,7 +1019,7 @@
         <state relative-caret-position="666">
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
-            <element signature="e#56#118#0#PHP" expanded="true" />
+            <element signature="e#56#118#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1429,16 +1029,6 @@
         <state relative-caret-position="162">
           <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="84" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Entity/Semester.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="81" selection-start-line="14" selection-start-column="81" selection-end-line="14" selection-end-column="81" />
-          <folding>
-            <element signature="e#54#67#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1458,30 +1048,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/validators.pt_BR.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
           <folding>
             <element signature="e#12#60#0#Twig" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="36" column="67" selection-start-line="36" selection-start-column="67" selection-end-line="36" selection-end-column="67" />
-          <folding>
-            <element signature="e#2133#2148#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1494,15 +1066,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/layout.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="74" column="54" selection-start-line="74" selection-start-column="54" selection-end-line="74" selection-end-column="54" />
+        <state relative-caret-position="577">
+          <caret line="80" column="14" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/messages.pt_BR.yml">
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/scripts/app_form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="738">
+          <caret line="41" column="3" selection-start-line="41" selection-start-column="3" selection-end-line="41" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/styles/app.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
@@ -1510,10 +1090,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/new.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Repository/CourseRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/messages.pt_BR.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/_form.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Form/Type/SemesterType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="847">
+          <caret line="49" column="5" selection-start-line="15" selection-start-column="3" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <element signature="e#58#105#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/SemesterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="86" column="60" selection-start-line="86" selection-start-column="60" selection-end-line="86" selection-end-column="60" />
+        <state relative-caret-position="72">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <element signature="e#58#105#0#PHP" expanded="true" />
             <element signature="e#2369#2385#1#PHP" expanded="true" />
@@ -1523,37 +1145,129 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Form/Type/SemesterType.php">
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+        <state relative-caret-position="342">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
           <folding>
-            <element signature="e#58#105#0#PHP" expanded="true" />
+            <element signature="e#12#60#0#Twig" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/_form.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#12#60#0#Twig" expanded="false" />
+            <element signature="e#281#291#0#Twig" expanded="false" />
+            <element signature="e#888#943#0#Twig" expanded="false" />
+            <element signature="e#1730#1741#0#Twig" expanded="false" />
+            <element signature="e#2119#2132#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/_form.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/scripts/app_form.js">
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="64" selection-start-line="0" selection-start-column="64" selection-end-line="0" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="80" column="14" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="14" />
+        <state relative-caret-position="288">
+          <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+          <folding>
+            <element signature="e#12#60#0#Twig" expanded="false" />
+            <element signature="e#287#299#0#Twig" expanded="false" />
+            <element signature="e#896#951#0#Twig" expanded="false" />
+            <element signature="e#1740#1753#0#Twig" expanded="false" />
+            <element signature="e#2133#2148#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Form/Type/CourseType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="22" column="85" selection-start-line="22" selection-start-column="85" selection-end-line="22" selection-end-column="85" />
+          <folding>
+            <element signature="e#137#182#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Entity/Semester.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="63" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/translations/validators.pt_BR.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Entity/Course.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+          <folding>
+            <element signature="e#53#66#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-575">
+          <caret line="76" column="51" selection-start-line="76" selection-start-column="51" selection-end-line="76" selection-end-column="51" />
+          <folding>
+            <element signature="e#1380#1389#0#Twig" expanded="false" />
+            <element signature="e#1648#1672#0#Twig" expanded="false" />
+            <element signature="e#1943#1956#0#Twig" expanded="false" />
+            <element signature="e#2190#2204#0#Twig" expanded="false" />
+            <element signature="e#3437#3447#0#Twig" expanded="false" />
+            <element signature="e#4421#4445#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/CourseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+          <folding>
+            <element signature="e#138#183#0#PHP" expanded="true" />
+            <element signature="e#2466#2480#1#PHP" expanded="true" />
+            <element signature="e#3395#3409#1#PHP" expanded="true" />
+            <element signature="e#4194#4208#1#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

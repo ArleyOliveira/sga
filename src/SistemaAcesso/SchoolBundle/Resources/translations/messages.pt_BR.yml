@@ -8,3 +8,14 @@ semester:
     delete:
         success: Semester excluído com sucesso!
         error: Houve um erro ao tentar excluír um semestre!
+
+course:
+    new:
+        success: Novo curso adicionado com sucesso!
+        error: Houve um erro ao tentar adicionar um novo curso!
+    edit:
+        success: Curso editado com sucesso!
+        error: Houve um erro ao tentar editar um curso!
+    delete:
+        success: Curso excluído com sucesso!
+        error: Houve um erro ao tentar excluír um curso!

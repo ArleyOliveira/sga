@@ -2,3 +2,7 @@ semester:
     blank_year: Informe o ano do semestre!
     blank_semester: Informe o semester!
 
+course:
+    blank_name: Informe o nome do curso!
+    blank_knowledge_area: Informe a área do conhecimento!
+    unique_name: Nome do curso já cadastrado!
