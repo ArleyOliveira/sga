@@ -13,7 +13,8 @@ use SistemaAcesso\BaseBundle\Validator\Constraints as AssertBaseBundle;
  * @ORM\Entity
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="SistemaAcesso\UserBundle\Repository\UserRepository")
- * @UniqueEntity(fields="cpf", message="user.unique")
+ * @UniqueEntity(fields="cpf", message="user.unique_cpf")
+ * @UniqueEntity(fields="email", message="user.unique_email")
  */
 class User extends BaseUser
 {
