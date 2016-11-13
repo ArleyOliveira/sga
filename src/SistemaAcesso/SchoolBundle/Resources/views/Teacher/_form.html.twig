@@ -1,0 +1,116 @@
+{{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+<div class="col-xs-12">
+
+    <h3 class="page-header">
+        Dados pessoais <small></small>
+    </h3>
+
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group {% if form.name.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group {% if form.cpf.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.cpf) }}
+            {{ form_widget(form.cpf) }}
+            {{ form_errors(form.cpf) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group {% if form.siape.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.siape) }}
+            {{ form_widget(form.siape) }}
+            {{ form_errors(form.siape) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2">
+        <div class="form-group {% if form.dateBirth.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.dateBirth) }}
+            {{ form_widget(form.dateBirth) }}
+            {{ form_errors(form.dateBirth) }}
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group {% if form.sexy.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.sexy) }}
+            {{ form_widget(form.sexy) }}
+            {{ form_errors(form.sexy) }}
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+
+    <h3 class="page-header">
+        Contato <small></small>
+    </h3>
+
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group {% if form.email.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+            {{ form_errors(form.email) }}
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group {% if form.phone.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.phone) }}
+            {{ form_widget(form.phone) }}
+            {{ form_errors(form.phone) }}
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group {% if form.cellphone.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.cellphone) }}
+            {{ form_widget(form.cellphone) }}
+            {{ form_errors(form.cellphone) }}
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+
+    <h3 class="page-header">
+        Acesso <small></small>
+    </h3>
+
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        {{ form_label(form.username) }}
+        {{ form_widget(form.username) }}
+        {{ form_errors(form.username) }}
+    </div>
+    <div class="col-sm-2">
+        {{ form_label(form.plainPassword.first) }}
+        {{ form_widget(form.plainPassword.first) }}
+        {{ form_errors(form.plainPassword.first) }}
+    </div>
+    <div class="col-sm-2">
+        {{ form_label(form.plainPassword.second) }}
+        {{ form_widget(form.plainPassword.second) }}
+        {{ form_errors(form.plainPassword.second) }}
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-actions">
+            <a href="{{ path('teacher_index') }}" class="btn btn-default waves-effect btn-fw">Cancelar</a>
+
+            <button type="submit" class="btn {{ button_css|default('btn-primary btn-fw ') }} waves-effect">
+                {{ button_label|default('Salvar') }}
+            </button>
+        </div>
+    </div>
+</div>
+
+{{ form_end(form) }}

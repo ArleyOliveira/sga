@@ -1,29 +1,31 @@
 <?php
 
-namespace SistemaAcesso\UserBundle\Controller;
+
+namespace SistemaAcesso\SchoolBundle\Controller;
 
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use SistemaAcesso\UserBundle\Entity\User;
-use SistemaAcesso\UserBundle\Form\AdminType;
-use Symfony\Component\HttpFoundation\Request;
+use SistemaAcesso\SchoolBundle\Entity\Teacher;
+use SistemaAcesso\SchoolBundle\Form\Type\TeacherType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * User controller.
- * @package SistemaAcesso\UserBundle\Controller
- * @Route("/user")
+ * TeacherController.
+ * @package SistemaAcesso\SchoolBundle\Controller
+ * @Route("/teacher")
  * @Template()
  */
-class UserController extends Controller
+
+class TeacherController extends Controller
 {
     /**
-     * @Route("/", name="user_index")
-     * @Method("GET")
+     * @Route("/", name="teacher_index")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_USER')")
      */
     public function indexAction(Request $request)
     {
@@ -34,20 +36,20 @@ class UserController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository(User\Admin::class)->findAll();
+        $teachers = $em->getRepository(Teacher::class)->findAll();
 
-        $total = count($users);
+        $total = count($teachers);
         $paginator = $this->get('knp_paginator');
 
 
         $pagination = $paginator->paginate(
-            $users,
+            $teachers,
             $request->query->get('page', 1),
             10
         );
 
         return array(
-            'users' => $pagination,
+            'teachers' => $pagination,
             'string' => $string,
             'active' => $active,
             'total'  => $total
@@ -55,51 +57,50 @@ class UserController extends Controller
     }
 
     /**
-     * @Template()
-     * @Route("/new", name="user_new")
+     * @Route("/new", name="teacher_new")
      * @Method({"GET", "POST"})
      * @Security("has_role('ROLE_ADMIN')")
      */
     public function newAction(Request $request)
     {
-        $user = new User\Admin();
-        $form = $this->createForm(new AdminType(), $user);
+        $teacher = new Teacher();
+        $form = $this->createForm(new TeacherType(), $teacher);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             try {
-                $user->setRoles(['ROLE_ADMIN']);
-                $user->setEnabled(true);
+                $teacher->setRoles(['ROLE_USER']);
+                $teacher->setEnabled(true);
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
+                $em->persist($teacher);
                 $em->flush();
-                $this->addSuccessMessage('user.new.success');
+                $this->addSuccessMessage('teacher.new.success');
 
             } catch (\Exception $e) {
                 //echo $e->getMessage(); die;
-                $this->addErrorMessage('user.new.error');
+                $this->addErrorMessage('teacher.new.error');
 
             }
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('teacher_index');
         }
 
         return array(
-            'user' => $user,
+            'teacher' => $teacher,
             'form' => $form->createView()
         );
 
     }
 
     /**
-     * @Route("/{id}/edit", requirements={"id" = "\d+"}, name="user_edit")
+     * @Route("/{id}/edit", requirements={"id" = "\d+"}, name="teacher_edit")
      * @Method({"GET", "POST"})
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function editAction(User\Admin $user, Request $request)
+    public function editAction(Teacher $teacher, Request $request)
     {
-        $editForm = $this->createForm(new AdminType(), $user);
+        $editForm = $this->createForm(new TeacherType(), $teacher);
         $editForm->remove('password');
 
 
@@ -109,21 +110,21 @@ class UserController extends Controller
 
             try {
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
+                $em->persist($teacher);
                 $em->flush();
-                $this->addSuccessMessage('user.edit.success');
+                $this->addSuccessMessage('teacher.edit.success');
 
             } catch (\Exception $e) {
 
-                $this->addErrorMessage('user.edit.error');
+                $this->addErrorMessage('teacher.edit.error');
 
             }
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('teacher_index');
         }
 
         return array(
-            'user' => $user,
+            'teacher' => $teacher,
             'form' => $editForm->createView(),
         );
     }
@@ -151,5 +152,4 @@ class UserController extends Controller
     {
         $this->get('session')->getFlashBag()->add('info', $message);
     }
-
 }

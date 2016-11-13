@@ -70,7 +70,7 @@
                     <i class="fa fa-th-list" aria-hidden="true"></i>
                     Semestres
                 </a>
-                <a href="#">
+                <a href="{{ path('teacher_index') }}">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     Professores
                 </a>
@@ -99,15 +99,17 @@
             </li>
         </ul>
 
-        <ul class="sidebar__nav">
-            <li class="sidebar-nav__heading">Controle de Acesso</li>
-            <li>
-                <a href="{{ path('user_index') }}">
-                    <i class="fa fa-users" aria-hidden="true"></i>
-                    Usuários
-                </a>
-            </li>
-        </ul>
+        {% if app.user.granted('ROLE_ADMIN') %}
+            <ul class="sidebar__nav">
+                <li class="sidebar-nav__heading">Controle de Acesso</li>
+                <li>
+                    <a href="{{ path('user_index') }}">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        Usuários
+                    </a>
+                </li>
+            </ul>
+        {% endif %}
     </nav>
 
 </div>
@@ -133,7 +135,8 @@
                             {% if page_title is defined %} {{ page_title }} {% endif %}
                         </div>
 
-                        <a  href="{{ path('fos_user_security_logout') }}" class="btn btn-primary navbar-btn navbar-right">
+                        <a href="{{ path('fos_user_security_logout') }}"
+                           class="btn btn-primary navbar-btn navbar-right">
                             Sair
                         </a>
 

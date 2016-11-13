@@ -15,12 +15,18 @@ use SistemaAcesso\BaseBundle\Validator\Constraints as AssertBaseBundle;
  * @ORM\Entity(repositoryClass="SistemaAcesso\UserBundle\Repository\UserRepository")
  * @UniqueEntity(fields="cpf", message="user.unique_cpf")
  * @UniqueEntity(fields="email", message="user.unique_email")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({
+ *      "TEACHER" = "SistemaAcesso\SchoolBundle\Entity\Teacher",
+ *      "ADMIN" = "SistemaAcesso\UserBundle\Entity\User\Admin",
+ * })
  */
-class User extends BaseUser
+abstract class User extends BaseUser
 {
 
-    const USER_DEFAULT = 'USER_DEFAULT';
-    const USER_ADMIN = 'USER_ADMIN';
+    const USER_TEACHER = 'TEACHER';
+    const USER_ADMIN = 'ADMIN';
 
     /**
      * @ORM\Id
@@ -36,6 +42,11 @@ class User extends BaseUser
      * @Assert\NotBlank(message="user.black_name")
      */
     private $name;
+
+    /**
+     * @var string
+     */
+    protected $type;
 
     /**
      * @var \DateTime $dateBirth
@@ -102,6 +113,22 @@ class User extends BaseUser
         $this->active = true;
         $this->updated = new \DateTime('now');
         $this->created = new \DateTime('now');
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return self::USER_ADMIN;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 
     /**

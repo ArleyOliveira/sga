@@ -84,7 +84,7 @@ mopa_bootstrap:
         show_child_legend: true # default is true
         error_type: block # or inline which is default
         checkbox_label: 'both' # default is both (label|widget|both)
-        render_optional_text: true
+        render_optional_text: false
         horizontal_label_class: ~
 
 fos_user:

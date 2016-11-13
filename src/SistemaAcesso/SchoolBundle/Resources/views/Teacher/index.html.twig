@@ -1,14 +1,14 @@
 {% extends 'SistemaAcessoBaseBundle::Layout/layout.html.twig' %}
-{% set page_title = 'Disciplinas' %}
+{% set page_title = 'Professores' %}
 
 {% block body %}
 
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h4 class="panel-title">Listagem de disciplinas</h4>
+            <h4 class="panel-title">Listagem de professores</h4>
             {% if app.user.granted('ROLE_ADMIN') %}
-                <a href="{{ path('discipline_new') }}" class="btn btn-success mb_sm btn-sm pull-right">Novo</a>
+                <a href="{{ path('teacher_new') }}" class="btn btn-success mb_sm btn-sm pull-right">Novo</a>
             {% endif %}
         </div>
         <div class="panel-body">
@@ -28,38 +28,32 @@
                 <thead>
                 <tr>
                     <th>Status</th>
-                    <th>Nome</th>
-                    <th>Curso</th>
+                    <th>Username</th>
+                    <th>Nome Completo</th>
+                    <th>E-mail</th>
+                    <th>Telefones</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for discipline in disciplines %}
+                {% for teacher in teachers %}
                     <tr>
-                        <td>{{ discipline.active|status_label }}</td>
-                        <td>{{ discipline.name }}</td>
+                        <td>{{ teacher.active|status_label }}</td>
+                        <td>{{ teacher.username }}</td>
+                        <td>{{ teacher.name }}</td>
+                        <td>{{ teacher.email }}</td>
                         <td>
-                            {{ discipline.course.name }}<br>
-                            <i>{{ discipline.course.knowledgeArea }}</i>
+                            {{ teacher.phone }} | {{ teacher.cellphone }}
                         </td>
                         <td>
                             {% if app.user.granted('ROLE_ADMIN') %}
                                 <div class="btn-group btn-group-xs">
-                                    <a href="{{ path('discipline_edit', { 'id': discipline.id}) }}"
-                                       class="btn btn-default"
+                                    <a href="{{ path('teacher_edit', { 'id': teacher.id}) }}" class="btn btn-default"
                                        title="Editar">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                 </div>
-                                <div class="btn-group btn-group-xs">
-                                    <a href="{{ path('discipline_delete', { 'id': discipline.id}) }}"
-                                       class="btn btn-default remove-this"
-                                       title="Excluir">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </div>
                             {% endif %}
-
                         </td>
                     </tr>
                 {% endfor %}
@@ -69,7 +63,7 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <span><b>Total de registro desta página</b>  <label
-                                class="badge bg-warning">{{ disciplines|length }}</label></span> &nbsp; &nbsp;
+                                class="badge bg-warning">{{ teachers|length }}</label></span> &nbsp; &nbsp;
                     <span><b>Total de registro da pesquisa </b>  <label
                                 class="badge bg-primary">{{ total }}</label></span>
                 </div>
@@ -77,7 +71,7 @@
 
 
             <div class="navigation text-right">
-                {{ knp_pagination_render(disciplines) }}
+                {{ knp_pagination_render(teachers) }}
             </div>
 
         </div>

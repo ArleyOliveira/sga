@@ -30,3 +30,14 @@ event:
     delete:
         success: Evento excluído com sucesso!
         error: Houve um erro ao tentar excluír um evento!
+
+teacher:
+    new:
+        success: Novo professor adicionado com sucesso!
+        error: Houve um erro ao tentar adicionar um novo professor!
+    edit:
+        success: Professor editado com sucesso!
+        error: Houve um erro ao tentar editar um professor!
+    delete:
+        success: Professor excluído com sucesso!
+        error: Houve um erro ao tentar excluír um professor!

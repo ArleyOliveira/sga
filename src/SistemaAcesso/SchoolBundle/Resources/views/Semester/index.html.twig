@@ -7,7 +7,9 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">Listagem de semestres</h4>
-            <a href="{{ path('semester_new') }}" class="btn btn-success mb_sm btn-sm pull-right">Novo</a>
+            {% if app.user.granted('ROLE_ADMIN') %}
+                <a href="{{ path('semester_new') }}" class="btn btn-success mb_sm btn-sm pull-right">Novo</a>
+            {% endif %}
         </div>
         <div class="panel-body">
             <div id="datatables__example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
@@ -46,7 +48,8 @@
                                     </a>
                                 </div>
                                 <div class="btn-group btn-group-xs">
-                                    <a href="{{ path('semester_delete', { 'id': semester.id}) }}" class="btn btn-default remove-this"
+                                    <a href="{{ path('semester_delete', { 'id': semester.id}) }}"
+                                       class="btn btn-default remove-this"
                                        title="Excluir">
                                         <i class="fa fa-trash"></i>
                                     </a>

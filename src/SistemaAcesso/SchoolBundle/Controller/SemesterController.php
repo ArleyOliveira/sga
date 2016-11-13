@@ -27,7 +27,7 @@ class SemesterController extends Controller
     /**
      * @Route("/", name="semester_index")
      * @Method("GET")
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_USER')")
      */
     public function indexAction(Request $request)
     {

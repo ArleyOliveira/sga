@@ -21,6 +21,7 @@ var SPMaskBehavior = function (val) {
 $('.cpf-mask').mask('000.000.000-00');
 $('.cellphone-mask').mask(SPMaskBehavior, spOptions);
 $('.phone-mask').mask('(00) 0000-0000');
+$('.numeric').mask('0#');
 
 $('.btn, .fa, input').tooltip();
 
