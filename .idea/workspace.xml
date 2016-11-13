@@ -2,30 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="982045b9-2ea0-4bfc-87ea-990ce68c6584" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/TeacherController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Entity/Teacher.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Form/Type/TeacherType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Repository/TeacherRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Teacher/_form.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Teacher/edit.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Teacher/index.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Teacher/new.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Entity/User/Admin.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Repository/AdminRepository.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Form/UserType.php" afterPath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Form/AdminType.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/imagens/user/avatar.png" afterPath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/imagens/user/avatar_M.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/scripts/app_form.js" afterPath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/scripts/app_form.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig" afterPath="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/CourseController.php" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/CourseController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/DisciplineController.php" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/DisciplineController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/SemesterController.php" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/SemesterController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/index.html.twig" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Discipline/index.html.twig" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Discipline/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/index.html.twig" afterPath="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Controller/UserController.php" afterPath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Controller/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Resources/translations/messages.pt_BR.yml" afterPath="$PROJECT_DIR$/src/SistemaAcesso/UserBundle/Resources/translations/messages.pt_BR.yml" />
     </list>
     <ignored path="sistema-acesso.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,17 +25,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="default.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="default.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+            <state relative-caret-position="-450">
+              <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
               <folding>
-                <element signature="e#1380#1389#0#Twig" expanded="true" />
-                <element signature="e#1648#1672#0#Twig" expanded="true" />
-                <element signature="e#2366#2379#0#Twig" expanded="true" />
+                <element signature="e#1398#1407#0#Twig" expanded="true" />
+                <element signature="e#1666#1690#0#Twig" expanded="true" />
+                <element signature="e#2384#2397#0#Twig" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="avatar_M.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/imagens/user/avatar_M.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -86,16 +72,6 @@
         </entry>
       </file>
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Discipline/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="486">
@@ -115,10 +91,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TeacherController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TeacherController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/TeacherController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="55">
+            <state relative-caret-position="325">
               <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
               <folding />
             </state>
@@ -131,18 +107,6 @@
             <state relative-caret-position="198">
               <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_form.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Teacher/_form.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1422">
-              <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-              <folding>
-                <element signature="e#3368#3381#0#Twig" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -220,7 +184,6 @@
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/scripts/app_form.js" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Teacher/_form.html.twig" />
-        <option value="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Course/index.html.twig" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Discipline/index.html.twig" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/index.html.twig" />
@@ -228,6 +191,7 @@
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/CourseController.php" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/SemesterController.php" />
         <option value="$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/TeacherController.php" />
+        <option value="$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig" />
       </list>
     </option>
   </component>
@@ -880,6 +844,44 @@
               <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imagens" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema-acesso" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sistema-acesso" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SistemaAcesso" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BaseBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1000,21 +1002,22 @@
       <workItem from="1478955245101" duration="7724000" />
       <workItem from="1478977783479" duration="23296000" />
       <workItem from="1479001161674" duration="14053000" />
-      <workItem from="1479041694374" duration="7370000" />
+      <workItem from="1479041694374" duration="9189000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56935000" />
+    <option name="totallyTimeSpent" value="58754000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="61" y="24" width="1859" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17650303" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17650303" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21607515" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2498621" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1025,7 +1028,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21711366" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1046,21 +1048,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/libs/confirm/jquery.confirm.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Resources/views/Semester/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Repository/CourseRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -1244,12 +1231,12 @@
         <state relative-caret-position="630">
           <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
           <folding>
-            <marker date="1479043649455" expanded="true" signature="1115:1243" ph="new: &lt;2 keys&gt;" />
-            <marker date="1479043649455" expanded="true" signature="1191:1243" ph="Houve um e..." />
-            <marker date="1479043649455" expanded="true" signature="1248:1361" ph="edit: &lt;2 keys&gt;" />
-            <marker date="1479043649455" expanded="true" signature="1317:1361" ph="Houve um e..." />
-            <marker date="1479043649455" expanded="true" signature="1366:1483" ph="delete: &lt;2 keys&gt;" />
-            <marker date="1479043649455" expanded="true" signature="1438:1483" ph="Houve um e..." />
+            <marker date="1479049147715" expanded="true" signature="1115:1243" ph="new: &lt;2 keys&gt;" />
+            <marker date="1479049147715" expanded="true" signature="1191:1243" ph="Houve um e..." />
+            <marker date="1479049147715" expanded="true" signature="1248:1361" ph="edit: &lt;2 keys&gt;" />
+            <marker date="1479049147715" expanded="true" signature="1317:1361" ph="Houve um e..." />
+            <marker date="1479049147715" expanded="true" signature="1366:1483" ph="delete: &lt;2 keys&gt;" />
+            <marker date="1479049147715" expanded="true" signature="1438:1483" ph="Houve um e..." />
           </folding>
         </state>
       </provider>
@@ -1320,14 +1307,14 @@
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
             <element signature="e#42#89#0#PHP" expanded="false" />
-            <marker date="1479045144868" expanded="true" signature="584:705" ph="CREATE TABLE... admins" />
-            <marker date="1479045144868" expanded="true" signature="732:879" ph="CREATE TABLE... teachers" />
-            <marker date="1479045144868" expanded="true" signature="906:1016" ph="ALTER TABLE admins... " />
-            <marker date="1479045144868" expanded="true" signature="1043:1155" ph="ALTER TABLE teachers... " />
-            <marker date="1479045144868" expanded="true" signature="1182:1230" ph="ALTER TABLE users... " />
-            <marker date="1479045144868" expanded="true" signature="1583:1600" ph="DROP TABLE a... " />
-            <marker date="1479045144868" expanded="true" signature="1627:1646" ph="DROP TABLE t... " />
-            <marker date="1479045144868" expanded="true" signature="1673:1700" ph="ALTER TABLE users... " />
+            <marker date="1479049147715" expanded="true" signature="584:705" ph="CREATE TABLE... admins" />
+            <marker date="1479049147715" expanded="true" signature="732:879" ph="CREATE TABLE... teachers" />
+            <marker date="1479049147715" expanded="true" signature="906:1016" ph="ALTER TABLE admins... " />
+            <marker date="1479049147715" expanded="true" signature="1043:1155" ph="ALTER TABLE teachers... " />
+            <marker date="1479049147715" expanded="true" signature="1182:1230" ph="ALTER TABLE users... " />
+            <marker date="1479049147715" expanded="true" signature="1583:1600" ph="DROP TABLE a... " />
+            <marker date="1479049147715" expanded="true" signature="1627:1646" ph="DROP TABLE t... " />
+            <marker date="1479049147715" expanded="true" signature="1673:1700" ph="ALTER TABLE users... " />
           </folding>
         </state>
       </provider>
@@ -1372,7 +1359,7 @@
         <state relative-caret-position="162">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="15" selection-end-column="3" />
           <folding>
-            <element signature="e#54#95#0#PHP" expanded="true" />
+            <element signature="e#54#95#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1399,7 +1386,7 @@
           <caret line="7" column="65" selection-start-line="7" selection-start-column="65" selection-end-line="7" selection-end-column="65" />
           <folding>
             <element signature="e#12#60#0#Twig" expanded="false" />
-            <marker date="1479046557380" expanded="true" signature="102:458" ph="{% block body ...%}" />
+            <marker date="1479049147715" expanded="true" signature="102:458" ph="{% block body ...%}" />
           </folding>
         </state>
       </provider>
@@ -1467,18 +1454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
-          <folding>
-            <element signature="e#1380#1389#0#Twig" expanded="true" />
-            <element signature="e#1648#1672#0#Twig" expanded="true" />
-            <element signature="e#2366#2379#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/DisciplineController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1505,9 +1480,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/SchoolBundle/Controller/TeacherController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
+        <state relative-caret-position="325">
           <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/imagens/user/avatar_F.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/public/imagens/user/avatar_M.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaAcesso/BaseBundle/Resources/views/Layout/default.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-450">
+          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+          <folding>
+            <element signature="e#1398#1407#0#Twig" expanded="true" />
+            <element signature="e#1666#1690#0#Twig" expanded="true" />
+            <element signature="e#2384#2397#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
