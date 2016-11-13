@@ -19,3 +19,14 @@ course:
     delete:
         success: Curso excluído com sucesso!
         error: Houve um erro ao tentar excluír um curso!
+
+discipline:
+    new:
+        success: Nova disciplina adicionada com sucesso!
+        error: Houve um erro ao tentar adicionar uma nova disciplina!
+    edit:
+        success: Disciplina editada com sucesso!
+        error: Houve um erro ao tentar editar uma disciplina!
+    delete:
+        success: Disciplina excluída com sucesso!
+        error: Houve um erro ao tentar excluír uma disciplina!

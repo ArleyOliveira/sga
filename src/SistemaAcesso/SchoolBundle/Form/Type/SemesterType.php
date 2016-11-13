@@ -18,14 +18,13 @@ class SemesterType extends AbstractType
         $builder
             ->add('year', 'text', array('label' => 'Ano', 'attr' => ['class' => 'datepicker-only-year']))
             ->add('semester', ChoiceType::class, [
-                'label' => 'Sexo',
+                'label' => 'Semestre',
                 'choices' => [
                     "1" => "1° Semestre",
                     "2" => "2º Semestre"
                 ],
                 'placeholder' => "Selecione um semestre"
             ])
-            ->add('active', 'checkbox', array('label' => 'Ativo?', 'required' => false))
         ;
     }
 

@@ -6,3 +6,7 @@ course:
     blank_name: Informe o nome do curso!
     blank_knowledge_area: Informe a área do conhecimento!
     unique_name: Nome do curso já cadastrado!
+
+discipline:
+    blank_name: Informe o nome da disciplina!
+    blank_course: Informe o curso que está disciplina pertence!

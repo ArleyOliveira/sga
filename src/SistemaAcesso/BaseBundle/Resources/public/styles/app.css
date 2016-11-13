@@ -8,3 +8,7 @@
 .bg-warning {
     background-color: #f0ad4e;
 }
+label.required:after {
+    content: " *";
+    color: red;
+}

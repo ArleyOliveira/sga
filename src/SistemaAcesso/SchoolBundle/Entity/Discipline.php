@@ -2,21 +2,21 @@
 
 
 namespace SistemaAcesso\SchoolBundle\Entity;
+
+
 use DateTime;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
- * class Course
+ * class Discipline
  * @ORM\Entity
- * @ORM\Table(name="courses")
- * @ORM\Entity(repositoryClass="SistemaAcesso\SchoolBundle\Repository\CourseRepository")
- * @UniqueEntity(fields="name", message="course.unique_name")
+ * @ORM\Table(name="disciplines")
+ * @ORM\Entity(repositoryClass="SistemaAcesso\SchoolBundle\Repository\DisciplineRepository")
  */
-class Course
+class Discipline
 {
     /**
      * @var integer
@@ -32,25 +32,17 @@ class Course
      * @var string
      *
      * @ORM\Column(type="string", name="name")
-     * @Assert\NotBlank(message="course.blank_name")
+     * @Assert\NotBlank(message="discipline.blank_name")
      */
     private $name;
 
-
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", name="knowledge_area")
-     * @Assert\NotBlank(message="course.blank_knowledge_area")
+     * @var Course
+     * @ORM\ManyToOne(targetEntity="SistemaAcesso\SchoolBundle\Entity\Course", inversedBy="disciplines")
+     * @ORM\JoinColumn(name="course_id", referencedColumnName="id")
+     * @Assert\NotBlank(message="discipline.blank_course")
      */
-    private $knowledgeArea;
-
-    /**
-     * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="SistemaAcesso\SchoolBundle\Entity\Discipline", mappedBy="course")
-     */
-    private $disciplines;
-
+    private $course;
 
     /**
      * @var DateTime
@@ -82,7 +74,6 @@ class Course
         $this->active = true;
         $this->created = new \DateTime('now');
         $this->updated = new \DateTime('now');
-        $this->disciplines = new ArrayCollection();
     }
 
     /**
@@ -95,7 +86,7 @@ class Course
 
     /**
      * @param int $id
-     * @return Course
+     * @return Discipline
      */
     public function setId($id)
     {
@@ -113,7 +104,7 @@ class Course
 
     /**
      * @param string $name
-     * @return Course
+     * @return Discipline
      */
     public function setName($name)
     {
@@ -122,20 +113,21 @@ class Course
     }
 
     /**
-     * @return string
+     * @return Course
      */
-    public function getKnowledgeArea()
+    public function getCourse()
     {
-        return $this->knowledgeArea;
+        return $this->course;
     }
 
     /**
-     * @param string $knowledgeArea
-     * @return Course
+     * @param Course $course
+     * @return Discipline
      */
-    public function setKnowledgeArea($knowledgeArea)
+    public function setCourse($course)
     {
-        $this->knowledgeArea = $knowledgeArea;
+        $this->course = $course;
+        $course->addDiscipline($this);
         return $this;
     }
 
@@ -149,7 +141,7 @@ class Course
 
     /**
      * @param DateTime $created
-     * @return Course
+     * @return Discipline
      */
     public function setCreated($created)
     {
@@ -167,7 +159,7 @@ class Course
 
     /**
      * @param boolean $active
-     * @return Course
+     * @return Discipline
      */
     public function setActive($active)
     {
@@ -185,7 +177,7 @@ class Course
 
     /**
      * @param DateTime $updated
-     * @return Course
+     * @return Discipline
      */
     public function setUpdated($updated)
     {
@@ -193,39 +185,6 @@ class Course
         return $this;
     }
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getDisciplines()
-    {
-        return $this->disciplines;
-    }
 
-    /**
-     * @param ArrayCollection $disciplines
-     * @return Course
-     */
-    public function setDisciplines($disciplines)
-    {
-        $this->disciplines = $disciplines;
-        return $this;
-    }
 
-    /**
-     * @param Discipline $discipline
-     * @return Course
-     */
-    public function addDiscipline(Discipline $discipline){
-        $this->disciplines->add($discipline);
-        return $this;
-    }
-
-    /**
-     * @param Discipline $discipline
-     * @return Course
-     */
-    public function removeDiscipline(Discipline $discipline){
-        $this->disciplines->removeElement($discipline);
-        return $this;
-    }
 }

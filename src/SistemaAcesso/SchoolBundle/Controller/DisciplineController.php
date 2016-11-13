@@ -1,16 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: arley
- * Date: 13/11/16
- * Time: 01:56
- */
+
 
 namespace SistemaAcesso\SchoolBundle\Controller;
 
 
-use SistemaAcesso\SchoolBundle\Entity\Course;
-use SistemaAcesso\SchoolBundle\Form\Type\CourseType;
+use SistemaAcesso\SchoolBundle\Entity\Discipline;
+use SistemaAcesso\SchoolBundle\Form\Type\DisciplineType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -19,16 +14,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
- * Class CourseController
+ * Class DisciplineController
  * @package SistemaAcesso\SchoolBundle\Controller
  * @Template()
- * @Route("/course")
+ * @Route("/discipline")
  */
 
-class CourseController extends Controller
+class DisciplineController extends Controller
 {
     /**
-     * @Route("/", name="course_index")
+     * @Route("/", name="discipline_index")
      * @Method("GET")
      * @Security("has_role('ROLE_ADMIN')")
      */
@@ -42,20 +37,20 @@ class CourseController extends Controller
 
 
         $em = $this->getDoctrine()->getManager();
-        $courses = $em->getRepository(Course::class)->findAll();
+        $disciplines = $em->getRepository(Discipline::class)->findAll();
 
-        $total = count($courses);
+        $total = count($disciplines);
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $courses,
+            $disciplines,
             $request->query->get('page', 1),
             10
         );
 
 
         return array(
-            'courses' => $pagination,
+            'disciplines' => $pagination,
             'string' => $string,
             'active' => $active,
             'total'  => $total
@@ -63,14 +58,14 @@ class CourseController extends Controller
     }
 
     /**
-     * @Route("/new", name="course_new")
+     * @Route("/new", name="discipline_new")
      * @Method({"GET", "POST"})
      * @Security("has_role('ROLE_ADMIN')")
      */
     public function newAction(Request $request)
     {
-        $course = new Course();
-        $form = $this->createForm(new CourseType(), $course);
+        $discipline = new Discipline();
+        $form = $this->createForm(new DisciplineType(), $discipline);
 
         $form->handleRequest($request);
 
@@ -78,33 +73,33 @@ class CourseController extends Controller
 
             try {
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($course);
+                $em->persist($discipline);
                 $em->flush();
 
-                $this->addSuccessMessage('course.new.success');
+                $this->addSuccessMessage('discipline.new.success');
 
             } catch (\Exception $e) {
-                $this->addErrorMessage('course.new.error');
+                $this->addErrorMessage('discipline.new.error');
 
             }
-            return $this->redirectToRoute('course_index');
+            return $this->redirectToRoute('discipline_index');
         }
         return array(
-            'course' => $course,
+            'discipline' => $discipline,
             'form' => $form->createView(),
         );
 
     }
 
     /**
-     * @Route("/{id}/edit", requirements={"id" = "\d+"}, name="course_edit")
+     * @Route("/{id}/edit", requirements={"id" = "\d+"}, name="discipline_edit")
      * @Method({"GET", "POST"})
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function editAction(Course $course, Request $request)
+    public function editAction(Discipline $discipline, Request $request)
     {
 
-        $editForm = $this->createForm(new CourseType(), $course);
+        $editForm = $this->createForm(new DisciplineType(), $discipline);
 
         $editForm->handleRequest($request);
 
@@ -112,19 +107,19 @@ class CourseController extends Controller
 
             try {
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($course);
+                $em->persist($discipline);
                 $em->flush();
-                $this->addSuccessMessage('course.edit.success');
+                $this->addSuccessMessage('discipline.edit.success');
 
             } catch (\Exception $e) {
-                $this->addErrorMessage('course.edit.error');
+                $this->addErrorMessage('discipline.edit.error');
 
             }
 
-            return $this->redirectToRoute('course_index');
+            return $this->redirectToRoute('discipline_index');
         }
         return array(
-            'course' => $course,
+            'discipline' => $discipline,
             'form' => $editForm->createView(),
         );
     }
@@ -132,29 +127,29 @@ class CourseController extends Controller
     /**
      * @Route("/delete/{id}",
      *      requirements={"id" = "\d+"},
-     *      name="course_delete"
+     *      name="discipline_delete"
      * )
      * @Method({"GET", "DELETE"})
      * @Security("has_role('ROLE_ADMIN')")
      */
-    function deleteAction(Request $request, Course $course)
+    function deleteAction(Request $request, Discipline $discipline)
     {
         try {
 
             $em = $this->getDoctrine()->getManager();
-            $course->setActive(false);
-            $em->persist($course);
+            $discipline->setActive(false);
+            $em->persist($discipline);
             $em->flush();
 
-            $this->addSuccessMessage('course.delete.success');
+            $this->addSuccessMessage('discipline.delete.success');
 
         } catch (\Exception $e) {
 
-            $this->addErrorMessage('course.delete.error');
+            $this->addErrorMessage('discipline.delete.error');
 
         }
 
-        return $this->redirectToRoute('course_index');
+        return $this->redirectToRoute('discipline_index');
     }
 
 
@@ -173,5 +168,4 @@ class CourseController extends Controller
     {
         $this->get('session')->getFlashBag()->add('success', $message);
     }
-
 }
