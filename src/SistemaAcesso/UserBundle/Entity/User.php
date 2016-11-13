@@ -20,6 +20,7 @@ use SistemaAcesso\BaseBundle\Validator\Constraints as AssertBaseBundle;
  * @ORM\DiscriminatorMap({
  *      "TEACHER" = "SistemaAcesso\SchoolBundle\Entity\Teacher",
  *      "ADMIN" = "SistemaAcesso\UserBundle\Entity\User\Admin",
+ *      "PERSON" = "SistemaAcesso\UserBundle\Entity\User\Person",
  * })
  */
 abstract class User extends BaseUser
@@ -27,6 +28,7 @@ abstract class User extends BaseUser
 
     const USER_TEACHER = 'TEACHER';
     const USER_ADMIN = 'ADMIN';
+    const USER_PERSON = 'PERSON';
 
     /**
      * @ORM\Id
@@ -66,10 +68,10 @@ abstract class User extends BaseUser
 
     /**
      * @var string
-     * @Assert\NotBlank(message="user.blank_sexy")
+     * @Assert\NotBlank(message="user.blank_sex")
      * @ORM\Column(type="string", length=1)
      */
-    private $sexy;
+    private $sex;
 
     /**
      * @var string
@@ -260,18 +262,18 @@ abstract class User extends BaseUser
     /**
      * @return string
      */
-    public function getSexy()
+    public function getSex()
     {
-        return $this->sexy;
+        return $this->sex;
     }
 
     /**
-     * @param string $sexy
+     * @param string $sex
      * @return User
      */
-    public function setSexy($sexy)
+    public function setSex($sex)
     {
-        $this->sexy = $sexy;
+        $this->sex = $sex;
         return $this;
     }
 

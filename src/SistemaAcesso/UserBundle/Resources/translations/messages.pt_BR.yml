@@ -41,3 +41,14 @@ teacher:
     delete:
         success: Professor excluído com sucesso!
         error: Houve um erro ao tentar excluír um professor!
+
+person:
+    new:
+        success: Novo usuário adicionado com sucesso!
+        error: Houve um erro ao tentar adicionar um novo usuário!
+    edit:
+        success: Usuário editado com sucesso!
+        error: Houve um erro ao tentar editar um usuário!
+    delete:
+        success: Usuário excluído com sucesso!
+        error: Houve um erro ao tentar excluír um usuário!

@@ -1,11 +1,5 @@
 {{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
-<div class="col-xs-12">
 
-    <h3 class="page-header">
-        Dados pessoais <small></small>
-    </h3>
-
-</div>
 <div class="row">
     <div class="col-sm-4">
         <div class="form-group {% if form.name.vars.errors|length %} has-error {% endif %}">
@@ -14,23 +8,13 @@
             {{ form_errors(form.name) }}
         </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         <div class="form-group {% if form.cpf.vars.errors|length %} has-error {% endif %}">
             {{ form_label(form.cpf) }}
             {{ form_widget(form.cpf) }}
             {{ form_errors(form.cpf) }}
         </div>
     </div>
-    <div class="col-sm-3">
-        <div class="form-group {% if form.siape.vars.errors|length %} has-error {% endif %}">
-            {{ form_label(form.siape) }}
-            {{ form_widget(form.siape) }}
-            {{ form_errors(form.siape) }}
-        </div>
-    </div>
-</div>
-
-<div class="row">
     <div class="col-sm-2">
         <div class="form-group {% if form.dateBirth.vars.errors|length %} has-error {% endif %}">
             {{ form_label(form.dateBirth) }}
@@ -46,13 +30,7 @@
         </div>
     </div>
 </div>
-<div class="col-xs-12">
 
-    <h3 class="page-header">
-        Contato <small></small>
-    </h3>
-
-</div>
 <div class="row">
     <div class="col-sm-4">
         <div class="form-group {% if form.email.vars.errors|length %} has-error {% endif %}">
@@ -76,35 +54,52 @@
         </div>
     </div>
 </div>
-<div class="col-xs-12">
-
-    <h3 class="page-header">
-        Acesso <small></small>
-    </h3>
+<div class="row">
+    <div class="col-sm-2">
+        <div class="form-group {% if form.activity.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.activity) }}
+            {{ form_widget(form.activity) }}
+            {{ form_errors(form.activity) }}
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group {% if form.expirationDate.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.expirationDate) }}
+            {{ form_widget(form.expirationDate) }}
+            {{ form_errors(form.expirationDate) }}
+        </div>
+    </div>
 
 </div>
 <div class="row">
     <div class="col-sm-2">
-        {{ form_label(form.username) }}
-        {{ form_widget(form.username) }}
-        {{ form_errors(form.username) }}
+        <div class="form-group {% if form.plainPassword.first.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.username) }}
+            {{ form_widget(form.username) }}
+            {{ form_errors(form.username) }}
+        </div>
     </div>
     <div class="col-sm-2">
-        {{ form_label(form.plainPassword.first) }}
-        {{ form_widget(form.plainPassword.first) }}
-        {{ form_errors(form.plainPassword.first) }}
+        <div class="form-group {% if form.plainPassword.first.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.plainPassword.first) }}
+            {{ form_widget(form.plainPassword.first) }}
+            {{ form_errors(form.plainPassword.first) }}
+        </div>
     </div>
     <div class="col-sm-2">
-        {{ form_label(form.plainPassword.second) }}
-        {{ form_widget(form.plainPassword.second) }}
-        {{ form_errors(form.plainPassword.second) }}
+        <div class="form-group {% if form.plainPassword.second.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.plainPassword.second) }}
+            {{ form_widget(form.plainPassword.second) }}
+            {{ form_errors(form.plainPassword.second) }}
+        </div>
     </div>
 </div>
+{{ form_widget(form._token) }}
 <hr>
 <div class="row">
     <div class="col-sm-12">
         <div class="form-actions">
-            <a href="{{ path('teacher_index') }}" class="btn btn-default waves-effect btn-fw">Cancelar</a>
+            <a href="{{ path('person_index') }}" class="btn btn-default waves-effect btn-fw">Cancelar</a>
 
             <button type="submit" class="btn {{ button_css|default('btn-primary btn-fw ') }} waves-effect">
                 {{ button_label|default('Salvar') }}
@@ -113,4 +108,3 @@
     </div>
 </div>
 
-{{ form_end(form) }}

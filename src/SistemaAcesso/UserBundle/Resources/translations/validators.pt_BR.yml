@@ -9,13 +9,9 @@ user:
     min_length_password: A senha deve ser maior que {{ limit }} caracteres!
     blank_role: Informe um nível de acesso para o usuário!
     black_date_birth: Informe uma data de nascimento para o usuário!
-    blank_sexy: Informe o seu sexo!
+    blank_sex: Informe o seu sexo!
 
-news:
-    blank_title: Informe um título para a notícia!
-    blank_content: Informe um conteúdo para a notícia!100
 
-event:
-    blank_description: Informe uma descrição para o evento!
-    blank_start_date: Informe uma data para o evento!
-    blank_type: Informe o tipo do evento!
+person:
+    blank_expiration_date: Informe uma data de expiração do acesso!
+    blank_activity: Informe a atividade que este usuário realizará!

@@ -6,6 +6,7 @@ namespace SistemaAcesso\SchoolBundle\Form\Type;
 
 use SistemaAcesso\SchoolBundle\Entity\Teacher;
 use SistemaAcesso\UserBundle\Form\AdminType;
+use SistemaAcesso\UserBundle\Form\UserType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,7 +23,7 @@ class TeacherType extends AbstractType
 
     public function getParent()
     {
-        return AdminType::class;
+        return UserType::class;
     }
 
 
