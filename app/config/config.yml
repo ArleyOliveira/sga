@@ -80,11 +80,11 @@ knp_paginator:
 
 mopa_bootstrap:
     form:
-        show_legend: false # default is true
-        show_child_legend: false # default is true
+        show_legend: true # default is true
+        show_child_legend: true # default is true
         error_type: block # or inline which is default
-        checkbox_label: 'widget' # default is both (label|widget|both)
-        render_optional_text: false
+        checkbox_label: 'both' # default is both (label|widget|both)
+        render_optional_text: true
         horizontal_label_class: ~
 
 fos_user:

@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             // Bundles do sistema
             new SistemaAcesso\BaseBundle\SistemaAcessoBaseBundle(),
             new SistemaAcesso\UserBundle\SistemaAcessoUserBundle(),
+            new SistemaAcesso\SchoolBundle\SistemaAcessoSchoolBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

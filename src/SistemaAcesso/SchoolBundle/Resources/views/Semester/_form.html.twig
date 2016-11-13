@@ -1,0 +1,40 @@
+{{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group {% if form.year.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.year) }}
+            {{ form_widget(form.year) }}
+            {{ form_errors(form.year) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group {% if form.semester.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.semester) }}
+            {{ form_widget(form.semester) }}
+            {{ form_errors(form.semester) }}
+        </div>
+    </div>
+    <div class="col-sm-10 col-sm-offset-2">
+        <div class="checkbox">
+            {{ form_widget(form.active) }}
+
+        </div>
+    </div>
+
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-actions">
+            <a href="{{ path('semester_index') }}" class="btn btn-default waves-effect btn-fw">Cancelar</a>
+
+            <button type="submit" class="btn {{ button_css|default('btn-primary btn-fw ') }} waves-effect">
+                {{ button_label|default('Salvar') }}
+            </button>
+        </div>
+    </div>
+</div>
+
+{{ form_end(form) }}

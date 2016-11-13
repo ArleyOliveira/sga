@@ -58,6 +58,7 @@ class UserController extends Controller
      * @Template()
      * @Route("/new", name="user_new")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function newAction(Request $request)
     {
@@ -94,6 +95,7 @@ class UserController extends Controller
     /**
      * @Route("/{id}/edit", requirements={"id" = "\d+"}, name="user_edit")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editAction(User $user, Request $request)
     {

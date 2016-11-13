@@ -1,0 +1,10 @@
+semester:
+    new:
+        success: Novo semester adicionado com sucesso!
+        error: Houve um erro ao tentar adicionar um novo semestre!
+    edit:
+        success: Semestre editado com sucesso!
+        error: Houve um erro ao tentar editar um semestre!
+    delete:
+        success: Semester excluído com sucesso!
+        error: Houve um erro ao tentar excluír um semestre!

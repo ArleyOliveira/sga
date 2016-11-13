@@ -1,15 +1,13 @@
 {% extends 'SistemaAcessoBaseBundle::Layout/layout.html.twig' %}
-{% set page_title = 'Usuários' %}
+{% set page_title = 'Semestres' %}
 
 {% block body %}
 
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h4 class="panel-title">Listagem de usuários</h4>
-            {% if app.user.granted('ROLE_ADMIN') %}
-                <a href="{{ path('user_new') }}" class="btn btn-success mb_sm btn-sm pull-right">Novo</a>
-            {% endif %}
+            <h4 class="panel-title">Listagem de semestres</h4>
+            <a href="{{ path('semester_new') }}" class="btn btn-success mb_sm btn-sm pull-right">Novo</a>
         </div>
         <div class="panel-body">
             <div id="datatables__example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
@@ -28,32 +26,33 @@
                 <thead>
                 <tr>
                     <th>Status</th>
-                    <th>Username</th>
-                    <th>Nome Completo</th>
-                    <th>E-mail</th>
-                    <th>Telefones</th>
+                    <th>Ano</th>
+                    <th>Semestre</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for user in users %}
+                {% for semester in semesters %}
                     <tr>
-                        <td>{{ user.active|status_label }}</td>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.name }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>
-                            {{ user.phone }} | {{ user.cellphone }}
-                        </td>
+                        <td>{{ semester.active|status_label }}</td>
+                        <td>{{ semester.year }}</td>
+                        <td>{{ semester.semester }}º semestre</td>
                         <td>
                             {% if app.user.granted('ROLE_ADMIN') %}
                                 <div class="btn-group btn-group-xs">
-                                    <a href="{{ path('user_edit', { 'id': user.id}) }}" class="btn btn-default"
+                                    <a href="{{ path('semester_edit', { 'id': semester.id}) }}" class="btn btn-default"
                                        title="Editar">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                 </div>
+                                <div class="btn-group btn-group-xs">
+                                    <a href="{{ path('semester_delete', { 'id': semester.id}) }}" class="btn btn-default remove-this"
+                                       title="Excluir">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </div>
                             {% endif %}
+
                         </td>
                     </tr>
                 {% endfor %}
@@ -63,7 +62,7 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <span><b>Total de registro desta página</b>  <label
-                                class="badge bg-warning">{{ users|length }}</label></span> &nbsp; &nbsp;
+                                class="badge bg-warning">{{ semesters|length }}</label></span> &nbsp; &nbsp;
                     <span><b>Total de registro da pesquisa </b>  <label
                                 class="badge bg-primary">{{ total }}</label></span>
                 </div>
@@ -71,7 +70,7 @@
 
 
             <div class="navigation text-right">
-                {{ knp_pagination_render(users) }}
+                {{ knp_pagination_render(semesters) }}
             </div>
 
         </div>
