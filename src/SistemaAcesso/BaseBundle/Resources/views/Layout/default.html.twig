@@ -17,8 +17,21 @@
 
         <!-- Sidebar user info -->
         <a class="sidebar-user__info">
-            <h4>Richard Roe</h4>
-            <p>Administrator <i class="fa fa-caret-down"></i></p>
+            <h4>
+                {% if app.user is defined %}
+                    {{ app.user.name }}
+                {% else %}
+                    Anônimo
+                {% endif %}
+            </h4>
+            <p>
+                {% if app.user is defined %}
+                    {% if app.user.granted('ROLE_ADMIN') %}
+                        Administrador
+                    {% else %}
+                        Professor
+                    {% endif %}{% endif %}
+                <i class="fa fa-caret-down"></i></p>
         </a>
 
     </div>
@@ -30,13 +43,13 @@
                 <a href="profile.html"><i class="fa fa-user"></i> Perfil</a>
             </li>
             <li>
-                <a href="edit-profile.html"><i class="fa fa-edit"></i> Edit perfil</a>
+                <a href="{{ path('user_edit', {'id': app.user.id}) }}"><i class="fa fa-edit"></i> Edit perfil</a>
             </li>
             <li>
                 <a href="inbox.html"><i class="fa fa-envelope-o"></i> Mensagens</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-sign-out"></i> Sair</a>
+                <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Sair</a>
             </li>
         </ul>
     </nav>
@@ -46,7 +59,57 @@
         <ul class="sidebar__nav">
             <li class="sidebar-nav__heading">Dashboard</li>
             <li>
-                <a href="index.html"><i class="fa fa-th-large"></i> Dashboard</a>
+                <a href="{{ path('default_index') }}"><i class="fa fa-th-large"></i> Dashboard</a>
+            </li>
+        </ul>
+
+        <ul class="sidebar__nav">
+            <li class="sidebar-nav__heading">Gerenciamento</li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-th-list" aria-hidden="true"></i>
+                    Semestres
+                </a>
+                <a href="#">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    Professores
+                </a>
+                <a href="#">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    Cursos
+                </a>
+                <a href="#">
+                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                    Disciplinas
+                </a>
+            </li>
+        </ul>
+
+        <ul class="sidebar__nav">
+            <li class="sidebar-nav__heading">Acessos</li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                    Horários
+                </a>
+                <a href="#">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                    Acessos Realizados
+                </a>
+                <a href="#">
+                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                    Disciplinas
+                </a>
+            </li>
+        </ul>
+
+        <ul class="sidebar__nav">
+            <li class="sidebar-nav__heading">Controle de Acesso</li>
+            <li>
+                <a href="{{ path('user_index') }}">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    Usuários
+                </a>
             </li>
         </ul>
     </nav>
@@ -70,12 +133,12 @@
                             <i class="fa fa-bars"></i>
                         </a>
 
-                        <div class="h3 navbar-left" style="color: #464960; margin-left: 2%">
+                        <div class="h3 navbar-left" style="color: #4682B4; margin-left: 2%">
                             {% if page_title is defined %} {{ page_title }} {% endif %}
                         </div>
 
-                        <a href="#" class="btn btn-primary navbar-btn navbar-right">
-                            Sign Out
+                        <a  href="{{ path('fos_user_security_logout') }}" class="btn btn-primary navbar-btn navbar-right">
+                            Sair
                         </a>
 
                         <ul class="nav navbar-nav navbar-right">
@@ -83,7 +146,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                    aria-haspopup="true" aria-expanded="false">
                                     <span class="navbar-notification"></span>
-                                    <span class="hidden-xs">Messages</span> <i
+                                    <span class="hidden-xs">Mensagens</span> <i
                                             class="fa fa-envelope visible-xs-inline-block"></i>
                                 </a>
                                 <div class="dropdown-menu navbar-messages">

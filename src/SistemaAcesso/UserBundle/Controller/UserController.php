@@ -3,6 +3,7 @@
 namespace SistemaAcesso\UserBundle\Controller;
 
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use SistemaAcesso\UserBundle\Entity\User;
 use SistemaAcesso\UserBundle\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,21 +12,46 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
+
 /**
  * User controller.
- *
+ * @package SistemaAcesso\UserBundle\Controller
  * @Route("/user")
+ * @Template()
  */
 class UserController extends Controller
 {
     /**
-     * @Template()
      * @Route("/", name="user_index")
+     * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $string = $request->get('string');
+        $active = 1;
+        if (isset($string)) {
+            $active = ($request->get('active') != null) ? 1 : 0;
+        }
 
-        return new Response('<html><body>Hello!</body></html>');
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository(User::class)->findAll();
+
+        $total = count($users);
+        $paginator = $this->get('knp_paginator');
+
+
+        $pagination = $paginator->paginate(
+            $users,
+            $request->query->get('page', 1),
+            10
+        );
+
+        return array(
+            'users' => $pagination,
+            'string' => $string,
+            'active' => $active,
+            'total'  => $total
+        );
     }
 
     /**
@@ -43,7 +69,7 @@ class UserController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             try {
-                $user->setRoles(['ROLE_DEFAULT']);
+                $user->setRoles(['ROLE_ADMIN']);
                 $user->setEnabled(true);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
@@ -51,10 +77,11 @@ class UserController extends Controller
                 $this->addSuccessMessage('user.new.success');
 
             } catch (\Exception $e) {
+                //echo $e->getMessage(); die;
                 $this->addErrorMessage('user.new.error');
 
             }
-            return $this->redirectToRoute('default_index');
+            return $this->redirectToRoute('user_index');
         }
 
         return array(
@@ -62,6 +89,41 @@ class UserController extends Controller
             'form' => $form->createView()
         );
 
+    }
+
+    /**
+     * @Route("/{id}/edit", requirements={"id" = "\d+"}, name="user_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editAction(User $user, Request $request)
+    {
+        $editForm = $this->createForm(new UserType(), $user);
+        $editForm->remove('password');
+
+
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            try {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                $this->addSuccessMessage('user.edit.success');
+
+            } catch (\Exception $e) {
+
+                $this->addErrorMessage('user.edit.error');
+
+            }
+
+            return $this->redirectToRoute('user_index');
+        }
+
+        return array(
+            'user' => $user,
+            'form' => $editForm->createView(),
+        );
     }
 
     /**

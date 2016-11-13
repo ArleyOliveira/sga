@@ -60,6 +60,20 @@ class User extends BaseUser
     private $sexy;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=14, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cellphone", type="string", length=15, nullable=true)
+     */
+    private $cellphone;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="date")
@@ -233,6 +247,46 @@ class User extends BaseUser
         return $this;
     }
 
+    public function isGranted($role)
+    {
+        return in_array($role, $this->getRoles());
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCellphone()
+    {
+        return $this->cellphone;
+    }
+
+    /**
+     * @param string $cellphone
+     * @return User
+     */
+    public function setCellphone($cellphone)
+    {
+        $this->cellphone = $cellphone;
+        return $this;
+    }
 
 
 }

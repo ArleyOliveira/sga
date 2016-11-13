@@ -46,6 +46,8 @@ class UserType extends AbstractType
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
 
+            ->add('phone', 'text', array('label' => 'Telefone','required' => false, 'attr' => array('class' => 'phone-mask')))
+            ->add('cellphone', 'text', array('label' => 'Celular','required' => false, 'attr' => array('class' => 'cellphone-mask')))
 
         ;
 

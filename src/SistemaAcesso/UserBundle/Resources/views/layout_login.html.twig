@@ -1,5 +1,121 @@
-{% extends 'SistemaAcessoBaseBundle::Layout/layout.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-{% block body %}
-    {% block fos_user_content %}{% endblock %}
-{% endblock %}
+    <title>SGA - Autenticação</title>
+
+    <!-- CSS Plugins -->
+    <link rel="stylesheet" href="{{ asset('bundles/sistemaacessobase/libs/font-awesome/css/font-awesome.min.css') }}"
+          type="text/css"/>
+    <link rel="stylesheet"
+          href="{{ asset('bundles/sistemaacessobase/libs/perfect-scrollbar/css/perfect-scrollbar.min.css') }}"
+          type="text/css"/>
+
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="{{ asset('bundles/sistemaacessobase/libs/template/css/styles.css') }}"
+          type="text/css"/>
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300,500' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+
+<!-- MAIN CONTENT
+================================================== -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+
+            <!-- Sign In -->
+            <div class="sign__container">
+
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            SGA
+                            <br>
+                            Faça login em sua conta
+                        </h4>
+                    </div> <!-- / .panel-heading -->
+                    <div class="panel-body">
+                        {% if error %}
+                            <div class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        <form action="{{ path("fos_user_security_check") }}" method="post">
+                            <div class="form-group">
+                                <label for="user">Usuário</label>
+                                <input type="text" class="form-control" id="user" name="_username" required="required" value="{{ last_username }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="sign-in__password">Senha</label>
+                                <input type="password" class="form-control" id="in__password" name="_password"
+                                       required="required"/>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="remember-me" name="_remember_me" value="on">
+                                        <label for="remember-me">
+                                            Lembre-me
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <button type="submit" class="btn btn-primary">
+                                        Entrar
+                                    </button>
+                                </div>
+                            </div>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        </form>
+                    </div> <!-- / .panel-body -->
+
+                    <div class="panel-footer">
+                        <a href="#" data-toggle="collapse" data-target="#sign__resend-password">Esqueceu sua senha?</a>
+                        <div class="collapse" id="sign__resend-password">
+                            <form action="{{ path("fos_user_security_check") }}" method="post" class="form-inline">
+                                <div class="form-group">
+                                    <label class="sr-only">Entre com seu e-mail</label>
+                                    <input type="email" class="form-control" placeholder="Entre com seu e-mail">
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    Recuperar
+                                </button>
+                            </form>
+                        </div>
+                    </div> <!-- / .panel-footer -->
+
+                </div> <!-- / .panel -->
+
+            </div> <!-- / .sign__conteiner -->
+
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScript
+================================================== -->
+
+<!-- JS Global -->
+<script src="{{ asset('bundles/sistemaacessobase/libs/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('bundles/sistemaacessobase/libs/bootstrap/js/bootstrap.min.js') }}"></script>
+
+<!-- JS Plugins -->
+<script src="{{ asset('bundles/sistemaacessobase/libs/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js') }}"></script>
+
+
+<!-- JS Custom -->
+<script src="{{ asset('bundles/sistemaacessobase/libs/template/css/custom.js') }}"></script>
+
+</body>
+</html>

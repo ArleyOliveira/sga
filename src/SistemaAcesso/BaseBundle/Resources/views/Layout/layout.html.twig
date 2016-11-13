@@ -22,6 +22,16 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300,500' rel='stylesheet' type='text/css'>
 
+    <!--Date Picker3-->
+    <link rel="stylesheet"
+          href="{{ asset('bundles/sistemaacessobase/libs/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}"
+          type="text/css"/>
+
+    <link rel="stylesheet" href="{{ asset('bundles/sistemaacessobase/libs/waves/dist/waves.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/sistemaacessobase/styles/app.css') }}" type="text/css"/>
+
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
 </head>
 <body>
 
@@ -34,7 +44,7 @@
     {% endblock %}
 
 
-    <!-- Footer -->
+    <!-- Footer
         <footer class="footer">
             <div class="row">
                 <div class="col-xs-12">
@@ -44,7 +54,7 @@
                     <a href="#">Privacy Policy</a>
                 </div>
             </div>
-        </footer>
+        </footer>-->
 </div>
 <!-- JS Global -->
 
@@ -53,6 +63,31 @@
 
 <script src="{{ asset('bundles/sistemaacessobase/libs/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js') }}"></script>
 <script src="{{ asset('bundles/sistemaacessobase/libs/template/css/custom.js') }}"></script>
+
+<script src="{{ asset('bundles/sistemaacessobase/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('bundles/sistemaacessobase/libs/bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.min.js') }}"></script>
+<script src="{{ asset('bundles/sistemaacessobase/libs/jquey-mask/jquery.mask.min.js') }}"></script>
+<script src="{{ asset('bundles/sistemaacessobase/libs/waves/dist/waves.js') }}"></script>
+<script src="{{ asset('bundles/sistemaacessobase/scripts/app_form.js') }}"></script>
+
+<script src="{{ asset('bundles/sistemaacessobase/scripts/ui-waves.js') }}"></script>
+
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+<!-- Your application bootstrap  -->
+<script type="text/javascript">
+    /**
+     * You must include the dependency on 'ngMaterial'
+     */
+    angular.module('BlankApp', ['ngMaterial']);
+</script>
 <script>
     var baseUrl = window.location.origin;
 </script>

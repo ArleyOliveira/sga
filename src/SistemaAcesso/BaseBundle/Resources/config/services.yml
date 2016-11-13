@@ -1,4 +1,6 @@
 services:
-#    sistema_acesso_base.example:
-#        class: SistemaAcesso\BaseBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+  status_label.twig_extension:
+      class: SistemaAcesso\BaseBundle\TwigExtensions\StatusLabelExtension
+      public: false
+      tags:
+          - { name: twig.extension }
