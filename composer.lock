@@ -1911,16 +1911,16 @@
         },
         {
             "name": "jms/serializer",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "c0c1af0d9f1a710c7fbae1732dadc4d913980299"
+                "reference": "f39d8b4660d5cef43b0c3265ce642173d9b2c58b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/c0c1af0d9f1a710c7fbae1732dadc4d913980299",
-                "reference": "c0c1af0d9f1a710c7fbae1732dadc4d913980299",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/f39d8b4660d5cef43b0c3265ce642173d9b2c58b",
+                "reference": "f39d8b4660d5cef43b0c3265ce642173d9b2c58b",
                 "shasum": ""
             },
             "require": {
@@ -1982,7 +1982,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2016-11-02 16:15:37"
+            "time": "2016-11-13 10:20:11"
         },
         {
             "name": "justinrainbow/json-schema",
