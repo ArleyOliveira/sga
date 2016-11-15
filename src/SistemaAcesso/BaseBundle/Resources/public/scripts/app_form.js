@@ -1,8 +1,3 @@
-
-$( ".time" ).each(function( index ) {
-    $(this).attr('type', 'text');
-});
-
 $('.datepicker').datepicker({
     language: 'pt-BR',
     format: "dd/mm/yyyy"
@@ -14,6 +9,9 @@ $('.datepicker-only-year').datepicker({
     minViewMode: 'years'
 });
 
+$( ".time" ).each(function( index ) {
+    $(this).attr('type', 'text');
+});
 
 $('.time').datetimepicker({
     format: 'H:mm',
