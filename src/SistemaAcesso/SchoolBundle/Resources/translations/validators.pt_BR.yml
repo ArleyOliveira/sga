@@ -10,3 +10,11 @@ course:
 discipline:
     blank_name: Informe o nome da disciplina!
     blank_course: Informe o curso que está disciplina pertence!
+
+environment:
+    blank_name: Informe o nome do ambiente!
+    blank_identification: Informe a identificação deste ambiente!
+    blank_start_time: Informe o horário início do funcionamento!
+    blank_end_time: Informe o horário término do funcionamento!
+    unique_identification: Já exite um ambiente com esse mesmo identificador cadastrado!
+    unique_name: Já exite um ambiente com esse mesmo nome cadastrado!

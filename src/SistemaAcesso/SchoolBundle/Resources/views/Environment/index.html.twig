@@ -1,0 +1,89 @@
+{% extends 'SistemaAcessoBaseBundle::Layout/layout.html.twig' %}
+{% set page_title = 'Ambientes' %}
+
+{% block body %}
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Listagem de ambientes</h4>
+            {% if app.user.granted('ROLE_ADMIN') %}
+                <a href="{{ path('environment_new') }}" class="btn btn-success mb_sm btn-sm pull-right">Novo</a>
+            {% endif %}
+        </div>
+        <div class="panel-body">
+            <div id="datatables__example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                <div id="datatables__example_filter" class="dataTables_filter">
+                    <label>Pesquisar:
+                        <input type="search" class="form-control input-xs" placeholder=""
+                               aria-controls="datatables__example">
+                    </label>
+                </div>
+            </div>
+
+            {% include 'SistemaAcessoBaseBundle::Layout/flashMessages.html.twig' %}
+
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Nome</th>
+                    <th>Identificação</th>
+                    <th>Funcionamento</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for environment in environments %}
+                    <tr>
+                        <td>{{ environment.active|status_label }}</td>
+                        <td>{{ environment.name }}</td>
+                        <td>{{ environment.identification }}</td>
+                        <td>
+                            das
+                            {{ environment.startTime | date('H:i') }}
+                            às
+                            {{ environment.endTime | date('H:i') }}
+                        </td>
+                        <td>
+                            {% if app.user.granted('ROLE_ADMIN') %}
+                                <div class="btn-group btn-group-xs">
+                                    <a href="{{ path('environment_edit', { 'id': environment.id}) }}" class="btn btn-default"
+                                       title="Editar">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                </div>
+                                <div class="btn-group btn-group-xs">
+                                    <a href="{{ path('environment_delete', { 'id': environment.id}) }}"
+                                       class="btn btn-default remove-this"
+                                       title="Excluir">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </div>
+                            {% endif %}
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <span><b>Total de registro desta página</b>  <label
+                                class="badge bg-warning">{{ environments|length }}</label></span> &nbsp; &nbsp;
+                    <span><b>Total de registro da pesquisa </b>  <label
+                                class="badge bg-primary">{{ total }}</label></span>
+                </div>
+            </div>
+
+
+            <div class="navigation text-right">
+                {{ knp_pagination_render(environments) }}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

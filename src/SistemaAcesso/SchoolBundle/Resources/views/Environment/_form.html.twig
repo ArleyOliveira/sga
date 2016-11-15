@@ -1,0 +1,59 @@
+{{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group {% if form.name.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group {% if form.identification.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.identification) }}
+            {{ form_widget(form.identification) }}
+            {{ form_errors(form.identification) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group {% if form.startTime.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.startTime) }}
+            <div class='input-group time'>
+                {{ form_widget(form.startTime) }}
+                <span class="input-group-addon">
+                        <a href="#"><span class="glyphicon glyphicon-time"></span></a>
+                </span>
+            </div>
+            {{ form_errors(form.startTime) }}
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group {% if form.endTime.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.endTime) }}
+            <div class='input-group time'>
+                {{ form_widget(form.endTime) }}
+                <span class="input-group-addon">
+                        <a href="#"><span class="glyphicon glyphicon-time"></span></a>
+                </span>
+            </div>
+            {{ form_errors(form.endTime) }}
+        </div>
+    </div>
+</div>
+
+{{ form_widget(form._token) }}
+
+<hr>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-actions">
+            <a href="{{ path('environment_index') }}" class="btn btn-default waves-effect btn-fw">Cancelar</a>
+
+            <button type="submit" class="btn {{ button_css|default('btn-primary btn-fw ') }} waves-effect">
+                {{ button_label|default('Salvar') }}
+            </button>
+        </div>
+    </div>
+</div>

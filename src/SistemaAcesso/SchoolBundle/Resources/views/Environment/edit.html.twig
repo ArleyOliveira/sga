@@ -1,0 +1,20 @@
+{% extends 'SistemaAcessoBaseBundle::Layout/layout.html.twig' %}
+{% set page_title = 'Ambientes' %}
+{% block body %}
+
+    <!-- Control sizing -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Editar Ambiente</h4>
+        </div>
+        <div class="panel-body">
+            {{ include('SistemaAcessoSchoolBundle::Environment/_form.html.twig') }}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

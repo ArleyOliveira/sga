@@ -30,3 +30,13 @@ discipline:
     delete:
         success: Disciplina excluída com sucesso!
         error: Houve um erro ao tentar excluír uma disciplina!
+environment:
+    new:
+        success: Novo ambiente adicionado com sucesso!
+        error: Houve um erro ao tentar adicionar um novo ambiente!
+    edit:
+        success: Ambiente editado com sucesso!
+        error: Houve um erro ao tentar editar um ambiente!
+    delete:
+        success: Ambiente excluído com sucesso!
+        error: Houve um erro ao tentar excluír um ambiente!
