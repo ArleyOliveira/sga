@@ -52,3 +52,4 @@ $(".remove-this").confirm({
     cancelButtonClass: "btn-default",
     dialogClass: "modal-dialog" // Bootstrap classes for large modal
 });
+
