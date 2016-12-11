@@ -1,10 +1,5 @@
 {{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
 <div class="col-xs-12">
-
-    <h3 class="page-header">
-        Dados pessoais <small></small>
-    </h3>
-
 </div>
 <div class="row">
     <div class="col-sm-4">
@@ -46,13 +41,7 @@
         </div>
     </div>
 </div>
-<div class="col-xs-12">
 
-    <h3 class="page-header">
-        Contato <small></small>
-    </h3>
-
-</div>
 <div class="row">
     <div class="col-sm-4">
         <div class="form-group {% if form.email.vars.errors|length %} has-error {% endif %}">
@@ -76,13 +65,7 @@
         </div>
     </div>
 </div>
-<div class="col-xs-12">
 
-    <h3 class="page-header">
-        Acesso <small></small>
-    </h3>
-
-</div>
 <div class="row">
     <div class="col-sm-2">
         {{ form_label(form.username) }}
