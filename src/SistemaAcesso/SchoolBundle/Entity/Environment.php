@@ -2,6 +2,7 @@
 
 
 namespace SistemaAcesso\SchoolBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -79,6 +80,12 @@ class Environment
     private $updated;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="SistemaAcesso\SchoolBundle\Entity\Schedule", mappedBy="environment")
+     */
+    private $schedules;
+
+    /**
      * Environment constructor.
      */
     public function __construct()
@@ -86,6 +93,7 @@ class Environment
         $this->active = true;
         $this->created = new \DateTime('now');
         $this->updated = new \DateTime('now');
+        $this->schedules = new ArrayCollection();
     }
 
     /**
@@ -232,4 +240,31 @@ class Environment
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getSchedules()
+    {
+        return $this->schedules;
+    }
+
+    /**
+     * @param mixed $schedules
+     * @return Environment
+     */
+    public function setSchedules($schedules)
+    {
+        $this->schedules = $schedules;
+        return $this;
+    }
+
+    /**
+     * @param Schedule $schedule
+     * @return Environment
+     */
+    public function addSchedule(Schedule $schedule)
+    {
+        $this->schedules->add($schedule);
+        return $this;
+    }
 }

@@ -32,7 +32,7 @@ $('.cellphone-mask').mask(SPMaskBehavior, spOptions);
 $('.phone-mask').mask('(00) 0000-0000');
 $('.numeric').mask('0#');
 
-$('.btn, .fa, input').tooltip();
+$('.btn, .fa, input, .title').tooltip();
 
 $(".remove-this").confirm({
     text: '<div class="alert alert-info" role="alert"><strong>Deseja realmente excluir este item?</strong> Esta ação não poderá ser desfeita.</div>',

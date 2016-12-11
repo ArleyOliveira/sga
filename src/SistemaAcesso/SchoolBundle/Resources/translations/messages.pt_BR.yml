@@ -40,3 +40,14 @@ environment:
     delete:
         success: Ambiente excluído com sucesso!
         error: Houve um erro ao tentar excluír um ambiente!
+
+schedule:
+    new:
+        success: Novo hórario adicionado com sucesso!
+        error: Houve um erro ao tentar adicionar um novo horário!
+    edit:
+        success: Horário editado com sucesso!
+        error: Houve um erro ao tentar editar um hórario!
+    delete:
+        success: Horário excluído com sucesso!
+        error: Houve um erro ao tentar excluír um horário!

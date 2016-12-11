@@ -60,6 +60,13 @@ class Course
     private $created;
 
     /**
+     * @var string
+     * @ORM\Column(name="sigla", type="string", nullable=false)
+     * @Assert\NotBlank(message="course.blank_sigla")
+     */
+    private $sigla;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="active", type="boolean")
@@ -228,4 +235,23 @@ class Course
         $this->disciplines->removeElement($discipline);
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getSigla()
+    {
+        return $this->sigla;
+    }
+
+    /**
+     * @param string $sigla
+     * @return Course
+     */
+    public function setSigla($sigla)
+    {
+        $this->sigla = $sigla;
+        return $this;
+    }
+
 }
