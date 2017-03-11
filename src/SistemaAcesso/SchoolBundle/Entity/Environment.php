@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\ORM\Events;
 /**
  * class Environment
  * @ORM\Entity
@@ -13,6 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="SistemaAcesso\SchoolBundle\Repository\EnvironmentRepository")
  * @UniqueEntity(fields="name", message="environment.unique_name")
  * @UniqueEntity(fields="identification", message="environment.unique_identification")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Environment
 {
@@ -60,14 +62,14 @@ class Environment
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="date")
+     * @ORM\Column(name="created", type="datetime")
      */
     private $created;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="active", type="datetime")
+     * @ORM\Column(name="active", type="boolean")
      */
     private $active;
 
@@ -231,14 +233,13 @@ class Environment
     }
 
     /**
-     * @ORM\PreUpdate
      * @ORM\PrePersist
      * @param \DateTime $updated
      * @return Environment
      */
     public function setUpdated($updated)
     {
-        $this->updated = $updated;
+        $this->updated = ($updated) ? $updated : new \DateTime('now');
         return $this;
     }
 

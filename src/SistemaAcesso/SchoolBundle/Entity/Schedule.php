@@ -18,6 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="schedules")
  * @ORM\Entity(repositoryClass="SistemaAcesso\SchoolBundle\Repository\ScheduleRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Schedule
 {
@@ -207,7 +208,7 @@ class Schedule
      */
     public function setUpdated($updated)
     {
-        $this->updated = $updated;
+        $this->updated = ($updated) ? $updated : new \DateTime('now');
         return $this;
     }
 
@@ -337,7 +338,7 @@ class Schedule
     public function setSemester($semester)
     {
         $this->semester = $semester;
-        $semester->addSchedule($semester);
+        $semester->addSchedule($this);
         return $this;
     }
 

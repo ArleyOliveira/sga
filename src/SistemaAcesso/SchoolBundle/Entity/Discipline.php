@@ -16,6 +16,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity
  * @ORM\Table(name="disciplines")
  * @ORM\Entity(repositoryClass="SistemaAcesso\SchoolBundle\Repository\DisciplineRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Discipline
 {
@@ -199,7 +200,7 @@ class Discipline
      */
     public function setUpdated($updated)
     {
-        $this->updated = $updated;
+        $this->updated = ($updated) ? $updated : new \DateTime('now');
         return $this;
     }
 

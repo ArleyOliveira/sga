@@ -9,12 +9,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
+
 /**
  * class Course
  * @ORM\Entity
  * @ORM\Table(name="courses")
  * @ORM\Entity(repositoryClass="SistemaAcesso\SchoolBundle\Repository\CourseRepository")
  * @UniqueEntity(fields="name", message="course.unique_name")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Course
 {
@@ -191,15 +193,13 @@ class Course
     }
 
     /**
-     * @ORM\PreUpdate
      * @ORM\PrePersist
-     * @param DateTime $updated
-     * @return Course
+     * @ORM\PreUpdate
      */
-    public function setUpdated($updated)
+    public function setUpdated()
     {
-        $this->updated = $updated;
-        return $this;
+        $this->updated = new \DateTime('now');
+
     }
 
     /**

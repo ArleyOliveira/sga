@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="teachers")
  * @ORM\Entity()
  * @ORM\Entity(repositoryClass="SistemaAcesso\SchoolBundle\Repository\TeacherRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Teacher extends User
 {

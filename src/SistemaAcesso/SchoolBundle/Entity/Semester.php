@@ -14,6 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity
  * @ORM\Table(name="semesters")
  * @ORM\Entity(repositoryClass="SistemaAcesso\SchoolBundle\Repository\SemesterRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Semester
 {
@@ -64,8 +65,6 @@ class Semester
      * @ORM\Column(name="current", type="boolean")
      */
     private $current;
-
-
 
     /**
      * @var DateTime
@@ -195,9 +194,9 @@ class Semester
      * @param DateTime $updated
      * @return Semester
      */
-    public function setUpdated($updated)
+    public function setUpdated($updated = null)
     {
-        $this->updated = $updated;
+        $this->updated = ($updated) ? $updated : new \DateTime('now');
         return $this;
     }
 

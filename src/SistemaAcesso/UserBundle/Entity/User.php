@@ -24,6 +24,7 @@ use SistemaAcesso\BaseBundle\Validator\Constraints as AssertBaseBundle;
  *      "ADMIN" = "SistemaAcesso\UserBundle\Entity\User\Admin",
  *      "PERSON" = "SistemaAcesso\UserBundle\Entity\User\Person",
  * })
+ * @ORM\HasLifecycleCallbacks()
  */
 abstract class User extends BaseUser
 {
@@ -207,12 +208,11 @@ abstract class User extends BaseUser
     /**
      * @ORM\PreUpdate
      * @ORM\PrePersist
-     * @param DateTime $updated
      * @return User
      */
-    public function setUpdated($updated)
+    public function setUpdated()
     {
-        $this->updated = $updated;
+        $this->updated = new \DateTime('now');
         return $this;
     }
 
