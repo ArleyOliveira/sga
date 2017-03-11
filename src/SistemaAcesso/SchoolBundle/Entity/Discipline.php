@@ -47,7 +47,7 @@ class Discipline
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="created", type="date")
+     * @ORM\Column(name="created", type="datetime")
      */
     private $created;
 
@@ -62,7 +62,7 @@ class Discipline
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="updated", type="date")
+     * @ORM\Column(name="updated", type="datetime")
      */
     private $updated;
 
@@ -142,6 +142,8 @@ class Discipline
     }
 
     /**
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param DateTime $created
      * @return Discipline
      */

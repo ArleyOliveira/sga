@@ -90,7 +90,7 @@ abstract class User extends BaseUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="date")
+     * @ORM\Column(name="created", type="datetime")
      */
     private $created;
 
@@ -104,7 +104,7 @@ abstract class User extends BaseUser
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="updated", type="date")
+     * @ORM\Column(name="updated", type="datetime")
      */
     private $updated;
 
@@ -196,6 +196,8 @@ abstract class User extends BaseUser
     }
 
     /**
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param DateTime $updated
      * @return User
      */

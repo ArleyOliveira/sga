@@ -66,7 +66,7 @@ class Environment
     /**
      * @var boolean
      *
-     * @ORM\Column(name="active", type="boolean")
+     * @ORM\Column(name="active", type="datetime")
      */
     private $active;
 
@@ -74,7 +74,7 @@ class Environment
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated", type="date")
+     * @ORM\Column(name="updated", type="datetime")
      */
     private $updated;
 
@@ -223,6 +223,8 @@ class Environment
     }
 
     /**
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $updated
      * @return Environment
      */

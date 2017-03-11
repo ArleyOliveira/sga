@@ -4,6 +4,8 @@
 namespace SistemaAcesso\SchoolBundle\Controller;
 
 
+use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
+use SistemaAcesso\BaseBundle\Form\Type\Filter\UniversalFilterType;
 use SistemaAcesso\SchoolBundle\Entity\Environment;
 use SistemaAcesso\SchoolBundle\Form\Type\EnvironmentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,7 +21,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
  * @Template()
  * @Route("/environment")
  */
-
 class EnvironmentController extends Controller
 {
     /**
@@ -29,17 +30,13 @@ class EnvironmentController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $string = $request->get('string');
-        $active = 1;
-        if (isset($string)) {
-            $active = ($request->get('active') != null) ? 1 : 0;
-        }
-
+        $filter = new UniversalFilter();
+        $form = $this->createForm(new UniversalFilterType(), $filter, ['method' => 'GET']);
+        $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
-        $environments = $em->getRepository(Environment::class)->findAll();
 
-        $total = count($environments);
+        $environments = $em->getRepository(Environment::class)->findFilter($filter->isActive(), $filter->getName());
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -48,12 +45,9 @@ class EnvironmentController extends Controller
             10
         );
 
-
         return array(
             'environments' => $pagination,
-            'string' => $string,
-            'active' => $active,
-            'total'  => $total
+            'form' => $form->createView()
         );
     }
 
@@ -80,7 +74,8 @@ class EnvironmentController extends Controller
                 $this->addSuccessMessage('environment.new.success');
 
             } catch (\Exception $e) {
-                echo $e->getMessage(); die;
+                echo $e->getMessage();
+                die;
                 $this->addErrorMessage('environment.new.error');
 
             }

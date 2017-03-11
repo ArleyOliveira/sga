@@ -46,7 +46,7 @@ class Semester
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="created", type="date")
+     * @ORM\Column(name="created", type="datetime")
      */
     private $created;
 
@@ -61,7 +61,7 @@ class Semester
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="updated", type="date")
+     * @ORM\Column(name="updated", type="datetime")
      */
     private $updated;
 
@@ -174,6 +174,8 @@ class Semester
     }
 
     /**
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param DateTime $updated
      * @return Semester
      */

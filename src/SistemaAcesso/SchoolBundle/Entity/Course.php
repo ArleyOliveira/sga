@@ -55,7 +55,7 @@ class Course
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="created", type="date")
+     * @ORM\Column(name="created", type="datetime")
      */
     private $created;
 
@@ -70,7 +70,7 @@ class Course
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="updated", type="date")
+     * @ORM\Column(name="updated", type="datetime")
      */
     private $updated;
 
@@ -184,6 +184,8 @@ class Course
     }
 
     /**
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param DateTime $updated
      * @return Course
      */
