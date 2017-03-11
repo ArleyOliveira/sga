@@ -5,6 +5,7 @@ namespace SistemaAcesso\SchoolBundle\Entity;
 
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -58,6 +59,12 @@ class Discipline
      */
     private $active;
 
+    /**
+     * @var string
+     * @ORM\Column(name="sigla", type="string", nullable=false)
+     * @Assert\NotBlank(message="discipline.blank_sigla")
+     */
+    private $sigla;
 
     /**
      * @var DateTime
@@ -67,13 +74,20 @@ class Discipline
     private $updated;
 
     /**
-     * Semestre constructor.
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="SistemaAcesso\SchoolBundle\Entity\Schedule", mappedBy="discipline")
+     */
+    private $schedules;
+
+    /**
+     * Discipline constructor.
      */
     public function __construct()
     {
         $this->active = true;
         $this->created = new \DateTime('now');
         $this->updated = new \DateTime('now');
+        $this->schedules = new ArrayCollection();
     }
 
     /**
@@ -189,6 +203,50 @@ class Discipline
         return $this;
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getSchedules()
+    {
+        return $this->schedules;
+    }
+
+    /**
+     * @param ArrayCollection $schedules
+     */
+    public function setSchedules($schedules)
+    {
+        $this->schedules = $schedules;
+    }
+
+
+    /**
+     * @param Schedule $schedule
+     * @return Discipline
+     */
+    public function addSchedule(Schedule $schedule)
+    {
+        $this->schedules->add($schedule);
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSigla()
+    {
+        return $this->sigla;
+    }
+
+    /**
+     * @param string $sigla
+     * @return Discipline
+     */
+    public function setSigla($sigla)
+    {
+        $this->sigla = $sigla;
+        return $this;
+    }
 
 
 }

@@ -19,6 +19,7 @@ class DisciplineType extends AbstractType
     {
         $builder
             ->add('name', 'text', array('label' => 'Nome',))
+            ->add('sigla', 'text', array('label' => 'Sigla',))
             ->add('course', EntityType::class, [
                 'class' => Course::class,
                 'label' => 'Curso',

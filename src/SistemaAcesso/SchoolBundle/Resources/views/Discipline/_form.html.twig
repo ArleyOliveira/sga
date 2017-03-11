@@ -9,6 +9,13 @@
         </div>
     </div>
     <div class="col-sm-3">
+        <div class="form-group {% if form.sigla.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.sigla) }}
+            {{ form_widget(form.sigla) }}
+            {{ form_errors(form.sigla) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
         <div class="form-group {% if form.course.vars.errors|length %} has-error {% endif %}">
             {{ form_label(form.course) }}
             {{ form_widget(form.course) }}

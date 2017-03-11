@@ -6,10 +6,11 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
+
             <h4 class="panel-title">Listagem de disciplinas {{ disciplines.totalItemCount | label_count_element }}</h4>
-                {% if app.user.granted('ROLE_ADMIN') %}
-                    <a href="{{ path('discipline_new') }}" class="btn btn-success mb_sm btn-sm pull-right">Novo</a>
-                {% endif %}
+            {% if app.user.granted('ROLE_ADMIN') %}
+                <a href="{{ path('discipline_new') }}" class="btn btn-success mb_sm btn-sm pull-right">Novo</a>
+            {% endif %}
         </div>
         <div class="panel-body">
             <br>
@@ -56,10 +57,16 @@
                 {% for discipline in disciplines %}
                     <tr>
                         <td>{{ discipline.active|status_label }}</td>
-                        <td>{{ discipline.name }}</td>
                         <td>
-                            {{ discipline.course.name }}<br>
-                            <i>{{ discipline.course.knowledgeArea }}</i>
+                            <strong>{{ discipline.sigla }}</strong><br>
+                            {{ discipline.name }}
+                        </td>
+                        <td>
+                            <strong>{{ discipline.course.sigla }}</strong> <a class="title" title="Ir para o curso"
+                                                                              href="{{ path('course_edit', {'id' : discipline.course.id}) }}"
+                                                                              target="_blank"><i
+                                        class="fa fa-external-link-square" aria-hidden="true"></i></a><br>
+                            {{ discipline.course.name }} | {{ discipline.course.knowledgeArea }}
                         </td>
                         <td>
                             {% if app.user.granted('ROLE_ADMIN') %}

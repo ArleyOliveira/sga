@@ -3,8 +3,10 @@
 namespace SistemaAcesso\UserBundle\Entity;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use SistemaAcesso\SchoolBundle\Entity\Schedule;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use SistemaAcesso\BaseBundle\Validator\Constraints as AssertBaseBundle;
@@ -108,6 +110,12 @@ abstract class User extends BaseUser
      */
     private $updated;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="SistemaAcesso\SchoolBundle\Entity\Schedule", mappedBy="user")
+     */
+    private $schedules;
+
 
     public function __construct()
     {
@@ -115,6 +123,7 @@ abstract class User extends BaseUser
         $this->active = true;
         $this->updated = new \DateTime('now');
         $this->created = new \DateTime('now');
+        $this->schedules = new ArrayCollection();
     }
 
     /**
@@ -320,5 +329,29 @@ abstract class User extends BaseUser
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getSchedules()
+    {
+        return $this->schedules;
+    }
 
+    /**
+     * @param mixed $schedules
+     */
+    public function setSchedules($schedules)
+    {
+        $this->schedules = $schedules;
+    }
+
+    /**
+     * @param Schedule $schedule
+     * @return User
+     */
+    public function addSchedule(Schedule $schedule)
+    {
+        $this->schedules->add($schedule);
+        return $this;
+    }
 }

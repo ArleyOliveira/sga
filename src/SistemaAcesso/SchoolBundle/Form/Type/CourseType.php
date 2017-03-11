@@ -21,6 +21,7 @@ class CourseType extends AbstractType
     {
         $builder
             ->add('name', 'text', array('label' => 'Nome',))
+            ->add('sigla', 'text', array('label' => 'Sigla',))
             ->add('knowledgeArea', 'text', array('label' => 'Área do Conhecimento',))
             ->add('active', CheckboxType::class, array(
                 'label' => 'Ativo?',

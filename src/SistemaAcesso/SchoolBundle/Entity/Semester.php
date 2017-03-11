@@ -4,6 +4,7 @@
 namespace SistemaAcesso\SchoolBundle\Entity;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -57,6 +58,14 @@ class Semester
      */
     private $active;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="current", type="boolean")
+     */
+    private $current;
+
+
 
     /**
      * @var DateTime
@@ -66,6 +75,12 @@ class Semester
     private $updated;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="SistemaAcesso\SchoolBundle\Entity\Schedule", mappedBy="semester")
+     */
+    private $schedules;
+
+    /**
      * Semestre constructor.
      */
     public function __construct()
@@ -73,6 +88,7 @@ class Semester
         $this->active = true;
         $this->created = new DateTime('now');
         $this->updated = new DateTime('now');
+        $this->schedules = new ArrayCollection();
     }
 
     /**
@@ -182,6 +198,52 @@ class Semester
     public function setUpdated($updated)
     {
         $this->updated = $updated;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSchedules()
+    {
+        return $this->schedules;
+    }
+
+    /**
+     * @param ArrayCollection $schedules
+     * @return Semester
+     */
+    public function setSchedules($schedules)
+    {
+        $this->schedules = $schedules;
+        return $this;
+    }
+
+    /**
+     * @param Schedule $schedule
+     * @return Semester
+     */
+    public function addSchedule(Schedule $schedule)
+    {
+        $this->schedules->add($schedule);
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCurrent()
+    {
+        return $this->current;
+    }
+
+    /**
+     * @param bool $current
+     * @return Semester
+     */
+    public function setCurrent($current)
+    {
+        $this->current = $current;
         return $this;
     }
 

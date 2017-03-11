@@ -4,11 +4,13 @@ semester:
 
 course:
     blank_name: Informe o nome do curso!
+    blank_sigla: Informe a sigla do curso!
     blank_knowledge_area: Informe a área do conhecimento!
     unique_name: Nome do curso já cadastrado!
 
 discipline:
     blank_name: Informe o nome da disciplina!
+    blank_sigla: Informe a sigla do disciplina!
     blank_course: Informe o curso que está disciplina pertence!
 
 environment:
@@ -18,3 +20,10 @@ environment:
     blank_end_time: Informe o horário término do funcionamento!
     unique_identification: Já exite um ambiente com esse mesmo identificador cadastrado!
     unique_name: Já exite um ambiente com esse mesmo nome cadastrado!
+
+schedule:
+    blank_start_time: Informe o horário de início!
+    blank_end_time: Informe o horário de término!
+    blank_week_day: Informe o dia do horário!
+    blank_user: Informe uma pessoa resposável por este horário!
+    blank_environment: Informe o ambiente(Laboratório) que este horário pertence!
