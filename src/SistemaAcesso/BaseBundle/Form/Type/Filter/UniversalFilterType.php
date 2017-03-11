@@ -8,6 +8,7 @@ use SistemaAcesso\SchoolBundle\Entity\Course;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -38,7 +39,17 @@ class UniversalFilterType extends AbstractType
             ->add('active', CheckboxType::class, array(
                 'label' => 'Ativo?',
                 'required' => false,
-            ));
+            ))
+            ->add('semester', ChoiceType::class, [
+                'label' => 'Semestre',
+                'choices' => [
+                    "1" => "1° Semestre",
+                    "2" => "2º Semestre"
+                ],
+                'placeholder' => "Semestre",
+                'required' => false,
+            ])
+        ;
 
         $builder->setMethod('GET');
     }

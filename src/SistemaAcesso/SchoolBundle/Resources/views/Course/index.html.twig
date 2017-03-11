@@ -8,7 +8,7 @@
         <div class="panel-heading">
             <h4 class="panel-title">Listagem de cursos {{ courses.totalItemCount | label_count_element }} </h4>
             {% if app.user.granted('ROLE_ADMIN') %}
-                <a href="{{ path('course_new') }}" style="margin-top: -15px" class="btn btn-success btn-sm pull-right">Novo</a>
+                <a href="{{ path('course_new') }}" class="btn btn-success btn-sm pull-right">Novo</a>
             {% endif %}
         </div>
         <div class="panel-body">
@@ -18,7 +18,7 @@
                     <div class="well">
                         <form class="form-inline" method="get" action="">
                             <div class="row">
-                                <div class="pull-right">
+                                <div align="right">
                                     <div class="col-xs-12">
                                         <div class="form-group">
                                             {{ form_widget(form.active) }}
@@ -67,13 +67,15 @@
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
                                             </div>
-                                            <div class="btn-group btn-group-xs">
-                                                <a href="{{ path('course_delete', { 'id': course.id}) }}"
-                                                   class="btn btn-default remove-this"
-                                                   title="Excluir">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
-                                            </div>
+                                            {% if course.active %}
+                                                <div class="btn-group btn-group-xs">
+                                                    <a href="{{ path('course_delete', { 'id': course.id}) }}"
+                                                       class="btn btn-default remove-this"
+                                                       title="Excluir">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
                                         {% endif %}
 
                                     </td>

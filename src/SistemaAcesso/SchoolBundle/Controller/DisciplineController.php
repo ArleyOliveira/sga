@@ -4,6 +4,8 @@
 namespace SistemaAcesso\SchoolBundle\Controller;
 
 
+use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
+use SistemaAcesso\BaseBundle\Form\Type\Filter\UniversalFilterType;
 use SistemaAcesso\SchoolBundle\Entity\Discipline;
 use SistemaAcesso\SchoolBundle\Form\Type\DisciplineType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -29,17 +31,13 @@ class DisciplineController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $string = $request->get('string');
-        $active = 1;
-        if (isset($string)) {
-            $active = ($request->get('active') != null) ? 1 : 0;
-        }
-
+        $filter = new UniversalFilter();
+        $form = $this->createForm(new UniversalFilterType(), $filter, ['method' => 'GET']);
+        $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
-        $disciplines = $em->getRepository(Discipline::class)->findAll();
 
-        $total = count($disciplines);
+        $disciplines = $em->getRepository(Discipline::class)->findFilter($filter->isActive(), $filter->getName(), $filter->getCourse());
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -48,12 +46,9 @@ class DisciplineController extends Controller
             10
         );
 
-
         return array(
             'disciplines' => $pagination,
-            'string' => $string,
-            'active' => $active,
-            'total'  => $total
+            'form' => $form->createView()
         );
     }
 

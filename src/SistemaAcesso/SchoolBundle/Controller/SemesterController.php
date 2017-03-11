@@ -3,6 +3,8 @@
 
 namespace SistemaAcesso\SchoolBundle\Controller;
 
+use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
+use SistemaAcesso\BaseBundle\Form\Type\Filter\UniversalFilterType;
 use SistemaAcesso\SchoolBundle\Entity\Semester;
 use SistemaAcesso\SchoolBundle\Form\Type\SemesterType;
 
@@ -20,7 +22,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
  * @Template()
  * @Route("/semester")
  */
-
 class SemesterController extends Controller
 {
 
@@ -31,17 +32,13 @@ class SemesterController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $string = $request->get('string');
-        $active = 1;
-        if (isset($string)) {
-            $active = ($request->get('active') != null) ? 1 : 0;
-        }
-
+        $filter = new UniversalFilter();
+        $form = $this->createForm(new UniversalFilterType(), $filter, ['method' => 'GET']);
+        $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
-        $semesters = $em->getRepository(Semester::class)->findAll();
 
-        $total = count($semesters);
+        $semesters = $em->getRepository(Semester::class)->findFilter($filter->isActive(), $filter->getYear(), $filter->getSemester());
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -50,12 +47,9 @@ class SemesterController extends Controller
             10
         );
 
-
         return array(
             'semesters' => $pagination,
-            'string' => $string,
-            'active' => $active,
-            'total'  => $total
+            'form' => $form->createView()
         );
     }
 

@@ -40,7 +40,7 @@ class CourseRepository extends EntityRepository
         }
 
         return $qb
-            ->orderBy('c.name', 'DESC')
+            ->orderBy('c.name', 'ASC')
             ->getQuery()
             ->useQueryCache(true)
             ->useResultCache(true)

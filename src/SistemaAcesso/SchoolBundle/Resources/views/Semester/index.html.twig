@@ -6,18 +6,37 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h4 class="panel-title">Listagem de semestres</h4>
+            <h4 class="panel-title">Listagem de semestres {{ semesters.totalItemCount | label_count_element }}</h4>
             {% if app.user.granted('ROLE_ADMIN') %}
                 <a href="{{ path('semester_new') }}" class="btn btn-success mb_sm btn-sm pull-right">Novo</a>
             {% endif %}
         </div>
         <div class="panel-body">
-            <div id="datatables__example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                <div id="datatables__example_filter" class="dataTables_filter">
-                    <label>Pesquisar:
-                        <input type="search" class="form-control input-sm" placeholder=""
-                               aria-controls="datatables__example">
-                    </label>
+            <br>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="well">
+                        <form class="form-inline" method="get" action="">
+                            <div class="row">
+                                <div align="right">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            {{ form_widget(form.active) }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_widget(form.year) }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_widget(form.semester) }}
+                                        </div>
+                                        <button type="submit" class="btn btn-primary waves-effect btn-sm"><i
+                                                    class="fa fa-search" aria-hidden="true"></i> Buscar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
@@ -47,13 +66,15 @@
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                 </div>
-                                <div class="btn-group btn-group-xs">
-                                    <a href="{{ path('semester_delete', { 'id': semester.id}) }}"
-                                       class="btn btn-default remove-this"
-                                       title="Excluir">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </div>
+                                {% if semester.active %}
+                                    <div class="btn-group btn-group-xs">
+                                        <a href="{{ path('semester_delete', { 'id': semester.id}) }}"
+                                           class="btn btn-default remove-this"
+                                           title="Excluir">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                {% endif %}
                             {% endif %}
 
                         </td>
@@ -61,15 +82,6 @@
                 {% endfor %}
                 </tbody>
             </table>
-
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <span><b>Total de registro desta página</b>  <label
-                                class="badge bg-warning">{{ semesters|length }}</label></span> &nbsp; &nbsp;
-                    <span><b>Total de registro da pesquisa </b>  <label
-                                class="badge bg-primary">{{ total }}</label></span>
-                </div>
-            </div>
 
 
             <div class="navigation text-right">

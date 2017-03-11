@@ -44,6 +44,11 @@ class UniversalFilter
     protected $active;
 
     /**
+     * @var integer
+     */
+    protected $semester;
+
+    /**
      * UniversalFilter constructor.
      */
     public function __construct()
@@ -177,4 +182,24 @@ class UniversalFilter
         $this->active = $active;
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getSemester()
+    {
+        return $this->semester;
+    }
+
+    /**
+     * @param int $semester
+     * @return UniversalFilter
+     */
+    public function setSemester($semester)
+    {
+        $this->semester = $semester;
+        return $this;
+    }
+
+
 }

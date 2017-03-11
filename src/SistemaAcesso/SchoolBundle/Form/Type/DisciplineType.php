@@ -29,7 +29,7 @@ class DisciplineType extends AbstractType
                     return $er->createQueryBuilder('c')
                         ->where('c.active = :active')
                         ->setParameter("active", 1)
-                        ->orderBy('c.active', 'ASC');
+                        ->orderBy('c.name', 'ASC');
                 },
                 'placeholder' => "Selecione um Curso",
             ])

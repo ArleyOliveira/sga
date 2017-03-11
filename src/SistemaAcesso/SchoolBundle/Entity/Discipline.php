@@ -127,7 +127,9 @@ class Discipline
     public function setCourse($course)
     {
         $this->course = $course;
-        $course->addDiscipline($this);
+        if($course){
+            $course->addDiscipline($this);
+        }
         return $this;
     }
 

@@ -36,12 +36,6 @@ class CourseController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $string = $request->get('string');
-        $active = 1;
-        if (isset($string)) {
-            $active = ($request->get('active') != null) ? 1 : 0;
-        }
-
         $filter = new UniversalFilter();
         $form = $this->createForm(new UniversalFilterType(), $filter, ['method' => 'GET']);
         $form->handleRequest($request);
@@ -60,9 +54,7 @@ class CourseController extends Controller
 
         return array(
             'courses' => $pagination,
-            'string' => $string,
             'form' => $form->createView(),
-            'active' => $active,
         );
     }
 
