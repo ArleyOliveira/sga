@@ -4,6 +4,8 @@
 namespace SistemaAcesso\SchoolBundle\Controller;
 
 
+use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
+use SistemaAcesso\BaseBundle\Form\Type\Filter\UniversalFilterType;
 use SistemaAcesso\SchoolBundle\Entity\Teacher;
 use SistemaAcesso\SchoolBundle\Form\Type\TeacherType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -29,16 +31,13 @@ class TeacherController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $string = $request->get('string');
-        $active = 1;
-        if (isset($string)) {
-            $active = ($request->get('active') != null) ? 1 : 0;
-        }
+        $filter = new UniversalFilter();
+        $form = $this->createForm(new UniversalFilterType(), $filter, ['method' => 'GET']);
+        $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
-        $teachers = $em->getRepository(Teacher::class)->findAll();
 
-        $total = count($teachers);
+        $teachers = $em->getRepository(Teacher::class)->findFilter($filter->isActive(), $filter->getName());
         $paginator = $this->get('knp_paginator');
 
 
@@ -50,9 +49,8 @@ class TeacherController extends Controller
 
         return array(
             'teachers' => $pagination,
-            'string' => $string,
-            'active' => $active,
-            'total'  => $total
+            'filter' => $filter,
+            'form' => $form->createView()
         );
     }
 
@@ -127,6 +125,34 @@ class TeacherController extends Controller
             'teacher' => $teacher,
             'form' => $editForm->createView(),
         );
+    }
+
+    /**
+     * @Route("/delete/{id}",
+     *      requirements={"id" = "\d+"},
+     *      name="teacher_delete"
+     * )
+     * @Method({"GET", "DELETE"})
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    function deleteAction(Request $request, Teacher $teacher)
+    {
+        try {
+
+            $em = $this->getDoctrine()->getManager();
+            $teacher->setActive(false);
+            $em->persist($teacher);
+            $em->flush();
+
+            $this->addSuccessMessage('teacher.delete.success');
+
+        } catch (\Exception $e) {
+
+            $this->addErrorMessage('teacher.delete.error');
+
+        }
+
+        return $this->redirectToRoute('teacher_index');
     }
 
     /**
