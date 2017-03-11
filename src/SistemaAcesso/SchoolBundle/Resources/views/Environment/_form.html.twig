@@ -17,6 +17,11 @@
     </div>
 </div>
 <div class="row">
+    <div class="col-sm-2">
+        {{ form_widget(form.active) }}
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-4">
         <div class="form-group {% if form.startTime.vars.errors|length %} has-error {% endif %}">
             {{ form_label(form.startTime) }}

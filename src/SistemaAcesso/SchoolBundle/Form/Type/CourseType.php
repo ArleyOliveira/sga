@@ -11,6 +11,7 @@ namespace SistemaAcesso\SchoolBundle\Form\Type;
 
 use SistemaAcesso\SchoolBundle\Entity\Course;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,6 +22,10 @@ class CourseType extends AbstractType
         $builder
             ->add('name', 'text', array('label' => 'Nome',))
             ->add('knowledgeArea', 'text', array('label' => 'Área do Conhecimento',))
+            ->add('active', CheckboxType::class, array(
+                'label' => 'Ativo?',
+                'required' => false,
+            ))
         ;
     }
 

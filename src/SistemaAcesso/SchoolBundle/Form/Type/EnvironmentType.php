@@ -6,6 +6,7 @@ namespace SistemaAcesso\SchoolBundle\Form\Type;
 
 use SistemaAcesso\SchoolBundle\Entity\Environment;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -31,7 +32,12 @@ class EnvironmentType extends AbstractType
                     'required' => true,
                     'widget' => 'single_text',
                 )
-            );
+            )
+            ->add('active', CheckboxType::class, array(
+                'label' => 'Ativo?',
+                'required' => false,
+            ))
+        ;
     }
 
     /**

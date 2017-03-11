@@ -6,68 +6,82 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h4 class="panel-title">Listagem de cursos</h4>
+            <h4 class="panel-title">Listagem de cursos {{ courses.totalItemCount | label_count_element }} </h4>
             {% if app.user.granted('ROLE_ADMIN') %}
-                <a href="{{ path('course_new') }}" class="btn btn-success mb_sm btn-sm pull-right">Novo</a>
+                <a href="{{ path('course_new') }}" style="margin-top: -15px" class="btn btn-success btn-sm pull-right">Novo</a>
             {% endif %}
         </div>
         <div class="panel-body">
-            <div id="datatables__example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                <div id="datatables__example_filter" class="dataTables_filter">
-                    <label>Pesquisar:
-                        <input type="search" class="form-control input-sm" placeholder=""
-                               aria-controls="datatables__example">
-                    </label>
+            <br>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="well">
+                        <form class="form-inline" method="get" action="">
+                            <div class="row">
+                                <div class="pull-right">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            {{ form_widget(form.active) }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_widget(form.name) }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_widget(form.knowledgeArea) }}
+                                        </div>
+                                        <button type="submit" class="btn btn-primary waves-effect btn-sm"><i
+                                                    class="fa fa-search" aria-hidden="true"></i> Buscar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-
             {% include 'SistemaAcessoBaseBundle::Layout/flashMessages.html.twig' %}
-
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Status</th>
-                    <th>Nome</th>
-                    <th>Área do Conhecimento</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for course in courses %}
-                    <tr>
-                        <td>{{ course.active|status_label }}</td>
-                        <td>{{ course.name }}</td>
-                        <td>{{ course.knowledgeArea }}</td>
-                        <td>
-                            {% if app.user.granted('ROLE_ADMIN') %}
-                                <div class="btn-group btn-group-xs">
-                                    <a href="{{ path('course_edit', { 'id': course.id}) }}" class="btn btn-default"
-                                       title="Editar">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                </div>
-                                <div class="btn-group btn-group-xs">
-                                    <a href="{{ path('course_delete', { 'id': course.id}) }}"
-                                       class="btn btn-default remove-this"
-                                       title="Excluir">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </div>
-                            {% endif %}
-
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
             <div class="row">
-                <div class="col-md-12 text-center">
-                    <span><b>Total de registro desta página</b>  <label
-                                class="badge bg-warning">{{ courses|length }}</label></span> &nbsp; &nbsp;
-                    <span><b>Total de registro da pesquisa </b>  <label
-                                class="badge bg-primary">{{ total }}</label></span>
+                <div class="col-xs-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Nome</th>
+                                <th>Área do Conhecimento</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for course in courses %}
+                                <tr>
+                                    <td>{{ course.active|status_label }}</td>
+                                    <td>{{ course.name }}</td>
+                                    <td>{{ course.knowledgeArea }}</td>
+                                    <td>
+                                        {% if app.user.granted('ROLE_ADMIN') %}
+                                            <div class="btn-group btn-group-xs">
+                                                <a href="{{ path('course_edit', { 'id': course.id}) }}"
+                                                   class="btn btn-default"
+                                                   title="Editar">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                            </div>
+                                            <div class="btn-group btn-group-xs">
+                                                <a href="{{ path('course_delete', { 'id': course.id}) }}"
+                                                   class="btn btn-default remove-this"
+                                                   title="Excluir">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        {% endif %}
+
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 

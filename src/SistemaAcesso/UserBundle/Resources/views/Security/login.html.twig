@@ -5,38 +5,3 @@
 {% block title 'Autenticação' %}
 
 {% block page_class 'auth' %}
-
-{% block fos_user_content %}
-    <div class="row">
-        <div class="col-md-5 col-md-offset-3">
-            <h1 class="form-header">Login</h1>
-            <!-- Form -->
-            <form action="{{ path("fos_user_security_check") }}" method="post" id="signin-form_id" class="panel">
-                {% if error %}
-                    <div class="alert alert-danger"><strong>Erro!</strong> Usuário ou senha incorreto.</div>
-                {% endif %}
-                <div class="form-group">
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Email" required autofocus>
-                </div> <!-- / Username -->
-
-                <div class="form-group signin-password">
-                    <input type="password" id="password" placeholder="Senha" name="_password" required class="form-control">
-                    <a href="{{ path('fos_user_resetting_request') }}" class="forgot">Esqueceu?</a>
-                </div> <!-- / Password -->
-
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" checked="checked" /> Lembre-me
-                    </label>
-                </div>
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-                <div class="form-actions">
-                    <input type="submit" value="Entrar" class="btn btn-success btn-block">
-                </div> <!-- / .form-actions -->
-            </form>
-            <!-- / Form -->
-        </div>
-    </div>
-
-{% endblock fos_user_content %}

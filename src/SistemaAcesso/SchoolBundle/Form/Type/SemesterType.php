@@ -6,6 +6,7 @@ namespace SistemaAcesso\SchoolBundle\Form\Type;
 
 use SistemaAcesso\SchoolBundle\Entity\Semester;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,6 +26,10 @@ class SemesterType extends AbstractType
                 ],
                 'placeholder' => "Selecione um semestre"
             ])
+            ->add('active', CheckboxType::class, array(
+                'label' => 'Ativo?',
+                'required' => false,
+            ))
         ;
     }
 

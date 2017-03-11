@@ -12,6 +12,7 @@ namespace SistemaAcesso\UserBundle\Form;
 use FOS\UserBundle\Util\LegacyFormHelper;
 use SistemaAcesso\UserBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -56,6 +57,10 @@ class UserType extends AbstractType
             ->add('phone', 'text', array('label' => 'Telefone','required' => false, 'attr' => array('class' => 'phone-mask')))
             ->add('cellphone', 'text', array('label' => 'Celular','required' => false, 'attr' => array('class' => 'cellphone-mask')))
 
+            ->add('active', CheckboxType::class, array(
+                'label' => 'Ativo?',
+                'required' => false,
+            ))
         ;
 
     }

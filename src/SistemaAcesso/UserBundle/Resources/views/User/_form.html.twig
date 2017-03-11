@@ -56,6 +56,11 @@
 </div>
 <div class="row">
     <div class="col-sm-2">
+        {{ form_widget(form.active) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2">
         {{ form_label(form.username) }}
         {{ form_widget(form.username) }}
         {{ form_errors(form.username) }}

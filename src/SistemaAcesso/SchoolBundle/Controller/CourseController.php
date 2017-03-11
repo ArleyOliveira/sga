@@ -9,6 +9,8 @@
 namespace SistemaAcesso\SchoolBundle\Controller;
 
 
+use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
+use SistemaAcesso\BaseBundle\Form\Type\Filter\UniversalFilterType;
 use SistemaAcesso\SchoolBundle\Entity\Course;
 use SistemaAcesso\SchoolBundle\Form\Type\CourseType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -40,11 +42,13 @@ class CourseController extends Controller
             $active = ($request->get('active') != null) ? 1 : 0;
         }
 
+        $filter = new UniversalFilter();
+        $form = $this->createForm(new UniversalFilterType(), $filter, ['method' => 'GET']);
+        $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
-        $courses = $em->getRepository(Course::class)->findAll();
 
-        $total = count($courses);
+        $courses = $em->getRepository(Course::class)->findFilter($filter->isActive(), $filter->getName(), $filter->getKnowledgeArea());
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -57,8 +61,8 @@ class CourseController extends Controller
         return array(
             'courses' => $pagination,
             'string' => $string,
+            'form' => $form->createView(),
             'active' => $active,
-            'total'  => $total
         );
     }
 

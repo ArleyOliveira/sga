@@ -4,3 +4,8 @@ services:
       public: false
       tags:
           - { name: twig.extension }
+  count.twig_extension:
+      class: SistemaAcesso\BaseBundle\TwigExtensions\LabelCountElementExtension
+      public: false
+      tags:
+          - { name: twig.extension }

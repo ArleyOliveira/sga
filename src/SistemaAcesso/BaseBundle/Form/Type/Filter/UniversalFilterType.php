@@ -1,24 +1,25 @@
 <?php
 
-
-namespace SistemaAcesso\SchoolBundle\Form\Type;
-
+namespace SistemaAcesso\BaseBundle\Form\Type\Filter;
 
 use Doctrine\ORM\EntityRepository;
+use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
 use SistemaAcesso\SchoolBundle\Entity\Course;
-use SistemaAcesso\SchoolBundle\Entity\Discipline;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DisciplineType extends AbstractType
+class UniversalFilterType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', array('label' => 'Nome',))
+            ->add('name', 'text', array('label' => 'Nome', 'required' => false, 'attr' => ['placeholder' => 'Nome']))
+            ->add('year', 'text', array('label' => 'Ano', 'attr' => ['class' => 'datepicker-only-year', 'placeholder' => 'Ano'], 'required' => false))
+            ->add('email', 'text', array('label' => 'Email', 'required' => false, 'attr' => ['placeholder' => 'E-mail']))
+            ->add('knowledgeArea', 'text', array('label' => 'Área do Conhecimento', 'required' => false, 'attr' => ['placeholder' => 'Área do conhecimento']))
             ->add('course', EntityType::class, [
                 'class' => Course::class,
                 'label' => 'Curso',
@@ -31,14 +32,17 @@ class DisciplineType extends AbstractType
                         ->setParameter("active", 1)
                         ->orderBy('c.active', 'ASC');
                 },
-                'placeholder' => "Selecione um Curso",
+                'placeholder' => "Curso",
+                'required' => false
             ])
             ->add('active', CheckboxType::class, array(
                 'label' => 'Ativo?',
                 'required' => false,
-            ))
-        ;
+            ));
+
+        $builder->setMethod('GET');
     }
+
 
     /**
      * @param OptionsResolver $resolver
@@ -46,7 +50,7 @@ class DisciplineType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Discipline::class,
+            'data_class' => UniversalFilter::class,
         ));
     }
 
@@ -57,6 +61,6 @@ class DisciplineType extends AbstractType
      */
     public function getName()
     {
-        return "discipline";
+        return "";
     }
 }
