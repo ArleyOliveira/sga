@@ -24,7 +24,10 @@ class DisciplineRepository extends EntityRepository
 
         if ($name) {
             $qb
-                ->andWhere($qb->expr()->like('d.name', ':name'))
+                ->andWhere($qb->expr()->orX(
+                    $qb->expr()->like('d.name', ':name'),
+                    $qb->expr()->like('d.sigla', ':name')
+                ))
                 ->setParameter('name', "%{$name}%");
         }
 
@@ -35,7 +38,7 @@ class DisciplineRepository extends EntityRepository
         }
 
         return $qb
-            ->orderBy('d.name', 'DESC')
+            ->orderBy('d.name', 'ASC')
             ->getQuery()
             ->useQueryCache(true)
             ->useResultCache(true)

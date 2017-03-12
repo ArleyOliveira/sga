@@ -203,12 +203,13 @@ class Schedule
     }
 
     /**
-     * @param \DateTime $updated
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
      * @return Schedule
      */
-    public function setUpdated($updated)
+    public function setUpdated()
     {
-        $this->updated = ($updated) ? $updated : new \DateTime('now');
+        $this->updated = new \DateTime('now');
         return $this;
     }
 

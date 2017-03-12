@@ -51,3 +51,8 @@ $(".remove-this").confirm({
     dialogClass: "modal-dialog" // Bootstrap classes for large modal
 });
 
+$('.form_modal').click(function(event) {
+    event.preventDefault();
+    $('.modal-placeholder').load( $(this).attr('href') );
+});
+

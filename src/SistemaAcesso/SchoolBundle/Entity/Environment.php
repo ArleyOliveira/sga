@@ -225,11 +225,13 @@ class Environment
     }
 
     /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
      * @return \DateTime
      */
     public function getUpdated()
     {
-        return $this->updated;
+        return $this->updated = new \DateTime('now');
     }
 
     /**

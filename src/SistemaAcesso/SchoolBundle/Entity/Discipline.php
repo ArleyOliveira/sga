@@ -157,8 +157,6 @@ class Discipline
     }
 
     /**
-     * @ORM\PreUpdate
-     * @ORM\PrePersist
      * @param DateTime $created
      * @return Discipline
      */
@@ -195,12 +193,13 @@ class Discipline
     }
 
     /**
-     * @param DateTime $updated
+     *  @ORM\PrePersist
+     * @ORM\PreUpdate
      * @return Discipline
      */
-    public function setUpdated($updated)
+    public function setUpdated()
     {
-        $this->updated = ($updated) ? $updated : new \DateTime('now');
+        $this->updated = new \DateTime('now');
         return $this;
     }
 
