@@ -80,6 +80,20 @@ class Semester
     private $schedules;
 
     /**
+     * @var DateTime
+     * @ORM\Column(name="start", type="datetime", nullable=false)
+     * @Assert\NotBlank(message="semester.blank_start")
+     */
+    private $start;
+
+    /**
+     * @var DateTime
+     * @ORM\Column(name="end", type="datetime", nullable=false)
+     * @Assert\NotBlank(message="semester.blank_end")
+     */
+    private $end;
+
+    /**
      * Semestre constructor.
      */
     public function __construct()
@@ -191,12 +205,11 @@ class Semester
     /**
      * @ORM\PreUpdate
      * @ORM\PrePersist
-     * @param DateTime $updated
      * @return Semester
      */
-    public function setUpdated($updated = null)
+    public function setUpdated()
     {
-        $this->updated = ($updated) ? $updated : new \DateTime('now');
+        $this->updated = new \DateTime('now');
         return $this;
     }
 
@@ -243,6 +256,42 @@ class Semester
     public function setCurrent($current)
     {
         $this->current = $current;
+        return $this;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getStart()
+    {
+        return $this->start;
+    }
+
+    /**
+     * @param DateTime $start
+     * @return Semester
+     */
+    public function setStart($start)
+    {
+        $this->start = $start;
+        return $this;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getEnd()
+    {
+        return $this->end;
+    }
+
+    /**
+     * @param DateTime $end
+     * @return Semester
+     */
+    public function setEnd($end)
+    {
+        $this->end = $end;
         return $this;
     }
 

@@ -30,6 +30,26 @@ class SemesterType extends AbstractType
                 'label' => 'Ativo?',
                 'required' => false,
             ))
+            ->add('start', 'date', [
+                'label' => 'Data de Início',
+                'horizontal_label_class' => '',
+                'format' => 'dd/MM/y',
+                'widget' => 'single_text',
+                'required' => true,
+                'attr' => [
+                    'class' => 'datepicker'
+                ]
+            ])
+            ->add('end', 'date', [
+                'label' => 'Data de Término',
+                'horizontal_label_class' => '',
+                'format' => 'dd/MM/y',
+                'widget' => 'single_text',
+                'required' => true,
+                'attr' => [
+                    'class' => 'datepicker'
+                ]
+            ])
         ;
     }
 

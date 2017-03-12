@@ -42,46 +42,52 @@
 
             {% include 'SistemaAcessoBaseBundle::Layout/flashMessages.html.twig' %}
 
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Status</th>
-                    <th>Ano</th>
-                    <th>Semestre</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for semester in semesters %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                     <tr>
-                        <td>{{ semester.active|status_label }}</td>
-                        <td>{{ semester.year }}</td>
-                        <td>{{ semester.semester }}º semestre</td>
-                        <td>
-                            {% if app.user.granted('ROLE_ADMIN') %}
-                                <div class="btn-group btn-group-xs">
-                                    <a href="{{ path('semester_edit', { 'id': semester.id}) }}" class="btn btn-default"
-                                       title="Editar">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                </div>
-                                {% if semester.active %}
+                        <th>Status</th>
+                        <th>Ano</th>
+                        <th>Semestre</th>
+                        <th>Data Início</th>
+                        <th>Data Término</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for semester in semesters %}
+                        <tr>
+                            <td>{{ semester.active|status_label }}</td>
+                            <td>{{ semester.year }}</td>
+                            <td>{{ semester.semester }}º semestre</td>
+                            <td>{{ semester.start | date('d/m/Y') }}</td>
+                            <td>{{ semester.end | date('d/m/Y') }}</td>
+                            <td>
+                                {% if app.user.granted('ROLE_ADMIN') %}
                                     <div class="btn-group btn-group-xs">
-                                        <a href="{{ path('semester_delete', { 'id': semester.id}) }}"
-                                           class="btn btn-default remove-this"
-                                           title="Excluir">
-                                            <i class="fa fa-trash"></i>
+                                        <a href="{{ path('semester_edit', { 'id': semester.id}) }}"
+                                           class="btn btn-default"
+                                           title="Editar">
+                                            <i class="fa fa-pencil"></i>
                                         </a>
                                     </div>
+                                    {% if semester.active %}
+                                        <div class="btn-group btn-group-xs">
+                                            <a href="{{ path('semester_delete', { 'id': semester.id}) }}"
+                                               class="btn btn-default remove-this"
+                                               title="Excluir">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
-                            {% endif %}
 
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
             <div class="navigation text-right">
                 {{ knp_pagination_render(semesters) }}
             </div>

@@ -17,6 +17,22 @@
     </div>
 </div>
 <div class="row">
+    <div class="col-sm-3">
+        <div class="form-group {% if form.start.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.start) }}
+            {{ form_widget(form.start) }}
+            {{ form_errors(form.start) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group {% if form.end.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.end) }}
+            {{ form_widget(form.end) }}
+            {{ form_errors(form.end) }}
+        </div>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-2">
         {{ form_widget(form.active) }}
     </div>

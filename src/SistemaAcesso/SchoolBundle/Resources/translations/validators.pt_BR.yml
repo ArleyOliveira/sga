@@ -1,6 +1,8 @@
 semester:
     blank_year: Informe o ano do semestre!
     blank_semester: Informe o semester!
+    blank_start: Informe a data de Início!
+    blank_end: Informe a data de Término!
 
 course:
     blank_name: Informe o nome do curso!
