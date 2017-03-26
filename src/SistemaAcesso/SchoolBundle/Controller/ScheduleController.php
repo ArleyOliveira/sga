@@ -11,6 +11,7 @@ namespace SistemaAcesso\SchoolBundle\Controller;
 
 use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
 use SistemaAcesso\BaseBundle\Form\Type\Filter\UniversalFilterType;
+use SistemaAcesso\SchoolBundle\Entity\Environment;
 use SistemaAcesso\SchoolBundle\Entity\Schedule;
 use SistemaAcesso\SchoolBundle\Entity\ScheduleRegister;
 use SistemaAcesso\SchoolBundle\Entity\Semester;
@@ -44,17 +45,23 @@ class ScheduleController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $schedules = $em->getRepository(Schedule::class)->findAll();
+        $environments = $em->getRepository(Environment::class)->findFilter();
 
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $schedules,
-            $request->query->get('page', 1),
-            10
-        );
+        $semester = $em->getRepository(Semester::class)->findOneBy(['active' => true, 'current' => true]);
+        $timeGrid = [];
+
+        if($semester){
+            foreach ($environments as $environment){
+                for($i = 1; $i <= 7; $i++){
+                    $timeGrid[$environment->getId()][$i] = $em->getRepository(Schedule::class)->findByEnvironmentSemesterAndWeekDay($environment, $semester, $i);
+                }
+
+            }
+        }
 
         return array(
-            'schedules' => $pagination,
+            'environments' => $environments,
+            'timeGrid' => $timeGrid,
             'form' => $form->createView()
         );
     }

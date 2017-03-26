@@ -12,7 +12,7 @@ class EnvironmentRepository extends EntityRepository
      * @param null $name
      * @return array
      */
-    public function findFilter($active = true, $name)
+    public function findFilter($active = true, $name = null)
     {
         $qb = $this->createQueryBuilder('e');
 

@@ -7493,7 +7493,8 @@ form input[type="radio"]:disabled + label:before {
 .table thead tr th {
   border-bottom-width: 1px;
   vertical-align: middle;
-  font-weight: 400;
+  /*font-weight: 400;*/
+  font-weight: bold;
   text-transform: uppercase;
   font-size: 11px;
   color: #999999;
