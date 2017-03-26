@@ -1,0 +1,19 @@
+{% extends 'SistemaAcessoBaseBundle::Layout/layout.html.twig' %}
+{% set page_title = 'Horários' %}
+
+{% block body %}
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Listagem de Horário</h4>
+            {% if app.user.granted('ROLE_ADMIN') %}
+                <a href="{{ path('schedule_new') }}" class="btn btn-success mb_sm btn-sm pull-right">Novo</a>
+            {% endif %}
+        </div>
+        <div class="panel-body">
+
+        </div>
+    </div>
+
+{% endblock %}

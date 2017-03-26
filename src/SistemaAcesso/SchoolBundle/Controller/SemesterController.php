@@ -69,6 +69,16 @@ class SemesterController extends Controller
 
             try {
                 $em = $this->getDoctrine()->getManager();
+
+                if($semester->isCurrent()){
+                    $semesters = $em->getRepository(Semester::class)->findBy(['current' => true]);
+
+                    foreach ($semesters as $semester){
+                        $semester->setCurrent(false);
+                        $em->persist($semester);
+                    }
+                }
+
                 $em->persist($semester);
                 $em->flush();
 
@@ -103,6 +113,19 @@ class SemesterController extends Controller
 
             try {
                 $em = $this->getDoctrine()->getManager();
+
+                if($semester->isCurrent()){
+                    $semesters = $em->getRepository(Semester::class)->findBy(['current' => true, 'active' => true]);
+
+                    foreach ($semesters as $item){
+
+                        $item->setCurrent(false);
+                        $em->persist($item);
+                    }
+
+                    $semester->setCurrent(true);
+                }
+
                 $em->persist($semester);
                 $em->flush();
                 $this->addSuccessMessage('semester.edit.success');
@@ -133,7 +156,11 @@ class SemesterController extends Controller
         try {
 
             $em = $this->getDoctrine()->getManager();
-            $semester->setActive(false);
+            $semester
+                ->setActive(false)
+                ->setCurrent(false)
+            ;
+
             $em->persist($semester);
             $em->flush();
 

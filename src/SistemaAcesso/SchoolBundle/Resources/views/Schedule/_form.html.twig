@@ -1,0 +1,95 @@
+{{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group {% if form.teacher.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.teacher) }}
+            {{ form_widget(form.teacher) }}
+            {{ form_errors(form.teacher) }}
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group {% if form.discipline.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.discipline) }}
+            {{ form_widget(form.discipline) }}
+            {{ form_errors(form.discipline) }}
+        </div>
+    </div>
+</div>
+
+{{ form_widget(form._token) }}
+<div class="row">
+    <div class="col-xs-12">
+        <div id="btn-add">
+
+        </div>
+    </div>
+</div>
+
+{# store the prototype on the data-prototype attribute #}
+
+<ul class="items-schedule" data-prototype="
+                {% filter escape %}
+                 {{ include('SistemaAcessoSchoolBundle:Schedule:prototypeItems.html.twig', { 'form': form.itemsSchedule.vars.prototype }) }}
+                {% endfilter %}
+                " style="margin: 0; padding: 0;">
+    {% for item in form.itemsSchedule %}
+        <li style="list-style-type: none" class="items">
+            <div class="well">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group {% if item.environment.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label(item.environment) }}
+                            {{ form_widget(item.environment) }}
+                            {{ form_errors(item.environment) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group {% if item.weekDay.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label(item.weekDay) }}
+                            {{ form_widget(item.weekDay) }}
+                            {{ form_errors(item.weekDay) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group {% if item.startTime.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label(item.startTime) }}
+                            {{ form_widget(item.startTime) }}
+                            {{ form_errors(item.startTime) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group {% if item.endTime.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label(item.endTime) }}
+                            {{ form_widget(item.endTime) }}
+                            {{ form_errors(item.endTime) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="delete">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-actions">
+            <a href="{{ path('schedule_index') }}" class="btn btn-default waves-effect btn-fw">Cancelar</a>
+
+            <button type="submit" class="btn {{ button_css|default('btn-primary btn-fw ') }} waves-effect">
+                {{ button_label|default('Salvar') }}
+            </button>
+        </div>
+    </div>
+</div>

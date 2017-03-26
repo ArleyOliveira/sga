@@ -51,6 +51,7 @@
                         <th>Semestre</th>
                         <th>Data Início</th>
                         <th>Data Término</th>
+                        <th>Atual?</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -62,6 +63,11 @@
                             <td>{{ semester.semester }}º semestre</td>
                             <td>{{ semester.start | date('d/m/Y') }}</td>
                             <td>{{ semester.end | date('d/m/Y') }}</td>
+                            <td>
+                                {% if semester.current %}
+                                    <i class="fa fa-check fa-lg text-success" aria-hidden="true"></i>
+                                {% endif %}
+                            </td>
                             <td>
                                 {% if app.user.granted('ROLE_ADMIN') %}
                                     <div class="btn-group btn-group-xs">

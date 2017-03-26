@@ -1,0 +1,42 @@
+<li style="list-style-type: none" class="items">
+    <div class="well">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group {% if form.environment.vars.errors|length %} has-error {% endif %}">
+                    {{ form_label(form.environment) }}
+                    {{ form_errors(form.environment) }}
+                    {{ form_widget(form.environment) }}
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group {% if form.weekDay.vars.errors|length %} has-error {% endif %}">
+                    {{ form_label(form.weekDay) }}
+                    {{ form_errors(form.weekDay) }}
+                    {{ form_widget(form.weekDay) }}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group {% if form.startTime.vars.errors|length %} has-error {% endif %}">
+                    {{ form_label(form.startTime) }}
+                    {{ form_errors(form.startTime) }}
+                    {{ form_widget(form.startTime) }}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group {% if form.endTime.vars.errors|length %} has-error {% endif %}">
+                    {{ form_label(form.endTime) }}
+                    {{ form_errors(form.endTime) }}
+                    {{ form_widget(form.endTime) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="delete">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</li>

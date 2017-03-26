@@ -99,6 +99,7 @@ class Semester
     public function __construct()
     {
         $this->active = true;
+        $this->current = 1;
         $this->created = new DateTime('now');
         $this->updated = new DateTime('now');
         $this->schedules = new ArrayCollection();

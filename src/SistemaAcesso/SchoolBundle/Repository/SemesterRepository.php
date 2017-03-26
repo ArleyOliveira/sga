@@ -36,8 +36,8 @@ class SemesterRepository extends EntityRepository
         }
 
         return $qb
+            ->orderBy('s.semester', 'ASC')
             ->orderBy('s.year', 'DESC')
-            ->orderBy('s.semester', 'DESC')
             ->getQuery()
             ->useQueryCache(true)
             ->useResultCache(true)

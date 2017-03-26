@@ -17,6 +17,11 @@ $('.time').datetimepicker({
     format: 'H:mm',
 });
 
+$('[data-provider="timepicker"]').datetimepicker({
+    autoclose: true,
+    format: 'H:ii'
+});
+
 
 var SPMaskBehavior = function (val) {
         return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';

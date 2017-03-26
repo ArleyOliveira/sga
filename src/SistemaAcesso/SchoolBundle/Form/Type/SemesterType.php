@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -29,6 +30,18 @@ class SemesterType extends AbstractType
             ->add('active', CheckboxType::class, array(
                 'label' => 'Ativo?',
                 'required' => false,
+            ))
+            ->add('current', 'choice', array(
+                'label' => 'Marcar como semestre atual?',
+                'required' => true,
+                'choices' => [
+                    0 => 'Não',
+                    1 => 'Sim'
+                ],
+                'widget_type' => 'inline',
+                'attr' => ['class' => 'inline'],
+                'multiple'=>false,
+                'expanded'=>true
             ))
             ->add('start', 'date', [
                 'label' => 'Data de Início',

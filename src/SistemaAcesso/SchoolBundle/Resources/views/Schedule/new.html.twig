@@ -1,0 +1,21 @@
+{% extends 'SistemaAcessoBaseBundle::Layout/layout.html.twig' %}
+{% set page_title = 'Horários' %}
+{% block body %}
+
+    <!-- Control sizing -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Adicionar Novo Horário</h4>
+        </div>
+        <div class="panel-body">
+            {{ include('SistemaAcessoSchoolBundle::Schedule/_form.html.twig') }}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+   <script src="{{ asset('bundles/sistemaacessoschool/js/itemsCollection.js') }}"></script>
+{% endblock %}
