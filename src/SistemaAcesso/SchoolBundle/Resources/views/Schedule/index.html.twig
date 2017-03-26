@@ -6,209 +6,159 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h4 class="panel-title">Horários</h4>
+            <h4 class="panel-title">Horários do {{ filter.semester }}º semestre de {{ filter.year }}</h4>
             {% if app.user.granted('ROLE_ADMIN') %}
                 <a href="{{ path('schedule_new') }}" class="btn btn-success mb_sm btn-sm pull-right">Novo</a>
             {% endif %}
         </div>
         <div class="panel-body">
-            {% for environment in environments %}
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="page-header">
-                            <h3> {{ environment.name }}
-                                <small>horários reservados</small>
-                            </h3>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th class="text-center"><strong>Segunda-Feira</strong></th>
-                                    <th class="text-center"><strong>Terça-Feira</strong></th>
-                                    <th class="text-center"><strong>Quarta-Feira</strong></th>
-                                    <th class="text-center"><strong>Quinta-Feira</strong></th>
-                                    <th class="text-center"><strong>Sexta-Feira</strong></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
 
-                                    {% set scheduleEnvironment = timeGrid[environment.id] %}
-                                    {% for i in 2..6 %}
-                                        {% set schedules = scheduleEnvironment[i] %}
-
-                                        <td>
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                <tr>
-                                                    <th>Horário</th>
-                                                    <th>Atividade</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                {% for schedule in schedules %}
-                                                    <tr>
-                                                        <td>
-                                                            {{ schedule.startTime | date('H:i') }}
-                                                            -
-                                                            {{ schedule.endTime | date('H:i') }}
-                                                        </td>
-                                                        <td>
-                                                            <abbr class="title" title="{{ schedule.user.name }}">
-                                                                {{ schedule.discipline.sigla }}
-                                                            </abbr>
-
-                                                        </td>
-                                                    </tr>
-                                                {% endfor %}
-                                                {% if schedules|length == 0 %}
-                                                    <tr>
-                                                        <td colspan="2" class="text-center">
-                                                            <span class="label label-sm label-warning">Não há horários agendados!</span>
-                                                        </td>
-                                                    </tr>
-                                                {% endif %}
-                                                </tbody>
-                                            </table>
-                                        </td>
-
-                                    {% endfor %}
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-
-            {#<div class="row">
+            <div class="row">
                 <div class="col-xs-12">
-                    <div class="page-header">
-                        <h3> Laboratário 01
-                            <small>horários reservados</small>
-                        </h3>
+                    <div class="well">
+                        <form class="form-inline" method="get" action="">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {% if app.user.granted('ROLE_ADMIN') %}
+                                        <div class="form-group pull-left">
+                                            <label>Modo:</label>
+                                            {{ form_widget(form.mode) }}
+                                        </div>
+                                    {% endif %}
+                                    <div align="right">
+
+                                        <div class="form-group">
+                                            {{ form_widget(form.environment) }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_widget(form.semester) }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_widget(form.year) }}
+                                        </div>
+                                        <button type="submit" class="btn btn-primary waves-effect"><i
+                                                    class="fa fa-search" aria-hidden="true"></i> Buscar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th class="text-center"><strong>Segunda-Feira</strong></th>
-                                <th class="text-center"><strong>Terça-Feira</strong></th>
-                                <th class="text-center"><strong>Quarta-Feira</strong></th>
-                                <th class="text-center"><strong>Quinta-Feira</strong></th>
-                                <th class="text-center"><strong>Sexta-Feira</strong></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <table class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Horário</th>
-                                            <th>Atividade</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                07:30 - 09:00
-                                            </td>
-                                            <td>
-                                                PE
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                                <td>
-                                    <table class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Horário</th>
-                                            <th>Atividade</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                07:30 - 09:00
-                                            </td>
-                                            <td>
-                                                BD II
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                                <td>
-                                    <table class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Horário</th>
-                                            <th>Atividade</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                07:30 - 09:00
-                                            </td>
-                                            <td>
-                                                BD I
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                                <td>
-                                    <table class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Horário</th>
-                                            <th>Atividade</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                07:30 - 09:00
-                                            </td>
-                                            <td>
-                                                Aula: POO
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                                <td>
-                                    <table class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Horário</th>
-                                            <th>Atividade</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                07:30 - 09:00
-                                            </td>
-                                            <td>
-                                                Aula: POO
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+
+
                 </div>
-            </div>#}
+            </div>
+            <br>
+            {% include 'SistemaAcessoBaseBundle::Layout/flashMessages.html.twig' %}
+            {% if semester %}
+                {% for environment in environments %}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="page-header">
+                                <h4><strong>{{ environment.name }}</strong>
+                                    <small>horários reservados</small>
+                                </h4>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center"><strong>Segunda-Feira</strong></th>
+                                        <th class="text-center"><strong>Terça-Feira</strong></th>
+                                        <th class="text-center"><strong>Quarta-Feira</strong></th>
+                                        <th class="text-center"><strong>Quinta-Feira</strong></th>
+                                        <th class="text-center"><strong>Sexta-Feira</strong></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% if timeGrid[environment.id] is defined %}
+                                        <tr>
+                                            {% set scheduleEnvironment = timeGrid[environment.id] %}
+                                            {% for i in 2..6 %}
+                                                {% set schedules = scheduleEnvironment[i] %}
+
+                                                <td>
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Horário</th>
+                                                            <th>Atividade</th>
+                                                            {% if app.user.granted('ROLE_ADMIN') %}
+                                                                <td class="option {% if filter.mode == 1 %}hide{% endif %}">
+                                                                </td>
+                                                            {% endif %}
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for schedule in schedules %}
+                                                            <tr>
+                                                                <td>
+                                                                    {{ schedule.startTime | date('H:i') }}
+                                                                    -
+                                                                    {{ schedule.endTime | date('H:i') }}
+                                                                </td>
+                                                                <td>
+                                                                    <abbr class="title"
+                                                                          title="{{ schedule.user.name }}">
+                                                                        {{ schedule.discipline.sigla }}
+                                                                    </abbr>
+
+                                                                </td>
+                                                                {% if app.user.granted('ROLE_ADMIN') %}
+                                                                    <td class="option {% if filter.mode == 1 %}hide{% endif %}">
+                                                                        <div class="btn-group btn-group-xs">
+                                                                            <a class="btn btn-xs btn-default waves-effect"
+                                                                               href="{{ path('schedule_edit', {'id' : schedule.id}) }}"
+                                                                               title="Editar">
+                                                                                <i class="fa fa-pencil"
+                                                                                   aria-hidden="true"></i>
+                                                                            </a>
+
+                                                                            <a href="{{ path('schedule_delete', { 'id': schedule.id}) }}"
+                                                                               class="btn btn-default remove-this"
+                                                                               title="Excluir">
+                                                                                <i class="fa fa-trash"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </td>
+                                                                {% endif %}
+                                                            </tr>
+                                                        {% endfor %}
+                                                        {% if schedules|length == 0 %}
+                                                            <tr>
+                                                                <td colspan="2" class="text-center">
+                                                                    <span class="label label-sm label-warning">Não há horários agendados!</span>
+                                                                </td>
+                                                            </tr>
+                                                        {% endif %}
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+
+                                            {% endfor %}
+                                        </tr>
+                                    {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-danger"> Nenhum registro encontrado para este semestre!</div>
+            {% endif %}
         </div>
     </div>
 
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $('#mode').change(function () {
+            if ($(this).val() == 2) {
+                $('.option').removeClass('hide');
+            } else {
+                $('.option').addClass('hide');
+            }
+        });
+    </script>
 {% endblock %}

@@ -1,0 +1,66 @@
+{{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group {% if form.user.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.user) }}
+            {{ form_widget(form.user) }}
+            {{ form_errors(form.user) }}
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group {% if form.discipline.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.discipline) }}
+            {{ form_widget(form.discipline) }}
+            {{ form_errors(form.discipline) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group {% if form.environment.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.environment) }}
+            {{ form_errors(form.environment) }}
+            {{ form_widget(form.environment) }}
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group {% if form.weekDay.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.weekDay) }}
+            {{ form_errors(form.weekDay) }}
+            {{ form_widget(form.weekDay) }}
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group {% if form.startTime.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.startTime) }}
+            {{ form_errors(form.startTime) }}
+            {{ form_widget(form.startTime) }}
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group {% if form.endTime.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.endTime) }}
+            {{ form_errors(form.endTime) }}
+            {{ form_widget(form.endTime) }}
+        </div>
+    </div>
+</div>
+
+{{ form_widget(form._token) }}
+<hr>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-actions">
+            <a href="{{ path('schedule_index') }}" class="btn btn-default waves-effect btn-fw">Cancelar</a>
+
+            <button type="submit" class="btn {{ button_css|default('btn-primary btn-fw ') }} waves-effect">
+                {{ button_label|default('Salvar') }}
+            </button>
+        </div>
+    </div>
+</div>

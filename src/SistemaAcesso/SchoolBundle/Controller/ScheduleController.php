@@ -16,6 +16,7 @@ use SistemaAcesso\SchoolBundle\Entity\Schedule;
 use SistemaAcesso\SchoolBundle\Entity\ScheduleRegister;
 use SistemaAcesso\SchoolBundle\Entity\Semester;
 use SistemaAcesso\SchoolBundle\Form\Type\ScheduleRegisterType;
+use SistemaAcesso\SchoolBundle\Form\Type\ScheduleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,15 +46,32 @@ class ScheduleController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $environments = $em->getRepository(Environment::class)->findFilter();
+        if($filter->getEnvironment()){
+            $environments[] = $filter->getEnvironment();
+        }else{
+            $environments = $em->getRepository(Environment::class)->findFilter();
+        }
 
-        $semester = $em->getRepository(Semester::class)->findOneBy(['active' => true, 'current' => true]);
+
+        if($filter->getYear() && $filter->getSemester()){
+            $semester = $em->getRepository(Semester::class)->findOneBy(['year' => $filter->getYear(), 'semester' => $filter->getSemester()]);
+        }else{
+            $semester = $em->getRepository(Semester::class)->findOneBy(['active' => true, 'current' => true]);
+            $filter
+                ->setYear($semester->getYear())
+                ->setSemester($semester->getSemester())
+            ;
+
+            $form = $this->createForm(new UniversalFilterType(), $filter, ['method' => 'GET']);
+            $form->handleRequest($request);
+        }
+
         $timeGrid = [];
 
         if($semester){
             foreach ($environments as $environment){
                 for($i = 1; $i <= 7; $i++){
-                    $timeGrid[$environment->getId()][$i] = $em->getRepository(Schedule::class)->findByEnvironmentSemesterAndWeekDay($environment, $semester, $i);
+                    $timeGrid[$environment->getId()][$i] = $em->getRepository(Schedule::class)->findByEnvironmentSemesterAndWeekDay($environment, $semester, $i, true);
                 }
 
             }
@@ -62,7 +80,9 @@ class ScheduleController extends Controller
         return array(
             'environments' => $environments,
             'timeGrid' => $timeGrid,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'semester' => $semester,
+            'filter' => $filter
         );
     }
 
@@ -169,6 +189,7 @@ class ScheduleController extends Controller
             $em->persist($schedule);
             $em->flush();
 
+
             $this->addSuccessMessage('schedule.delete.success');
 
         } catch (\Exception $e) {
@@ -177,7 +198,7 @@ class ScheduleController extends Controller
 
         }
 
-        return $this->redirectToRoute('schedule_index');
+        return $this->redirectToRoute('schedule_index', ['mode' => 2]);
     }
 
 

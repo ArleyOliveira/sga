@@ -5,6 +5,7 @@ namespace SistemaAcesso\BaseBundle\Form\Type\Filter;
 use Doctrine\ORM\EntityRepository;
 use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
 use SistemaAcesso\SchoolBundle\Entity\Course;
+use SistemaAcesso\SchoolBundle\Entity\Environment;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -31,9 +32,22 @@ class UniversalFilterType extends AbstractType
                     return $er->createQueryBuilder('c')
                         ->where('c.active = :active')
                         ->setParameter("active", 1)
-                        ->orderBy('c.active', 'ASC');
+                        ->orderBy('c.name', 'ASC');
                 },
                 'placeholder' => "Curso",
+                'required' => false
+            ])
+            ->add('environment', EntityType::class, [
+                'class' => Environment::class,
+                'label' => 'Ambiente',
+                'choice_label' => 'name',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('e')
+                        ->where('e.active = :active')
+                        ->setParameter("active", 1)
+                        ->orderBy('e.name', 'ASC');
+                },
+                'placeholder' => "Ambiente",
                 'required' => false
             ])
             ->add('active', CheckboxType::class, array(
@@ -49,6 +63,15 @@ class UniversalFilterType extends AbstractType
                 'placeholder' => "Semestre",
                 'required' => false,
             ])
+
+            ->add('mode', ChoiceType::class, [
+                'label' => 'Modo',
+                'choices' => [
+                    1 => "Vizualização",
+                    2 => "Edição"
+                ],
+            ])
+
         ;
 
         $builder->setMethod('GET');

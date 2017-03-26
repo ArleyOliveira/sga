@@ -8,7 +8,7 @@ use SistemaAcesso\SchoolBundle\Entity\Environment;
 
 class ScheduleRepository extends EntityRepository
 {
-    public function findByEnvironmentSemesterAndWeekDay($environment, $semester, $weekDay)
+    public function findByEnvironmentSemesterAndWeekDay($environment, $semester, $weekDay, $active = true)
     {
         $qb = $this->createQueryBuilder('s');
 
@@ -23,6 +23,11 @@ class ScheduleRepository extends EntityRepository
         $qb
             ->andWhere('s.weekDay = :weekDay')
             ->setParameter('weekDay', $weekDay);
+
+        $qb
+            ->andWhere('s.active = :active')
+            ->setParameter('active', $active)
+        ;
 
         $qb
             ->orderBy('s.weekDay', 'ASC')

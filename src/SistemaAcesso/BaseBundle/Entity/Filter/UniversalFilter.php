@@ -5,6 +5,7 @@ namespace SistemaAcesso\BaseBundle\Entity\Filter;
 
 
 use SistemaAcesso\SchoolBundle\Entity\Course;
+use SistemaAcesso\SchoolBundle\Entity\Environment;
 
 class UniversalFilter
 {
@@ -49,11 +50,22 @@ class UniversalFilter
     protected $semester;
 
     /**
+     * @var Environment
+     */
+    protected $environment;
+
+    /**
+     * @var integer
+     */
+    protected $mode;
+
+    /**
      * UniversalFilter constructor.
      */
     public function __construct()
     {
         $this->active = true;
+        $this->mode = 1;
     }
 
 
@@ -201,5 +213,40 @@ class UniversalFilter
         return $this;
     }
 
+    /**
+     * @return Environment
+     */
+    public function getEnvironment()
+    {
+        return $this->environment;
+    }
+
+    /**
+     * @param Environment $environment
+     * @return UniversalFilter
+     */
+    public function setEnvironment($environment)
+    {
+        $this->environment = $environment;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMode()
+    {
+        return $this->mode;
+    }
+
+    /**
+     * @param int $mode
+     * @return UniversalFilter
+     */
+    public function setMode($mode)
+    {
+        $this->mode = $mode;
+        return $this;
+    }
 
 }
