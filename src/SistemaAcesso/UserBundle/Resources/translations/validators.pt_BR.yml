@@ -1,6 +1,7 @@
 user:
     unique_cpf: Já existe um usuário com este CPF!
     unique_email: Já existe um usuário com este e-mail!
+    unique_identification_card: Já existe um usuário com identificador!
     black_name: Informe um nome para o usuário!
     blank_email: Informe um e-mail para o usuário!
     invalid_email: Endereço de e-mail inválido!

@@ -61,6 +61,8 @@ class UserType extends AbstractType
                 'label' => 'Ativo?',
                 'required' => false,
             ))
+
+            ->add('identificationCard', 'text', array('label' => 'Identificador','required' => false, 'attr' => array('class' => 'identification_card')))
         ;
 
     }

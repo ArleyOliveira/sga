@@ -79,6 +79,11 @@
         {{ form_errors(form.username) }}
     </div>
     <div class="col-sm-2">
+        {{ form_label(form.identificationCard) }}
+        {{ form_widget(form.identificationCard) }}
+        {{ form_errors(form.identificationCard) }}
+    </div>
+    <div class="col-sm-2">
         {{ form_label(form.plainPassword.first) }}
         {{ form_widget(form.plainPassword.first) }}
         {{ form_errors(form.plainPassword.first) }}

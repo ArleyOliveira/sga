@@ -55,7 +55,7 @@ class Schedule
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="date")
+     * @ORM\Column(name="created", type="datetime")
      */
     private $created;
 
@@ -107,7 +107,7 @@ class Schedule
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated", type="date")
+     * @ORM\Column(name="updated", type="datetime")
      */
     private $updated;
 

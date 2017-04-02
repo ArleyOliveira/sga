@@ -17,6 +17,7 @@ use SistemaAcesso\BaseBundle\Validator\Constraints as AssertBaseBundle;
  * @ORM\Entity(repositoryClass="SistemaAcesso\UserBundle\Repository\UserRepository")
  * @UniqueEntity(fields="cpf", message="user.unique_cpf")
  * @UniqueEntity(fields="email", message="user.unique_email")
+ * @UniqueEntity(fields="identificationCard", message="user.unique_identification_card")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({
@@ -117,6 +118,11 @@ abstract class User extends BaseUser
      */
     private $schedules;
 
+    /**
+     * @var string
+     * @ORM\Column(name="idetification_card", type="string", options={"default":null}, unique=true, nullable=true)
+     */
+    private $identificationCard;
 
     public function __construct()
     {
@@ -125,6 +131,7 @@ abstract class User extends BaseUser
         $this->updated = new \DateTime('now');
         $this->created = new \DateTime('now');
         $this->schedules = new ArrayCollection();
+        $this->identificationCard = null;
     }
 
     /**
@@ -354,4 +361,21 @@ abstract class User extends BaseUser
         $this->schedules->add($schedule);
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getIdentificationCard()
+    {
+        return $this->identificationCard;
+    }
+
+    /**
+     * @param string $identificationCard
+     */
+    public function setIdentificationCard($identificationCard)
+    {
+        $this->identificationCard = $identificationCard;
+    }
+
 }

@@ -13,6 +13,12 @@ sistema_acesso_base:
     type:     annotation
     prefix:   /
 
+sistema_acesso_access_control:
+    resource: "@SistemaAcessoAccessControlBundle/Controller"
+    type:     annotation
+    prefix:   /
+
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 

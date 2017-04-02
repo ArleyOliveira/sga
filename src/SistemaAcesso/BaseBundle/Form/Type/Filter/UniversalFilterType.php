@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityRepository;
 use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
 use SistemaAcesso\SchoolBundle\Entity\Course;
 use SistemaAcesso\SchoolBundle\Entity\Environment;
+use SistemaAcesso\UserBundle\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -50,10 +51,31 @@ class UniversalFilterType extends AbstractType
                 'placeholder' => "Ambiente",
                 'required' => false
             ])
+
+            ->add('user', EntityType::class, [
+                'class' => User::class,
+                'label' => 'Usuário',
+                'choice_label' => 'name',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->where('u.active = :active')
+                        ->setParameter("active", 1)
+                        ->orderBy('u.name', 'ASC');
+                },
+                'placeholder' => "Usuário",
+                'required' => false
+            ])
+
             ->add('active', CheckboxType::class, array(
                 'label' => 'Ativo?',
                 'required' => false,
             ))
+
+            ->add('isToday', CheckboxType::class, array(
+                'label' => 'Hoje?',
+                'required' => false,
+            ))
+
             ->add('semester', ChoiceType::class, [
                 'label' => 'Semestre',
                 'choices' => [
@@ -69,6 +91,30 @@ class UniversalFilterType extends AbstractType
                 'choices' => [
                     1 => "Vizualização",
                     2 => "Edição"
+                ],
+            ])
+
+            ->add('startDate', 'date', [
+                'label' => 'Data de Início',
+                'horizontal_label_class' => '',
+                'format' => 'd/M/y',
+                'widget' => 'single_text',
+                'required' => true,
+                'attr' => [
+                    'class' => 'datepicker',
+                    'placeholder' => 'Date de Início'
+                ],
+            ])
+
+            ->add('endDate', 'date', [
+                'label' => 'Data de Fim',
+                'horizontal_label_class' => '',
+                'format' => 'd/M/y',
+                'widget' => 'single_text',
+                'required' => true,
+                'attr' => [
+                    'class' => 'datepicker',
+                    'placeholder' => 'Data de Fim'
                 ],
             ])
 

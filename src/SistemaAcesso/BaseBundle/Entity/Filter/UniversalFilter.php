@@ -6,6 +6,7 @@ namespace SistemaAcesso\BaseBundle\Entity\Filter;
 
 use SistemaAcesso\SchoolBundle\Entity\Course;
 use SistemaAcesso\SchoolBundle\Entity\Environment;
+use SistemaAcesso\UserBundle\Entity\User;
 
 class UniversalFilter
 {
@@ -60,12 +61,33 @@ class UniversalFilter
     protected $mode;
 
     /**
+     * @var \DateTime
+     */
+    protected $startDate;
+
+    /**
+     * @var \DateTime
+     */
+    protected $endDate;
+
+    /**
+     * @var boolean
+     */
+    protected $isToday;
+
+    /**
+     * @var User
+     */
+    protected $user;
+
+    /**
      * UniversalFilter constructor.
      */
     public function __construct()
     {
         $this->active = true;
         $this->mode = 1;
+        $this->isToday = true;
     }
 
 
@@ -248,5 +270,78 @@ class UniversalFilter
         $this->mode = $mode;
         return $this;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @param \DateTime $startDate
+     * @return UniversalFilter
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * @param \DateTime $endDate
+     * @return UniversalFilter
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isIsToday()
+    {
+        return $this->isToday;
+    }
+
+    /**
+     * @param bool $isToday
+     * @return UniversalFilter
+     */
+    public function setIsToday($isToday)
+    {
+        $this->isToday = $isToday;
+        return $this;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     * @return UniversalFilter
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
 
 }
