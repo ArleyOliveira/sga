@@ -9,3 +9,6 @@ services:
       public: false
       tags:
           - { name: twig.extension }
+  environment.service:
+          class: SistemaAcesso\SchoolBundle\Service\EnvironmentService
+          arguments: ['@doctrine.orm.entity_manager', @service_container]

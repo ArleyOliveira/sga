@@ -45,22 +45,22 @@ class AccessRepository extends EntityRepository
         if($isToday){
             $today = new \DateTime('now');
             $qb
-                ->andWhere('DATE(a.created) = :today')
-                ->setParameter('today', $today)
+                ->andWhere('DATE(a.entryDate) = :today')
+                ->setParameter('today', $today->format('Y-m-d'))
             ;
         }
 
         if(!$isToday and $dateStart){
             $qb
-                ->andWhere('DATE(a.created) >= :startDate')
-                ->setParameter('startDate', $dateStart)
+                ->andWhere('DATE(a.entryDate) >= :startDate')
+                ->setParameter('startDate', $dateStart->format('Y-m-d'))
             ;
         }
 
         if(!$isToday and $endDate){
             $qb
-                ->andWhere('DATE(a.created) <= :endDate')
-                ->setParameter('endDate', $endDate)
+                ->andWhere('DATE(a.entryDate) <= :endDate')
+                ->setParameter('endDate', $endDate->format('Y-m-d'))
             ;
         }
 

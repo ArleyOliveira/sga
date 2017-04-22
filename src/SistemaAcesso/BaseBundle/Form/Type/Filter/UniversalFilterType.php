@@ -99,7 +99,7 @@ class UniversalFilterType extends AbstractType
                 'horizontal_label_class' => '',
                 'format' => 'd/M/y',
                 'widget' => 'single_text',
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'class' => 'datepicker',
                     'placeholder' => 'Date de Início'
@@ -111,7 +111,7 @@ class UniversalFilterType extends AbstractType
                 'horizontal_label_class' => '',
                 'format' => 'd/M/y',
                 'widget' => 'single_text',
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'class' => 'datepicker',
                     'placeholder' => 'Data de Fim'

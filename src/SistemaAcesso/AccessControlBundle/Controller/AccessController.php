@@ -39,7 +39,7 @@ class AccessController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $accesses = $em->getRepository(Access::class)->findFilter(true, $filter->isActive(), $filter->isIsToday(), $filter->getEnvironment(), $filter->getUser(), $filter->getStartDate(), $filter->getEndDate());
+        $accesses = $em->getRepository(Access::class)->findFilter(true, null, $filter->isIsToday(), $filter->getEnvironment(), $filter->getUser(), $filter->getStartDate(), $filter->getEndDate());
 
 
         $paginator = $this->get('knp_paginator');
