@@ -29,4 +29,26 @@ class DefaultController extends Controller
             'name' => 'Arley',
         ];
     }
+
+    /**
+     * @Route("/email-test", name="default_email_test")
+     * @Method("GET")
+     */
+    public function testEmailAction(){
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Hello Email')
+            ->setFrom('arley.msn@hotmail.com')
+            ->setTo('arley.msn@hotmail.com')
+            ->setBody(
+                $this->renderView(
+                    'email/Hello.html.twig',
+                    array('nome' => 'Arley Oliveira')
+                )
+            )
+        ;
+        $this->container->get('mailer')->send($message);
+
+
+        die('!ok');
+    }
 }

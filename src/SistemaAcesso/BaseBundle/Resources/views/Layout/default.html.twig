@@ -43,10 +43,7 @@
     <nav class="sidebar-user__nav">
         <ul class="sidebar__nav">
             <li>
-                <a href="#"><i class="fa fa-user"></i> Perfil</a>
-            </li>
-            <li>
-                <a href="{{ path('user_edit', {'id': app.user.id}) }}"><i class="fa fa-edit"></i> Edit perfil</a>
+                <a href="{{ path('user_edit', {'id': app.user.id}) }}"><i class="fa fa-edit"></i> Editar perfil</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-envelope-o"></i> Mensagens</a>
@@ -155,7 +152,7 @@
                             Sair
                         </a>
 
-                        <ul class="nav navbar-nav navbar-right">
+                        {#<ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                    aria-haspopup="true" aria-expanded="false">
@@ -211,7 +208,7 @@
                                     </a>
                                 </div>
                             </li>
-                        </ul>
+                        </ul>#}
 
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
