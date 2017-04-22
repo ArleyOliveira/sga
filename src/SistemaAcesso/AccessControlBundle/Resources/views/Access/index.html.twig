@@ -50,9 +50,9 @@
                             <thead>
                             <tr>
                                 <th>Status</th>
+                                <th>Ambiente</th>
                                 <th>Entrada em</th>
                                 <th>Saída em</th>
-                                <th>Ambiente</th>
                                 <th>Usuário</th>
                             </tr>
                             </thead>
@@ -66,13 +66,13 @@
                                             <span class="label label-warning">Usuário no ambiente</span>
                                         {% endif %}
                                     </td>
+                                    <td>{{ access.environment.name }}</td>
                                     <td>
                                         {{ access.entryDate | date('d/m/Y H:i') }}
                                     </td>
                                     <td>
                                         {{ access.outDate | date('d/m/Y H:i') }}
                                     </td>
-                                    <td>{{ access.environment.name }}</td>
                                     <td>{{ access.user.name }}</td>
                                 </tr>
                             {% endfor %}
