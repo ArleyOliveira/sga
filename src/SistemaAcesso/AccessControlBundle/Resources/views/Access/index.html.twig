@@ -61,9 +61,10 @@
                                 <tr>
                                     <td>
                                         {% if access.isOut %}
-                                            <span class="label label-success">Usuário saiu</span>
+                                            <span class="label label-success">
+<i class="fa fa-check" aria-hidden="true"></i> Usuário saiu</span>
                                         {% else %}
-                                            <span class="label label-warning">Usuário no ambiente</span>
+                                            <span class="label label-warning"><i class="fa fa-clock-o" aria-hidden="true"></i> Usuário no ambiente</span>
                                         {% endif %}
                                     </td>
                                     <td>{{ access.environment.name }}</td>
