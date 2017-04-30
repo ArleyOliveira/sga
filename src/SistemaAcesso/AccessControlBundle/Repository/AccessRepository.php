@@ -100,7 +100,7 @@ class AccessRepository extends EntityRepository
         ;
 
         return $qb
-            ->orderBy('a.created', 'ASC')
+            ->orderBy('a.updated', 'DESC')
             ->setMaxResults(10)
             ->getQuery()
             ->useQueryCache(true)
