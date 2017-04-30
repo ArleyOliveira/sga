@@ -135,6 +135,26 @@ abstract class User extends BaseUser
     }
 
     /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'sex' => $this->sex,
+            'cpf' => $this->cpf,
+            'dateBirth' => $this->dateBirth,
+            'type' => $this->type,
+            'phone' => $this->phone,
+            'cellPhone' => $this->cellphone,
+            'created' => $this->created,
+            'updated' => $this->updated,
+            'active' => $this->active,
+        ];
+    }
+
+    /**
      * @return string
      */
     public function getType()

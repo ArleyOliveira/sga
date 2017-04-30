@@ -101,6 +101,20 @@ class Access
         $this->entryDate = new \DateTime('now');
     }
 
+    public function toArray(){
+        return [
+            'id' => $this->id,
+            'entryDate' => $this->entryDate,
+            'isOut' => $this->isOut,
+            'active' => $this->active,
+            'outDate' => $this->outDate,
+            'user' => $this->user->toArray(),
+            'environment' => $this->environment->toArray(),
+            'created' => $this->created->format('Y/m/d/ H:i:s'),
+            'updated' => $this->updated->format('Y/m/d/ H:i:s')
+        ];
+    }
+
     /**
      * @return int
      */

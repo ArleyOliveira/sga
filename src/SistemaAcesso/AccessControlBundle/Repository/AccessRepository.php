@@ -85,4 +85,26 @@ class AccessRepository extends EntityRepository
             ->useResultCache(true)
             ->getResult();
     }
+
+    /**
+     * @param int $limit
+     * @return array
+     */
+    public function findLast($limit = 10){
+
+        $qb = $this->createQueryBuilder('a');
+
+        $qb
+            ->where('a.active = :active')
+            ->setParameter('active', 1)
+        ;
+
+        return $qb
+            ->orderBy('a.created', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
 }

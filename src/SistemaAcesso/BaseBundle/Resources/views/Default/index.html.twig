@@ -2,8 +2,7 @@
 {% set page_title = 'Dashboard' %}
 
 {% block body %}
-
-    <div class="col-lg-5 col-md-6 col-sm-6">
+    {#<div class="col-lg-5 col-md-6 col-sm-6">
         <div class="row no-gutter">
             <div class="col-xs-12">
                 <md-card md-theme="default" md-theme-watch="" class="_md md-default-theme">
@@ -16,5 +15,139 @@
             </div>
         </div>
     </div>
+
+    <div class="col-xs-12 col-sm-3">
+
+        <div class="dashboard-stats__item dashboard-stats__item_red">
+            <i class="fa fa-comments"></i>
+            <h3 class="dashboard-stats__title">
+                <span class="count-to" data-from="0" data-to="1250">1250</span>
+            </h3>
+        </div>
+
+    </div>#}
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4>Olá {{ app.user.name }}!</h4>
+                <small>
+                    {% if app.user.granted('ROLE_ADMIN')%}
+                        Você é um administrador
+                    {% endif %}
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-lg-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Últimos Acessos
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="dashboard__feed" id="list-last-access">
+                    {#<div class="dashboard-feed__item">
+                    <span class="label label-success">
+                      <i class="fa fa-user"></i>
+                    </span>
+                        New user registered
+                        <small>3 mins ago</small>
+                    </div>
+                    <div class="dashboard-feed__item">
+                    <span class="label label-danger">
+                      <i class="fa fa-bolt"></i>
+                    </span>
+                        Server overloaded
+                        <small>2 hours ago</small>
+                    </div>
+                    <div class="dashboard-feed__item">
+                    <span class="label label-warning">
+                      <i class="fa fa-bell"></i>
+                    </span>
+                        Server not responding
+                        <small>3 hours ago</small>
+                    </div>
+                    <div class="dashboard-feed__item">
+                    <span class="label label-success">
+                      <i class="fa fa-user"></i>
+                    </span>
+                        New user registered
+                        <small>5 hours ago</small>
+                    </div>
+                    <div class="dashboard-feed__item">
+                    <span class="label label-danger">
+                      <i class="fa fa-bolt"></i>
+                    </span>
+                        Database error
+                        <small>12 days ago</small>
+                    </div>
+                    <div class="dashboard-feed__item">
+                    <span class="label label-danger">
+                      <i class="fa fa-bolt"></i>
+                    </span>
+                        Database error
+                        <small>12 days ago</small>
+                    </div>
+                    <div class="dashboard-feed__item">
+                    <span class="label label-warning">
+                      <i class="fa fa-bell"></i>
+                    </span>
+                        Server not responding
+                        <small>3 hours ago</small>
+                    </div>#}
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a href="{{ path('access_index') }}" class="btn btn-primary">Ver todos</a> <a id="link_access_load" data-url="{{ path('access_last') }}" class="btn btn-link"> Atualizar  </a>
+            </div>
+        </div>
+    </div>
+
+    {% verbatim %}
+       <script type="text/x-tmpl" id="list-last-access-tmpl">
+            {% if(o.accesses != undefined) { %}
+                {% for (var i = 0; i < o.accesses.length; i++) { %}
+                    <div class="dashboard-feed__item">
+
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    {% if(o.accesses[i].isOut) { %}
+                                        <span class="label label-success">
+                                          <i class="fa fa-user"></i>
+                                        </span>
+                                    {% } else { %}
+                                        <span class="label label-warning">
+                                          <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        </span>
+                                    {% } %}
+                                 </div>
+                                <div class="col-xs-4">{%=o.accesses[i].environment.name%}</div>
+                                <div class="col-xs-4">{%=o.accesses[i].user.name%}</div>
+                                <div class="col-xs-2">
+                                 <small>
+                                    {%=moment(o.accesses[i].updated, "YYYY/MM/DD h:mm:ss").fromNow()%}
+                                </small>
+                            </div>
+                        </div>
+
+                    </div>
+                {% } %}
+            {% } else { %}
+                    <div class="dashboard-feed__item">
+                        {% if (o.message != undefined) { %}
+                            <div class="alert alert-danger"> {%=o.message%} </div>
+                        {% } %}
+                    </div>
+            {% } %}
+        </script>
+    {% endverbatim %}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/sistemaacessobase/libs/tmpl/jquery.tmpl.min.js') }}"></script>
+    <script src="{{ asset('bundles/sistemaacessobase/scripts/dashboard.js') }}"></script>
 
 {% endblock %}

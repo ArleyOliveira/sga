@@ -2,11 +2,13 @@
 
 
 namespace SistemaAcesso\SchoolBundle\Entity;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Events;
+
 /**
  * class Environment
  * @ORM\Entity
@@ -96,6 +98,23 @@ class Environment
         $this->created = new \DateTime('now');
         $this->updated = new \DateTime('now');
         $this->schedules = new ArrayCollection();
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'startTime' => $this->startTime,
+            'endTime' => $this->endTime,
+            'identification' => $this->identification,
+            'created' => $this->created,
+            'updated' => $this->updated,
+            'active' => $this->active,
+        ];
     }
 
     /**
@@ -236,12 +255,12 @@ class Environment
 
     /**
      * @ORM\PrePersist
-     * @param \DateTime $updated
      * @return Environment
      */
-    public function setUpdated($updated)
+    public function setUpdated()
     {
-        $this->updated = ($updated) ? $updated : new \DateTime('now');
+
+        $this->updated = new \DateTime('now');
         return $this;
     }
 

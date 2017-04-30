@@ -17,6 +17,7 @@ use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
 use SistemaAcesso\BaseBundle\Form\Type\Filter\UniversalFilterType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class AccessController
@@ -30,7 +31,8 @@ class AccessController extends Controller
      * @Route("/", name="access_index")
      * @Method("GET")
      */
-    public function indexAction(Request $request){
+    public function indexAction(Request $request)
+    {
 
         $filter = new UniversalFilter();
         $form = $this->createForm(new UniversalFilterType(), $filter, ['method' => 'GET']);
@@ -54,6 +56,43 @@ class AccessController extends Controller
             'accesses' => $pagination,
             'form' => $form->createView(),
         );
+    }
+
+    /**
+     * @Route("/last-access", name="access_last")
+     * @Method("GET")
+     */
+    public function lastAccessAction(Request $request)
+    {
+
+        $httpCode = 400;
+
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $accesses = $em->getRepository(Access::class)->findLast();
+
+            $arrayAccess = [];
+
+            foreach ($accesses as $access) {
+                $arrayAccess[] = $access->toArray();
+            }
+
+            $httpCode = 200;
+            $dataResult = [
+                'success' => true,
+                'accesses' => $arrayAccess
+            ];
+
+        } catch (\Exception $e) {
+            $dataResult = [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        $response = new Response(\json_encode($dataResult, true), $httpCode);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
 }
