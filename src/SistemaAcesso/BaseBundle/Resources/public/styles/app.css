@@ -20,3 +20,32 @@ label.required:after {
 .panel-title {
     display: inline-block;
 }
+
+.amber{
+    background-color: #FFC107;
+    color: white;
+}
+.red{
+    background-color: #F44336;
+    color: white;
+}
+
+.indigo{
+    background-color: #3F51B5;
+    color: white;
+}
+
+.blue{
+    background-color: #2196F3;
+    color: white;
+}
+
+.green{
+    background-color: #4CAF50;
+    color: white;
+}
+
+.orange{
+    background-color: #FF9800;
+    color: white;
+}

@@ -2,10 +2,14 @@
 
 namespace SistemaAcesso\BaseBundle\Controller;
 
+use SistemaAcesso\SchoolBundle\Entity\Environment;
+use SistemaAcesso\SchoolBundle\Entity\Teacher;
+use SistemaAcesso\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -51,4 +55,45 @@ class DefaultController extends Controller
 
         die('!ok');
     }
+
+    /**
+     * @Route("/get-data", name="default_get_data")
+     * @Method("GET")
+     */
+    public function getDataAction(Request $request)
+    {
+        $httpCode = 400;
+        try {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $environments = $em->getRepository(Environment::class)->findFilter(true);
+            $teachers = $em->getRepository(Teacher::class)->findFilter(true);
+            $users = $em->getRepository(User\Admin::class)->findBy(['active' => true]);
+            $persons = $em->getRepository(User\Person::class)->findBy(['active' => true]);
+
+            $data = [
+                'countTeacher' => count($teachers),
+                'countUser' => count($persons) + count($users),
+                'countEnvironment' => count($environments)
+            ];
+            $httpCode = 200;
+            $dataResult = [
+                'success' => true,
+                'data' => $data
+            ];
+
+        } catch (\Exception $e) {
+            $dataResult = [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        $response = new Response(\json_encode($dataResult, true), $httpCode);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+
 }

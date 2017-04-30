@@ -4,6 +4,7 @@
 namespace SistemaAcesso\SchoolBundle\Controller;
 
 
+use SistemaAcesso\AccessControlBundle\Entity\Access;
 use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
 use SistemaAcesso\BaseBundle\Form\Type\Filter\UniversalFilterType;
 use SistemaAcesso\SchoolBundle\Entity\Environment;
@@ -14,6 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class EnvironmentController
@@ -148,6 +150,46 @@ class EnvironmentController extends Controller
         }
 
         return $this->redirectToRoute('environment_index');
+    }
+
+    /**
+     * @Route("/get-environment-list", name="environment_get_list")
+     * @Method("GET")
+     */
+    public function getEnvironmentListAction(Request $request)
+    {
+        $httpCode = 400;
+        try {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $environments = $em->getRepository(Environment::class)->findFilter();
+
+            $arrayEnvironments = [];
+
+            foreach ($environments as $environment) {
+                $item = $environment->toArray();
+                $access = $em->getRepository(Access::class)->findFilter(true, false, false, $environment);
+                $item['isUse'] = (count($access) > 0) ? true : false;
+                $arrayEnvironments[] = $item;
+            }
+
+            $httpCode = 200;
+            $dataResult = [
+                'success' => true,
+                'environments' => $arrayEnvironments
+            ];
+
+        } catch (\Exception $e) {
+            $dataResult = [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        $response = new Response(\json_encode($dataResult, true), $httpCode);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
 
