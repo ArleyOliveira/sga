@@ -2,6 +2,7 @@
 
 namespace SistemaAcesso\BaseBundle\Controller;
 
+use SistemaAcesso\AccessControlBundle\Entity\Access;
 use SistemaAcesso\SchoolBundle\Entity\Environment;
 use SistemaAcesso\SchoolBundle\Entity\Teacher;
 use SistemaAcesso\UserBundle\Entity\User;
@@ -71,11 +72,13 @@ class DefaultController extends Controller
             $teachers = $em->getRepository(Teacher::class)->findFilter(true);
             $users = $em->getRepository(User\Admin::class)->findBy(['active' => true]);
             $persons = $em->getRepository(User\Person::class)->findBy(['active' => true]);
+            $access = $em->getRepository(Access::class)->findBy(['active' => true ]);
 
             $data = [
                 'countTeacher' => count($teachers),
                 'countUser' => count($persons) + count($users),
-                'countEnvironment' => count($environments)
+                'countEnvironment' => count($environments),
+                'countAccess' => count($access)
             ];
             $httpCode = 200;
             $dataResult = [

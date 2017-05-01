@@ -24,7 +24,7 @@
                         <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
                         <span class="sr-only">Loading...</span>
                     </span>
-                    <small>Total Professores</small>
+                    <small>Professores</small>
                 </h3>
             </div>
 
@@ -37,7 +37,7 @@
                         <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
                         <span class="sr-only">Loading...</span>
                     </span>
-                    <small>Total Usuários</small>
+                    <small>Usuários</small>
                 </h3>
             </div>
 
@@ -50,7 +50,7 @@
                         <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
                         <span class="sr-only">Loading...</span>
                     </span>
-                    <small>Total Ambientes</small>
+                    <small>Ambientes</small>
                 </h3>
             </div>
 
@@ -59,11 +59,11 @@
             <div class="dashboard-stats__item indigo">
                 <i class="fa fa-shield" aria-hidden="true"></i>
                 <h3 class="dashboard-stats__title">
-                    <span>
+                    <span id="count-access">
                         <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
                         <span class="sr-only">Loading...</span>
                     </span>
-                    <small>Total Acessos</small>
+                    <small>Acessos</small>
                 </h3>
             </div>
 
@@ -78,7 +78,7 @@
                     </h3>
                     {% if app.user.granted('ROLE_ADMIN') %}
                         <div class="pull-right" align="right">
-                            <a class="btn btn-sm btn-success waves-effect pull-right"> Novo </a>
+                            <a href="{{ path('environment_new') }}" class="btn btn-sm btn-success waves-effect pull-right"> Novo </a>
                         </div>
                     {% endif %}
                 </div>

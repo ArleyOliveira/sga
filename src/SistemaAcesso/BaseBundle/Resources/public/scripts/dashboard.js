@@ -89,6 +89,7 @@ function countItem() {
                 $('#count-teachers').html(result.data.countTeacher);
                 $('#count-environments').html(result.data.countEnvironment);
                 $('#count-users').html(result.data.countUser);
+                $('#count-access').html(result.data.countAccess);
             }
         },
         error: function (result) {
