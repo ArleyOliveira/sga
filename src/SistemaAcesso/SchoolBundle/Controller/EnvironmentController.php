@@ -76,8 +76,6 @@ class EnvironmentController extends Controller
                 $this->addSuccessMessage('environment.new.success');
 
             } catch (\Exception $e) {
-                echo $e->getMessage();
-                die;
                 $this->addErrorMessage('environment.new.error');
 
             }

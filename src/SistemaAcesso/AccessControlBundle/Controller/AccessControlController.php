@@ -186,6 +186,63 @@ class AccessControlController extends Controller
     }
 
     /**
+     * @Route("/status.{_format}", name="access_control_status", defaults={"_format": "json"})
+     * @Method("POST")
+     */
+    public function statusAction(Request $request)
+    {
+        $httpCode = 200;
+        try {
+
+            $str = file_get_contents('php://input');
+            $dados = \json_decode($str);
+
+            $environmentIdentification = '';
+
+            if(property_exists($dados, 'environmentIdentification')){
+                $environmentIdentification = $dados->environmentIdentification;
+            }
+
+            if($environmentIdentification){
+                $em = $this->getDoctrine()->getManager();
+                $environment = $em->getRepository(Environment::class)->findOneBy(['identification' => $environmentIdentification]);
+                $access = $em->getRepository(Access::class)->findOneBy(['environment' => $environment, 'user' => $user, 'isOut' => false]);
+
+                if ($access) {
+                    $result = [
+                        'user' => $user->getName(),
+                        'success' => true,
+                    ];
+                } else {
+                    $result = [
+                        'message' => 'Disponivel',
+                        'success' => false
+                    ];
+                }
+            }else{
+                throw new \InvalidArgumentException('Dados Invalidos!');
+            }
+
+
+        } catch (\InvalidArgumentException $e) {
+            $httpCode = 500;
+            $result = [
+                'message' => "Falha " . $e->getMessage(),
+                'success' => false
+            ];
+        } catch (\Exception $e) {
+            $httpCode = 500;
+            $result = [
+                'message' => "Falha " . $e->getMessage(),
+                'success' => false
+            ];
+        }
+
+
+        return new Response(\json_encode($result), $httpCode);
+    }
+
+    /**
      * @return object|\SistemaAcesso\SchoolBundle\Service\EnvironmentService
      */
     private function getEnvironmentService(){
