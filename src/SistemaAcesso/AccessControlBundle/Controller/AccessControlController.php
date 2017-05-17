@@ -206,11 +206,11 @@ class AccessControlController extends Controller
             if($environmentIdentification){
                 $em = $this->getDoctrine()->getManager();
                 $environment = $em->getRepository(Environment::class)->findOneBy(['identification' => $environmentIdentification]);
-                $access = $em->getRepository(Access::class)->findOneBy(['environment' => $environment, 'user' => $user, 'isOut' => false]);
+                $access = $em->getRepository(Access::class)->findOneBy(['environment' => $environment, 'isOut' => false]);
 
                 if ($access) {
                     $result = [
-                        'user' => $user->getName(),
+                        'user' => $access->getUser()->getName(),
                         'success' => true,
                     ];
                 } else {
