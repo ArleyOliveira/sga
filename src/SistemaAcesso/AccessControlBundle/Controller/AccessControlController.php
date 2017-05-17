@@ -98,13 +98,13 @@ class AccessControlController extends Controller
             $httpCode = 500;
             $result = [
                 'c' => '00000000',
-                'p' => "Falha! " . $e->getMessage()
+                'p' => $e->getMessage()
             ];
         } catch (\Exception $e) {
             $httpCode = 500;
             $result = [
                 'c' => '00000000',
-                'p' => "Falha! " . $e->getMessage()
+                'p' => $e->getMessage()
             ];
         }
 
@@ -177,7 +177,7 @@ class AccessControlController extends Controller
             $httpCode = 500;
             $result = [
                 'c' => '00000000',
-                'p' => "Falha! " . $e->getMessage()
+                'p' => $e->getMessage()
             ];
         }
 
@@ -227,13 +227,13 @@ class AccessControlController extends Controller
         } catch (\InvalidArgumentException $e) {
             $httpCode = 500;
             $result = [
-                'message' => "Falha " . $e->getMessage(),
+                'message' => $e->getMessage(),
                 'success' => false
             ];
         } catch (\Exception $e) {
             $httpCode = 500;
             $result = [
-                'message' => "Falha " . $e->getMessage(),
+                'message' => $e->getMessage(),
                 'success' => false
             ];
         }
