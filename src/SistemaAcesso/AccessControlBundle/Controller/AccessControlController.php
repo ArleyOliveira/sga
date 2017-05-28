@@ -18,6 +18,7 @@ use SistemaAcesso\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 
 /**
@@ -64,7 +65,7 @@ class AccessControlController extends Controller
 
                 $access = $em->getRepository(Access::class)->findOneBy(['environment' => $environment, 'user' => $user, 'isOut' => false]);
 
-                if ($user and $environment and $this->getEnvironmentService()->checkOperation($environment)) {
+                if ($user and $environment and $this->getEnvironmentService()->checkOperation($environment) and $password == $user->PlainPassword()) {
                     if(!$access){
                         $access = new Access();
                         $access
