@@ -253,6 +253,24 @@ class AccessControlController extends Controller
     private function checkPassword(User $user, $password){
         $encoder = new MessageDigestPasswordEncoder('sha1');
         $password = $encoder->encodePassword('123456', $user->getSalt());
+        echo $password . '<br>';
+        echo $user->getPassword();
         return $password == $user->getPassword();
+    }
+
+    /**
+     * @Route("/test.{_format}", name="access_control_test", defaults={"_format": "json"})
+     * @Method("POST")
+     */
+    public function testAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $em->getRepository(User::class)->find(5);
+
+        $this->checkPassword($user, '123456');
+
+        die;
+
     }
 }
