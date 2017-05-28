@@ -65,7 +65,7 @@ class AccessControlController extends Controller
 
                 $access = $em->getRepository(Access::class)->findOneBy(['environment' => $environment, 'user' => $user, 'isOut' => false]);
 
-                if ($user and $environment and $this->getEnvironmentService()->checkOperation($environment) and $this->checkPassword($user, $user)) {
+                if ($user and $environment and $this->getEnvironmentService()->checkOperation($environment) and $this->checkPassword($user, $password)) {
                     if(!$access){
                         $access = new Access();
                         $access
