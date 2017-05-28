@@ -251,7 +251,7 @@ class AccessControlController extends Controller
     }
 
     private function checkPassword(User $user, $password){
-        $encoder = new MessageDigestPasswordEncoder('sha1');
+        $encoder = new MessageDigestPasswordEncoder('sha512');
         $password = $encoder->encodePassword('123456', $user->getSalt());
         echo $password . '<br>';
         echo $user->getPassword();
