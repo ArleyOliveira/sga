@@ -260,7 +260,7 @@ class AccessControlController extends Controller
 
     /**
      * @Route("/test.{_format}", name="access_control_test", defaults={"_format": "json"})
-     * @Method("POST")
+     * @Method("GET")
      */
     public function testAction(Request $request)
     {
