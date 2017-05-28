@@ -65,7 +65,7 @@ class AccessControlController extends Controller
 
                 $access = $em->getRepository(Access::class)->findOneBy(['environment' => $environment, 'user' => $user, 'isOut' => false]);
 
-                if ($user and $environment and $this->getEnvironmentService()->checkOperation($environment) and $password == $user->getPassword()) {
+                if ($user and $environment and $this->getEnvironmentService()->checkOperation($environment) and $this->checkPassword($user, $user)) {
                     if(!$access){
                         $access = new Access();
                         $access
@@ -250,4 +250,9 @@ class AccessControlController extends Controller
         return $this->get('environment.service');
     }
 
+    private function checkPassword(User $user, $password){
+        $encoder = new MessageDigestPasswordEncoder('sha1');
+        $password = $encoder->encodePassword($password, $user->getSalt());
+        return $password == $user->PlainPassword();
+    }
 }

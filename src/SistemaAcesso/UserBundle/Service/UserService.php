@@ -15,8 +15,8 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 class UserService
 {
     public function checkPassword(User $user, $password){
-        //$encoder = new MessageDigestPasswordEncoder('sha1');
-        //$password = $encoder->encodePassword($password, $user->getSalt());
+        $encoder = new MessageDigestPasswordEncoder('sha1');
+        $password = $encoder->encodePassword($password, $user->getSalt());
         return $password == $user->PlainPassword();
     }
 }
