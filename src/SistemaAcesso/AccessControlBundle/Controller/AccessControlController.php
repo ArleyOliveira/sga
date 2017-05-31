@@ -61,7 +61,17 @@ class AccessControlController extends Controller
             if($identificationCard and $environmentIdentification){
                 $em = $this->getDoctrine()->getManager();
                 $user = $em->getRepository(User::class)->findOneBy(['identificationCard' => $identificationCard]);
+
+
                 $environment = $em->getRepository(Environment::class)->findOneBy(['identification' => $environmentIdentification]);
+
+                $access = $em->getRepository(Access::class)->findFilter(true, false, false, $environment);
+
+                if(count($access)){
+                    if($access[0]->getUser() != $user){
+                        throw new \Exception('Em uso!');
+                    }
+                }
 
                 $access = $em->getRepository(Access::class)->findOneBy(['environment' => $environment, 'user' => $user, 'isOut' => false]);
 
@@ -82,7 +92,8 @@ class AccessControlController extends Controller
 
                     $result = [
                         'c' => 'a5e2y6',
-                        'p' => $user->getName()
+                        'p' => $user->getName(),
+                        'identificationCard' => $access->getUser()->getIdentificationCard()
                     ];
                 } else {
                     $result = [
@@ -212,6 +223,7 @@ class AccessControlController extends Controller
                 if ($access) {
                     $result = [
                         'user' => $access->getUser()->getName(),
+                        'identificationCard' => $access->getUser()->getIdentificationCard(),
                         'success' => true,
                     ];
                 } else {
@@ -252,6 +264,6 @@ class AccessControlController extends Controller
 
     private function checkPassword(User $user, $password){
         $encoder = $this->container->get('security.password_encoder');
-        return $encoder->isPasswordValid($user, '123456');
+        return $encoder->isPasswordValid($user, $password);
     }
 }
