@@ -188,9 +188,11 @@ void checkout(String identificador){
         bool isSuccess = aJson.getObjectItem(jsonObject,"success")->valuebool;
   
         if(isSuccess){
+            emUso = false;
             msgDisplay("Saida registrada");
             delay(2000);
             msgDisplay(passCard);
+          
         }else{
             bipFalha();
         }
@@ -276,7 +278,7 @@ void autenticar(String identificador) {
               msgDisplay(aJson.getObjectItem(jsonObject,"p")->valuestring);
               abrirPorta();
               successOperation = true;
-              
+              emUso = true;
             }else{
               msgDisplay(aJson.getObjectItem(jsonObject,"p")->valuestring);
             }
