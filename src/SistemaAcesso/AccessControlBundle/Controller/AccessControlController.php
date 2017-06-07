@@ -88,13 +88,15 @@ class AccessControlController extends Controller
                     }
 
                     $result = [
-                        'c' => '00000',
+                        'c' => 'a5e2y6',
+                        'success' => true,
                         'p' => $user->getName(),
                         'identificationCard' => $access->getUser()->getIdentificationCard()
                     ];
                 } else {
                     $result = [
-                        'c' => 'a5e2y6',
+                        'success' => true,
+                        'c' => '00000000',
                         'p' => 'Usuario Invalido!'
                     ];
                 }
@@ -106,12 +108,14 @@ class AccessControlController extends Controller
         } catch (\InvalidArgumentException $e) {
             $httpCode = 500;
             $result = [
+                'success' => false,
                 'c' => '00000000',
                 'p' => $e->getMessage()
             ];
         } catch (\Exception $e) {
             $httpCode = 500;
             $result = [
+                'success' => false,
                 'c' => '00000000',
                 'p' => $e->getMessage()
             ];
