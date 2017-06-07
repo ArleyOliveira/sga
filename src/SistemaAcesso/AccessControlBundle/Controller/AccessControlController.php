@@ -85,20 +85,17 @@ class AccessControlController extends Controller
 
                         $em->persist($access);
                         $em->flush();
-
-
-
                     }
 
                     $result = [
-                        'c' => 'a5e2y6',
+                        'c' => '00000',
                         'p' => $user->getName(),
                         'identificationCard' => $access->getUser()->getIdentificationCard()
                     ];
                 } else {
                     $result = [
                         'c' => 'a5e2y6',
-                        'p' => 'Usuario Invalido'
+                        'p' => 'Usuario Invalido!'
                     ];
                 }
             }else{
