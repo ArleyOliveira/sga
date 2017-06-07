@@ -48,35 +48,13 @@ String resposta ="";
 String codigo = "10";
 String laboratorio = "Lab02";
 String tagAnterior = "";
+String tagAutenticada = "";
 bool emUso = false;
 String passCard = "Aproxime o seu cartao do leitor...";
 
 #define BIP 46
 #define SAIDA_PORTA 42
 
-void abrirPorta(){
-  digitalWrite(SAIDA_PORTA, HIGH);
-  delay(1000);
-  digitalWrite(SAIDA_PORTA, LOW);
-}
-
-void bipFalha(){
-    digitalWrite(BIP, HIGH);
-    delay(100);
-    digitalWrite(BIP, LOW);
-    delay(50);
-    digitalWrite(BIP, HIGH);
-    delay(100);
-    digitalWrite(BIP, LOW);
-}
-
-void cleanLcd(int line){
-  lcd.setCursor (0, line);
-  for (int i = 0; i < 16; ++i)
-  {
-      lcd.write(' ');
-  }
-}
 
 void msgDisplay(String msg){
     lcd.clear();
@@ -93,12 +71,51 @@ void msgDisplayLine2(String msg){
     Serial.println(msg);
 }
 
+void abrirPorta(){
+  digitalWrite(SAIDA_PORTA, HIGH);
+  delay(1000);
+  digitalWrite(SAIDA_PORTA, LOW);
+}
+
+void msgPassCard(){
+    msgDisplay("Aproxime o seu");
+    msgDisplayLine2("cartao do leitor");
+}
+
+void bipFalha(){
+    digitalWrite(BIP, HIGH);
+    delay(100);
+    digitalWrite(BIP, LOW);
+    delay(50);
+    digitalWrite(BIP, HIGH);
+    delay(100);
+    digitalWrite(BIP, LOW);
+}
+
+void abrirAposAutenticacao(){
+  if(emUso){
+      abrirPorta();
+  }else{
+      bipFalha();
+  }  
+}
+
+void cleanLcd(int line){
+  lcd.setCursor (0, line);
+  for (int i = 0; i < 16; ++i)
+  {
+      lcd.write(' ');
+  }
+}
+
+
 void getStatus(){
     
     String dados = "{\"environmentIdentification\":\""+laboratorio+"\"}";
     
     if (client.connect(server, 80)) {
-      msgDisplay("Carregando...");
+      msgDisplay("Obtendo status...");
+      msgDisplayLine2("Aguarde!");
       client.println("POST /access-control/status HTTP/1.1");
       client.println("Host: sga.dfsolucoes.club");
       client.println("Content-Type:application/json");
@@ -118,7 +135,8 @@ void getStatus(){
          
           if(capture){
             String auxiliar (c);
-            resposta = resposta + auxiliar;        
+            resposta = resposta + auxiliar;
+            Serial.print(c);        
           }
         }
       }while(client.connected());
@@ -133,10 +151,10 @@ void getStatus(){
         emUso = aJson.getObjectItem(jsonObject,"success")->valuebool;
   
         if(emUso){
-             tagAnterior = aJson.getObjectItem(jsonObject,"identificationCard")->valuebool;
+             tagAutenticada = aJson.getObjectItem(jsonObject,"identificationCard")->valuestring;
              msgDisplay(aJson.getObjectItem(jsonObject,"user")->valuestring);
         }else{
-            msgDisplay(passCard);
+            msgPassCard();
         }
         
       }else{
@@ -188,11 +206,11 @@ void checkout(String identificador){
         bool isSuccess = aJson.getObjectItem(jsonObject,"success")->valuebool;
   
         if(isSuccess){
+            tagAutenticada = "";
             emUso = false;
-            msgDisplay("Saida registrada");
+            msgDisplay("Saida registrada!");
             delay(2000);
-            msgDisplay(passCard);
-          
+            msgPassCard();
         }else{
             bipFalha();
         }
@@ -276,9 +294,10 @@ void autenticar(String identificador) {
             
             if(c.equals("a5e2y6")){
               msgDisplay(aJson.getObjectItem(jsonObject,"p")->valuestring);
-              abrirPorta();
               successOperation = true;
               emUso = true;
+              tagAutenticada = aJson.getObjectItem(jsonObject,"identificationCard")->valuestring;
+              abrirPorta();
             }else{
               msgDisplay(aJson.getObjectItem(jsonObject,"p")->valuestring);
             }
@@ -286,7 +305,7 @@ void autenticar(String identificador) {
           }else{
             msgDisplay("Falha geral!");
             tagAnterior = "";
-            msgDisplay(passCard);
+            msgPassCard();
           }
           resposta = "";
         }else{
@@ -299,7 +318,7 @@ void autenticar(String identificador) {
 
     if(!successOperation){
         delay(2000);
-        msgDisplay(passCard);
+        msgPassCard();
         tagAnterior = "";
     }
 }
@@ -316,13 +335,20 @@ void setup() {
   lcd.begin(16, 2);
   SPI.begin();      // Inicia  SPI bus
   mfrc522.PCD_Init();   // Inicia MFRC522
-  msgDisplay(passCard);
+  msgPassCard();
   pinMode(BIP, OUTPUT);
   pinMode(20, OUTPUT);
 
   getStatus();
 } 
 void loop() {
+
+  char keypressed = myKeypad.getKey();
+  if(keypressed !=  NO_KEY){
+      if(keypressed == 'A'){
+          abrirAposAutenticacao();
+      }
+  }
     
   // Look for new cards
   if ( ! mfrc522.PICC_IsNewCardPresent()){
@@ -344,17 +370,21 @@ void loop() {
   conteudo.toUpperCase();
 
   Serial.println(conteudo.substring(1));
+  Serial.println(tagAutenticada);
 
-  if(tagAnterior != conteudo){
+  if(tagAutenticada == conteudo.substring(1)){
+     checkout(conteudo.substring(1));
+  }
+  else if(conteudo != "" && !emUso){
     digitalWrite(BIP, HIGH);
     delay(500);
     digitalWrite(BIP, LOW);
     tagAnterior = conteudo;
     autenticar(conteudo.substring(1));
-  }
-  else{
-    checkout(conteudo.substring(1));
-    bipFalha();
+  }else if(conteudo != ""){
+    msgDisplay("Press A p/ abrir!");
+    delay(2000);
+    getStatus(); 
   }
 }
   
