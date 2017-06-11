@@ -124,7 +124,7 @@ class AccessController extends Controller
                 ),
             ),
             'disable-smart-shrinking',
-            'user-style-sheet' => '/home/arley/projetos/sistema-acesso/web/assets/style/pdf.css',
+            'user-style-sheet' => $this->get('kernel')->getRootDir() . '/../web/assets/style/pdf.css',
         ));
 
 
