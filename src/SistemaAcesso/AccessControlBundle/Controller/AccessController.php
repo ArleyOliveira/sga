@@ -130,6 +130,8 @@ class AccessController extends Controller
 
         $pdf->addPage($this->renderView('SistemaAcessoAccessControlBundle:Access:pdf.html.twig', [
             'accesses' => $accesses,
+            'filter' => $filter,
+            'logo' => $this->get('kernel')->getRootDir() . '/../web/assets/imagens/if.png'
         ]));
 
         if(!$pdf->send('report1.pdf', true)){

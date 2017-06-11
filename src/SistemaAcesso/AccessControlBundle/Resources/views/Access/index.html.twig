@@ -10,10 +10,11 @@
         </div>
         <div class="panel-body">
             <br>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="well">
-                        <form class="form-inline" method="get" action="">
+            <form class="form-inline" method="get" action="">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="well">
+
                             <div class="row">
                                 <div align="right">
                                     <div class="col-xs-12">
@@ -38,10 +39,20 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="pull-right">
+                            <button type="submit" formaction="{{ path('access_pdf') }}"
+                                    class="btn btn-default btn-sm waves-effect">
+                                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
             {% include 'SistemaAcessoBaseBundle::Layout/flashMessages.html.twig' %}
             <div class="row">
                 <div class="col-xs-12">
@@ -64,7 +75,8 @@
                                             <span class="label label-success">
 <i class="fa fa-check" aria-hidden="true"></i> Usuário saiu</span>
                                         {% else %}
-                                            <span class="label label-warning"><i class="fa fa-clock-o" aria-hidden="true"></i> Usuário no ambiente</span>
+                                            <span class="label label-warning"><i class="fa fa-clock-o"
+                                                                                 aria-hidden="true"></i> Usuário no ambiente</span>
                                         {% endif %}
                                     </td>
                                     <td>{{ access.environment.name }}</td>
@@ -72,7 +84,9 @@
                                         {{ access.entryDate | date('d/m/Y H:i') }}
                                     </td>
                                     <td>
-                                        {{ access.outDate | date('d/m/Y H:i') }}
+                                        {% if access.outDate %}
+                                            {{ access.outDate | date('d/m/Y H:i') }}
+                                        {% endif %}
                                     </td>
                                     <td>{{ access.user.name }}</td>
                                 </tr>
