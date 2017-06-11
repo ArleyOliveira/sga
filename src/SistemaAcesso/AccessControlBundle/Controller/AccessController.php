@@ -131,7 +131,10 @@ class AccessController extends Controller
         $pdf->addPage($this->renderView('SistemaAcessoAccessControlBundle:Access:pdf.html.twig', [
             'accesses' => $accesses,
         ]));
-        $pdf->send('report1.pdf', true);
+
+        if($pdf->send('report1.pdf', true)){
+            echo $pdf->getError();
+        }
 
         exit();
 
