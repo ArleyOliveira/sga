@@ -132,7 +132,7 @@ class AccessController extends Controller
             'accesses' => $accesses,
         ]));
 
-        if($pdf->send('report1.pdf', true)){
+        if(!$pdf->send('report1.pdf', true)){
             echo $pdf->getError();
         }
 
