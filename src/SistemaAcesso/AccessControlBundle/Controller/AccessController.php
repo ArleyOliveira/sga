@@ -9,6 +9,7 @@
 namespace SistemaAcesso\AccessControlBundle\Controller;
 
 
+use mikehaertl\wkhtmlto\Pdf;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -93,6 +94,47 @@ class AccessController extends Controller
         $response = new Response(\json_encode($dataResult, true), $httpCode);
         $response->headers->set('Content-Type', 'application/json');
         return $response;
+    }
+
+    /**
+     * @Route("/pdf", name="access_pdf")
+     * @Method("GET")
+     */
+    public function pdfAction(Request $request)
+    {
+        $filter = new UniversalFilter();
+        $form = $this->createForm(new UniversalFilterType(), $filter, ['method' => 'GET']);
+        $form->handleRequest($request);
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $accesses = $em->getRepository(Access::class)->findAll();
+
+
+        $pdf = new Pdf(array(
+            'encoding' => 'UTF-8',  // option with argument
+            'commandOptions' => array(
+                'escapeArgs' => false,
+                'procOptions' => array(
+                    // This will bypass the cmd.exe which seems to be recommended on Windows
+                    'bypass_shell' => true,
+                    // Also worth a try if you get unexplainable errors
+                    'suppress_errors' => true,
+                ),
+            ),
+            'disable-smart-shrinking',
+            'user-style-sheet' => '/home/arley/projetos/sistema-acesso/web/assets/style/pdf.css',
+        ));
+
+
+        $pdf->addPage($this->renderView('SistemaAcessoAccessControlBundle:Access:pdf.html.twig', [
+            'accesses' => $accesses,
+        ]));
+        $pdf->send('report1.pdf', true);
+
+        exit();
+
     }
 
 }
