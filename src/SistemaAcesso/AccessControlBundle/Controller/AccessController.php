@@ -127,6 +127,7 @@ class AccessController extends Controller
             'user-style-sheet' => $this->get('kernel')->getRootDir() . '/../web/assets/style/pdf.css',
         ));
 
+        $inline = ($request->get('dest') != null) ? (boolean)$request->get('dest') : true;
 
         $pdf->addPage($this->renderView('SistemaAcessoAccessControlBundle:Access:pdf.html.twig', [
             'accesses' => $accesses,
@@ -134,7 +135,8 @@ class AccessController extends Controller
             'logo' => $this->get('kernel')->getRootDir() . '/../web/assets/imagens/if.png'
         ]));
 
-        if(!$pdf->send('report1.pdf', true)){
+        $today = new \DateTime('now');
+        if(!$pdf->send("relatorio_gerencial_{$today->format('d/m/Y_H:i:s')}.pdf", $inline)){
             echo $pdf->getError();
         }
 
