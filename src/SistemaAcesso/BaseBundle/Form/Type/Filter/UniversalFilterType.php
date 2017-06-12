@@ -118,6 +118,12 @@ class UniversalFilterType extends AbstractType
                 ],
             ])
 
+            ->add('activity', ChoiceType::class, [
+                'label' => 'Atividade a ser Realizada',
+                'choices' => User\Person::ACTIVITIES,
+                'placeholder' => "Atividade"
+            ])
+
         ;
 
         $builder->setMethod('GET');

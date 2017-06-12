@@ -4,6 +4,8 @@ namespace SistemaAcesso\UserBundle\Controller;
 
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
+use SistemaAcesso\BaseBundle\Form\Type\Filter\UniversalFilterType;
 use SistemaAcesso\UserBundle\Entity\User;
 use SistemaAcesso\UserBundle\Form\AdminType;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,16 +29,13 @@ class UserController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $string = $request->get('string');
-        $active = 1;
-        if (isset($string)) {
-            $active = ($request->get('active') != null) ? 1 : 0;
-        }
+        $filter = new UniversalFilter();
+        $form = $this->createForm(new UniversalFilterType(), $filter, ['method' => 'GET']);
+        $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository(User\Admin::class)->findAll();
+        $users = $em->getRepository(User\Admin::class)->findFilter($filter->isActive(), $filter->getName());
 
-        $total = count($users);
         $paginator = $this->get('knp_paginator');
 
 
@@ -48,9 +47,8 @@ class UserController extends Controller
 
         return array(
             'users' => $pagination,
-            'string' => $string,
-            'active' => $active,
-            'total'  => $total
+            'filter' => $filter,
+            'form' => $form->createView()
         );
     }
 

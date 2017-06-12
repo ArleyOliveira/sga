@@ -7,10 +7,12 @@
  */
 
 namespace SistemaAcesso\UserBundle\Entity\User;
+
 use SistemaAcesso\UserBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use SistemaAcesso\BaseBundle\Validator\Constraints as AssertBaseBundle;
+
 /**
  * Person
  *
@@ -86,7 +88,19 @@ class Person extends User
         return $this;
     }
 
-    public function getActivityExtensive(){
+    public function getActivityExtensive()
+    {
         return self::ACTIVITIES[$this->getActivity()];
+    }
+
+    /**
+     * @return bool
+     */
+    public function isExpired()
+    {
+        $today = new \DateTime('now');
+        if ($today > $this->expirationDate)
+            return true;
+        return false;
     }
 }

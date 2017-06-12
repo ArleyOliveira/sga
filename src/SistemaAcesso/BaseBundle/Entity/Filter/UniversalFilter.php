@@ -81,6 +81,11 @@ class UniversalFilter
     protected $user;
 
     /**
+     * @var integer
+     */
+    protected $activity;
+
+    /**
      * UniversalFilter constructor.
      */
     public function __construct()
@@ -340,6 +345,24 @@ class UniversalFilter
     public function setUser($user)
     {
         $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getActivity()
+    {
+        return $this->activity;
+    }
+
+    /**
+     * @param int $activity
+     * @return UniversalFilter
+     */
+    public function setActivity($activity)
+    {
+        $this->activity = $activity;
         return $this;
     }
 
