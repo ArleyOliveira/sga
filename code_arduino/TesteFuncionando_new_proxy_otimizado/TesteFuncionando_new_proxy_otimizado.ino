@@ -10,7 +10,7 @@ byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFF, 0xED };
 
 char server[] = "192.168.1.2";
 int port = 3128;
-//char server[] = "sga.dfsolucoes.club";
+String host = "http://sga.dfsolucoes.club";
 
 const byte numRows=4; // Numero de linhas
 const byte numCols=4; // Numero de colunas     
@@ -109,15 +109,9 @@ void cleanLcd(int line){
   }
 }
 
-
-void getStatus(){
-    
-    String dados = "{\"environmentIdentification\":\""+laboratorio+"\"}";
-    
+aJsonObject* conexao(String url, String dados){
     if (client.connect(server, port)) {
-      msgDisplay("Obtendo status...");
-      msgDisplayLine2("Aguarde!");
-      client.println("POST http://sga.dfsolucoes.club/access-control/status HTTP/1.1");
+      client.println("POST "+host+""+url+" HTTP/1.1");
       client.println("Host: sga.dfsolucoes.club");
       client.println("Content-Type:application/json");
       client.print("Content-Length: ");
@@ -148,91 +142,58 @@ void getStatus(){
     
       if (!client.connected()) {        
         client.stop();
-        
+        Serial.println(resposta);
         char buf[resposta.length()+10];
         resposta.toCharArray(buf, sizeof(buf));
         aJsonObject* jsonObject = aJson.parse(buf);
-        
-        emUso = aJson.getObjectItem(jsonObject,"success")->valuebool;
-  
-        if(emUso){
-             tagAutenticada = aJson.getObjectItem(jsonObject,"identificationCard")->valuestring;
-             msgDisplay(aJson.getObjectItem(jsonObject,"user")->valuestring);
-        }else{
-            msgPassCard();
-        }
-        
+        return jsonObject;
       }else{
         msgDisplay("Falha geral!");
+        return NULL;
       }
       resposta = "";
     }else{
        Serial.println("connection failed");
+       return NULL;
     }
-    
-    
+}
+
+
+void getStatus(){
+    String dados = "{\"environmentIdentification\":\""+laboratorio+"\"}";
+    String url = "/access-control/status";
+    msgDisplay("Obtendo status...");
+    msgDisplayLine2("Aguarde!");
+    aJsonObject* jsonObject = conexao(url, dados);
+    if(jsonObject){
+        emUso = aJson.getObjectItem(jsonObject,"success")->valuebool;
+        if(emUso){
+          tagAutenticada = aJson.getObjectItem(jsonObject,"identificationCard")->valuestring;
+          msgDisplay(aJson.getObjectItem(jsonObject,"user")->valuestring);
+        }else{
+          msgPassCard();
+        } 
+    }
 }
 
 void checkout(String identificador){
     String dados = "{\"environmentIdentification\":\""+laboratorio+"\",\"identificationCard\":\""+identificador+"\"}";
-    if (client.connect(server, port)) {
-      msgDisplay("Carregando...");
-      client.println("POST http://sga.dfsolucoes.club/access-control/checkout HTTP/1.1");
-      client.println("Host: sga.dfsolucoes.club");
-      client.println("Content-Type:application/json");
-      client.print("Content-Length: ");
-      client.println(dados.length());
-      client.println();
-      client.println(dados);
-      client.println("Connection: close");
-      client.println();
-      int capture = 0;
-      do{
-        if (client.available()) {
-          char c = client.read();
-          if(c == '{'){
-            capture = 1;
-          }
-        
-          if(capture ){
-            String auxiliar (c);
-            resposta = resposta + auxiliar;
-            Serial.print(c);
-            if (c == '}'){
-           
-              client.stop();
-            }        
-          }
-        }
-      }while(client.connected());
-      // if the server's disconnected, stop the client:
-    
-      if (!client.connected()) {
-        client.stop();
-        char buf[resposta.length()+10];
-        resposta.toCharArray(buf, sizeof(buf));
-        aJsonObject* jsonObject = aJson.parse(buf);
-        
-        bool isSuccess = aJson.getObjectItem(jsonObject,"success")->valuebool;
-  
-        if(isSuccess){
-            tagAutenticada = "";
-            emUso = false;
-            msgDisplay("Saida registrada!");
-            delay(2000);
-            msgPassCard();
-        }else{
-            bipFalha();
-        }
-        
+    String url = "/access-control/checkout";
+    msgDisplay("Carregando...");
+    aJsonObject* jsonObject = conexao(url, dados);
+    if(jsonObject){
+      bool isSuccess = aJson.getObjectItem(jsonObject,"success")->valuebool;
+      if(isSuccess){
+          tagAutenticada = "";
+          emUso = false;
+          msgDisplay("Saida registrada!");
+          delay(2000);
+          msgPassCard();
       }else{
-        msgDisplay("Falha geral!");
+          bipFalha();
       }
-      resposta = "";
-    }else{
-       Serial.println("connection failed");
     }
-    tagAnterior = "";
+    tagAnterior = ""; 
 }
 
 
@@ -258,79 +219,34 @@ String getSenha(){
 }
 
 void autenticar(String identificador) {
- 
     String senha = getSenha();
-
     bool successOperation = false;
 
     if(senha != ""){
         String dados = "{\"environmentIdentification\":\""+laboratorio+"\",\"identificationCard\":\""+identificador+"\",\"password\":\""+senha+"\"}";
-       
-        if (client.connect(server, port)) {
-          msgDisplay("Autenticando...");
-          client.println("POST http://sga.dfsolucoes.club/access-control/check HTTP/1.1");
-          client.println("Host: sga.dfsolucoes.club");
-          client.println("Content-Type:application/json");
-          client.print("Content-Length: ");
-          client.println(dados.length());
-          client.println();
-          client.println(dados);
-          client.println("Connection: close");
-          client.println();
-          int capture = 0;
-        
-          do{
-            if (client.available()) {
-              char c = client.read();
-              if(c == '{'){
-                capture = 1;
-              }
-              
-              if(capture){
-                String auxiliar (c);
-                resposta = resposta + auxiliar;
-                Serial.print(c);
-                if (c == '}'){
-                  client.stop();
-                }        
-              }
-             
-            }
-          }while(client.connected());
-          // if the server's disconnected, stop the client:
-        
-          if (!client.connected()) {
-            client.stop();
-            char buf[resposta.length()+10];
-            resposta.toCharArray(buf, sizeof(buf));
-            aJsonObject* jsonObject = aJson.parse(buf);
-            
-            String c = aJson.getObjectItem(jsonObject,"c")->valuestring;
-            
-            if(c.equals("a5e2y6")){
-              msgDisplay(aJson.getObjectItem(jsonObject,"p")->valuestring);
-              successOperation = true;
-              emUso = true;
-              tagAutenticada = aJson.getObjectItem(jsonObject,"identificationCard")->valuestring;
-              abrirPorta();
-            }else{
-              msgDisplay(aJson.getObjectItem(jsonObject,"p")->valuestring);
-            }
-          
+        String url = "/access-control/check";
+        msgDisplay("Autenticando...");
+        aJsonObject* jsonObject = conexao(url, dados);
+        if(jsonObject){
+          bool isSuccess = aJson.getObjectItem(jsonObject,"success")->valuebool;
+          String c = aJson.getObjectItem(jsonObject,"c")->valuestring; 
+          if(c.equals("a5e2y6")){
+            msgDisplay(aJson.getObjectItem(jsonObject,"p")->valuestring);
+            successOperation = true;
+            emUso = true;
+            tagAutenticada = aJson.getObjectItem(jsonObject,"identificationCard")->valuestring;
+            abrirPorta();
           }else{
-            msgDisplay("Falha geral!");
+            msgDisplay(aJson.getObjectItem(jsonObject,"p")->valuestring);
+          }
+        }else{
             tagAnterior = "";
             msgPassCard();
-          }
-          resposta = "";
-        }else{
-           Serial.println("connection failed");
         }
     }else{
         msgDisplay("Cancelado!");
       
     }
-
     if(!successOperation){
         delay(2000);
         msgPassCard();

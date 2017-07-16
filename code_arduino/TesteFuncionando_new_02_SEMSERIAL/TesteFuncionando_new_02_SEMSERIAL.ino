@@ -8,9 +8,8 @@
 
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFF, 0xED };
 
-char server[] = "192.168.1.2";
-int port = 3128;
-//char server[] = "sga.dfsolucoes.club";
+//char server[] = "192.168.1.8";
+char server[] = "sga.dfsolucoes.club";
 
 const byte numRows=4; // Numero de linhas
 const byte numCols=4; // Numero de colunas     
@@ -28,7 +27,7 @@ byte colPins[numCols] = {30,32,34,36}; // Pinos digitais onde as colunas estão 
  
 Keypad myKeypad = Keypad(makeKeymap(keymap), rowPins, colPins, numRows, numCols);
  
-IPAddress ip(192, 168, 1, 54);
+//IPAddress ip(192, 168, 1, 54);
 
 EthernetClient client;
 
@@ -61,7 +60,7 @@ void msgDisplay(String msg){
     lcd.clear();
     lcd.setCursor(0,0);
     lcd.print(msg);
-    Serial.println(msg);
+    /////Serial.println(msg);
 }
 
 void msgDisplayLine2(String msg){
@@ -69,7 +68,7 @@ void msgDisplayLine2(String msg){
     cleanLcd(1);
     lcd.setCursor(0,1);
     lcd.print(msg);
-    Serial.println(msg);
+    ////Serial.println(msg);
 }
 
 void abrirPorta(){
@@ -114,10 +113,10 @@ void getStatus(){
     
     String dados = "{\"environmentIdentification\":\""+laboratorio+"\"}";
     
-    if (client.connect(server, port)) {
+    if (client.connect(server, 80)) {
       msgDisplay("Obtendo status...");
       msgDisplayLine2("Aguarde!");
-      client.println("POST http://sga.dfsolucoes.club/access-control/status HTTP/1.1");
+      client.println("POST /access-control/status HTTP/1.1");
       client.println("Host: sga.dfsolucoes.club");
       client.println("Content-Type:application/json");
       client.print("Content-Length: ");
@@ -134,21 +133,17 @@ void getStatus(){
             capture = 1;
           }
          
-          if(capture ){
+          if(capture){
             String auxiliar (c);
             resposta = resposta + auxiliar;
-            Serial.print(c);
-            if (c == '}'){
-              client.stop();
-            }        
+            ////Serial.print(c);        
           }
         }
       }while(client.connected());
       // if the server's disconnected, stop the client:
     
-      if (!client.connected()) {        
-        client.stop();
-        
+      if (!client.connected()) {
+         client.stop();
         char buf[resposta.length()+10];
         resposta.toCharArray(buf, sizeof(buf));
         aJsonObject* jsonObject = aJson.parse(buf);
@@ -167,7 +162,7 @@ void getStatus(){
       }
       resposta = "";
     }else{
-       Serial.println("connection failed");
+       ////Serial.println("connection failed");
     }
     
     
@@ -175,9 +170,9 @@ void getStatus(){
 
 void checkout(String identificador){
     String dados = "{\"environmentIdentification\":\""+laboratorio+"\",\"identificationCard\":\""+identificador+"\"}";
-    if (client.connect(server, port)) {
+    if (client.connect(server, 80)) {
       msgDisplay("Carregando...");
-      client.println("POST http://sga.dfsolucoes.club/access-control/checkout HTTP/1.1");
+      client.println("POST /access-control/checkout HTTP/1.1");
       client.println("Host: sga.dfsolucoes.club");
       client.println("Content-Type:application/json");
       client.print("Content-Length: ");
@@ -193,22 +188,17 @@ void checkout(String identificador){
           if(c == '{'){
             capture = 1;
           }
-        
-          if(capture ){
+         
+          if(capture){
             String auxiliar (c);
-            resposta = resposta + auxiliar;
-            Serial.print(c);
-            if (c == '}'){
-           
-              client.stop();
-            }        
+            resposta = resposta + auxiliar;        
           }
         }
       }while(client.connected());
       // if the server's disconnected, stop the client:
     
       if (!client.connected()) {
-        client.stop();
+         client.stop();
         char buf[resposta.length()+10];
         resposta.toCharArray(buf, sizeof(buf));
         aJsonObject* jsonObject = aJson.parse(buf);
@@ -230,7 +220,7 @@ void checkout(String identificador){
       }
       resposta = "";
     }else{
-       Serial.println("connection failed");
+       //Serial.println("connection failed");
     }
     tagAnterior = "";
 }
@@ -266,9 +256,9 @@ void autenticar(String identificador) {
     if(senha != ""){
         String dados = "{\"environmentIdentification\":\""+laboratorio+"\",\"identificationCard\":\""+identificador+"\",\"password\":\""+senha+"\"}";
        
-        if (client.connect(server, port)) {
+        if (client.connect(server, 80)) {
           msgDisplay("Autenticando...");
-          client.println("POST http://sga.dfsolucoes.club/access-control/check HTTP/1.1");
+          client.println("POST /access-control/check HTTP/1.1");
           client.println("Host: sga.dfsolucoes.club");
           client.println("Content-Type:application/json");
           client.print("Content-Length: ");
@@ -285,16 +275,11 @@ void autenticar(String identificador) {
               if(c == '{'){
                 capture = 1;
               }
-              
               if(capture){
                 String auxiliar (c);
-                resposta = resposta + auxiliar;
-                Serial.print(c);
-                if (c == '}'){
-                  client.stop();
-                }        
+                resposta = resposta + auxiliar;         
               }
-             
+              //Serial.print(c);
             }
           }while(client.connected());
           // if the server's disconnected, stop the client:
@@ -324,7 +309,7 @@ void autenticar(String identificador) {
           }
           resposta = "";
         }else{
-           Serial.println("connection failed");
+           //Serial.println("connection failed");
         }
     }else{
         msgDisplay("Cancelado!");
@@ -340,8 +325,8 @@ void autenticar(String identificador) {
 
 void setup() {
   Serial.begin(9600);
-  while (!Serial) {
-  }
+  //while (!Serial) {
+  //}
 
   // start the Ethernet connection:
   if (Ethernet.begin(mac) == 0) {
@@ -355,7 +340,6 @@ void setup() {
   pinMode(BIP, OUTPUT);
   pinMode(20, OUTPUT);
 
-  getStatus();
 } 
 void loop() {
 
@@ -385,8 +369,8 @@ void loop() {
   
   conteudo.toUpperCase();
 
-  Serial.println(conteudo.substring(1));
-  Serial.println(tagAutenticada);
+  //////Serial.println(conteudo.substring(1));
+  //Serial.println(tagAutenticada);
 
   if(tagAutenticada == conteudo.substring(1)){
      checkout(conteudo.substring(1));
