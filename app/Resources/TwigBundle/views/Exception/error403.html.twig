@@ -1,0 +1,19 @@
+{% extends 'SistemaAcessoBaseBundle::Layout/layout.html.twig' %}
+{% set page_title = 'Erro 403' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Erro 403 - Acesso negado!</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="alert alert-danger">
+                <i class="fa fa-warning"></i>
+                Você não tem permissão para acessar este recurso!
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
