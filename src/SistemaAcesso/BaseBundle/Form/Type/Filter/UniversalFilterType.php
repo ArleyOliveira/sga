@@ -97,7 +97,7 @@ class UniversalFilterType extends AbstractType
             ->add('startDate', 'date', [
                 'label' => 'Data de Início',
                 'horizontal_label_class' => '',
-                'format' => 'd/M/y',
+                'format' => 'dd/MM/y',
                 'widget' => 'single_text',
                 'required' => false,
                 'attr' => [
@@ -109,7 +109,7 @@ class UniversalFilterType extends AbstractType
             ->add('endDate', 'date', [
                 'label' => 'Data de Fim',
                 'horizontal_label_class' => '',
-                'format' => 'd/M/y',
+                'format' => 'dd/MM/y',
                 'widget' => 'single_text',
                 'required' => false,
                 'attr' => [

@@ -1,12 +1,14 @@
 $('.datepicker').datepicker({
     language: 'pt-BR',
-    format: "dd/mm/yyyy"
+    format: "dd/mm/yyyy",
+    autoclose: true
 });
 
 $('.datepicker-only-year').datepicker({
     format: 'yyyy',
     viewMode: 'years',
-    minViewMode: 'years'
+    minViewMode: 'years',
+    autoclose: true
 });
 
 $( ".time" ).each(function( index ) {
@@ -14,7 +16,7 @@ $( ".time" ).each(function( index ) {
 });
 
 $('.time').datetimepicker({
-    format: 'H:mm',
+    format: 'H:mm'
 });
 
 $('[data-provider="timepicker"]').datetimepicker({
