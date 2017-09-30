@@ -32,7 +32,15 @@
         {% if filter.isToday %}
             {{ null | date('d/m/Y') }}
         {% else %}
-            {{ filter.startDate | date('d/m/Y') }} à {{ filter.endDate | date('d/m/Y') }}
+            {% if filter.startDate == filter.endDate %}
+                {% if not filter.startDate %}
+                    Todos as datas.
+                {% else %}
+                    {{ filter.startDate | date('d/m/Y') }}
+                {% endif %}
+            {% else %}
+                {{ (filter.startDate) ? filter.startDate | date('d/m/Y') : 'S/D' }} à {{ ( filter.endDate) ? filter.endDate | date('d/m/Y') : 'S/D' }}
+            {% endif %}
         {% endif %}
     </div>
 </div>
@@ -47,47 +55,11 @@
         {% endif %}
     </div>
 </div>
-
-{#<div class="row">
-    <div class="col-xs-5">
-
-        <table class="table" style="border: none">
-            <tbody>
-            <tr>
-                <th>Gerado em</th>
-                <td>{{ null | date('d/m/Y') }} às {{ null | date('H:i:s') }} </td>
-            </tr>
-            <tr>
-                <th>Usuário</th>
-                <td>{{ app.user.name }}</td>
-            </tr>
-            <tr>
-                <th>Relatório de</th>
-                <td>{{ filter.startDate | date('d/m/Y') }} à {{ filter.endDate | date('d/m/Y') }}</td>
-            </tr>
-            <tr>
-                <th>Ambiente</th>
-                <td>
-                    {% if filter.environment %}
-                        {{ filter.environment.name }}
-                    {% else %}
-                        Todos cadastrados
-                    {% endif %}
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-    </div>
-</div>#}
-<br>
 <br>
 
 <div class="row">
     <div class="col-xs-12">
-
-        <table class="table">
-            <thead>
+        <table class="table" style="font-size: 10pt">
             <tr>
                 <th>Saída Reg.</th>
                 <th>Ambiente</th>
@@ -95,8 +67,7 @@
                 <th>Saída em</th>
                 <th>Usuário</th>
             </tr>
-            </thead>
-            <tbody>
+
             {% for access in accesses %}
                 <tr>
                     <td>
@@ -118,7 +89,7 @@
                     <td>{{ access.user.name }}</td>
                 </tr>
             {% endfor %}
-            </tbody>
+
         </table>
     </div>
 
@@ -128,7 +99,9 @@
     <div class="col-xs-12">
         <div class="panel panel-body panel-default">
             <span class="text-help text-muted" style="font-size: 8pt">
-                <b>Obs.</b>: as informações apresentadas acima foram extraídas do SGA (Sistema Gerenciador de Acesso do IFNMG - Campus Januária), localizado no endereço <a class="btn-link" target="_blank" href="{{ app.request.schemeAndHttpHost }}"> {{ app.request.schemeAndHttpHost }}.</a>
+                <b>Obs.</b>: as informações apresentadas acima foram extraídas do SGA (Sistema Gerenciador de Acesso do IFNMG - Campus Januária), localizado no endereço <a
+                        class="btn-link" target="_blank"
+                        href="{{ app.request.schemeAndHttpHost }}"> {{ app.request.schemeAndHttpHost }}.</a>
             </span>
         </div>
     </div>
