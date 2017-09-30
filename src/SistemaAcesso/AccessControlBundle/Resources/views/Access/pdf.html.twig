@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+
+<div class="row">
+    <div class="col-xs-2">
+        <img src="{{ logo }}" alt="..." width="70" height="70">
+    </div>
+    <div class="col-xs-9">
+        <div class="text-center">
+            <h3> IFNMG - Campus Januária </h3>
+            <h5>RELATÓRIO GERENCIAL DE ACESSOS</h5>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-xs-2"><strong>Gerado em:</strong></div>
+    <div class="col-xs-9">{{ null | date('d/m/Y') }} às {{ null | date('H:i:s') }}</div>
+</div>
+<div class="row">
+    <div class="col-xs-2"><strong>Usuário:</strong></div>
+    <div class="col-xs-9">{{ app.user.name }}</div>
+</div>
+<div class="row">
+    <div class="col-xs-2"><strong>Relatório de:</strong></div>
+    <div class="col-xs-9">
+        {% if filter.isToday %}
+            {{ null | date('d/m/Y') }}
+        {% else %}
+            {{ filter.startDate | date('d/m/Y') }} à {{ filter.endDate | date('d/m/Y') }}
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-2"><strong>Ambiente:</strong></div>
+    <div class="col-xs-9">
+        {% if filter.environment %}
+            {{ filter.environment.name }}
+        {% else %}
+            Todos os ambientes cadastrados.
+        {% endif %}
+    </div>
+</div>
+
+{#<div class="row">
+    <div class="col-xs-5">
+
+        <table class="table" style="border: none">
+            <tbody>
+            <tr>
+                <th>Gerado em</th>
+                <td>{{ null | date('d/m/Y') }} às {{ null | date('H:i:s') }} </td>
+            </tr>
+            <tr>
+                <th>Usuário</th>
+                <td>{{ app.user.name }}</td>
+            </tr>
+            <tr>
+                <th>Relatório de</th>
+                <td>{{ filter.startDate | date('d/m/Y') }} à {{ filter.endDate | date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <th>Ambiente</th>
+                <td>
+                    {% if filter.environment %}
+                        {{ filter.environment.name }}
+                    {% else %}
+                        Todos cadastrados
+                    {% endif %}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>#}
+<br>
+<br>
+
+<div class="row">
+    <div class="col-xs-12">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Saída Reg.</th>
+                <th>Ambiente</th>
+                <th>Entrada em</th>
+                <th>Saída em</th>
+                <th>Usuário</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for access in accesses %}
+                <tr>
+                    <td>
+                        {% if access.isOut %}
+                            <strong class="text-success">Sim</strong>
+                        {% else %}
+                            <strong class="text-danger">Não</strong>
+                        {% endif %}
+                    </td>
+                    <td>{{ access.environment.name }}</td>
+                    <td>
+                        {{ access.entryDate | date('d/m/Y H:i') }}
+                    </td>
+                    <td>
+                        {% if access.outDate %}
+                            {{ access.outDate | date('d/m/Y H:i') }}
+                        {% endif %}
+                    </td>
+                    <td>{{ access.user.name }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-body panel-default">
+            <span class="text-help text-muted" style="font-size: 8pt">
+                <b>Obs.</b>: as informações apresentadas acima foram extraídas do SGA (Sistema Gerenciador de Acesso do IFNMG - Campus Januária), localizado no endereço <a class="btn-link" target="_blank" href="{{ app.request.schemeAndHttpHost }}"> {{ app.request.schemeAndHttpHost }}.</a>
+            </span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

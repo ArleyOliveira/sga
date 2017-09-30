@@ -41,7 +41,9 @@
         "misd/guzzle-bundle": "^1.1",
         "guzzlehttp/guzzle": "^6.2",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "beberlei/DoctrineExtensions": "^1.0"
+        "beberlei/DoctrineExtensions": "^1.0",
+        "mikehaertl/phpwkhtmltopdf": "^2.2",
+        "endroid/qrcode-bundle": "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

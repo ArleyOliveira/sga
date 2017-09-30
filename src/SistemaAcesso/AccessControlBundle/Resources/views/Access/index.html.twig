@@ -10,10 +10,10 @@
         </div>
         <div class="panel-body">
             <br>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="well">
-                        <form class="form-inline" method="get" action="">
+            <form class="form-inline" method="get" action="" id="form_filter">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="well">
                             <div class="row">
                                 <div align="right">
                                     <div class="col-xs-12">
@@ -32,16 +32,30 @@
                                             {{ form_widget(form.endDate) }}
                                         </div>
 
+                                        <input type="hidden" value="" name="dest" id="dest"/>
                                         <button type="submit" class="btn btn-primary btn-sm waves-effect"><i
                                                     class="fa fa-search" aria-hidden="true"></i> Buscar
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
+            </form>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" id="print" data-url="{{ path('access_pdf') }}"
+                            class="option_report btn btn-default btn-sm waves-effect" data-value="1">
+                        <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                    </button>
+                    <button type="button" id="download" data-url="{{ path('access_pdf') }}"  data-value="0"
+                            class="option_report btn btn-default btn-sm waves-effect">
+                        <i class="fa fa-download" aria-hidden="true"></i> Download PDF
+                    </button>
+                </div>
             </div>
+
             {% include 'SistemaAcessoBaseBundle::Layout/flashMessages.html.twig' %}
             <div class="row">
                 <div class="col-xs-12">
@@ -64,7 +78,8 @@
                                             <span class="label label-success">
 <i class="fa fa-check" aria-hidden="true"></i> Usuário saiu</span>
                                         {% else %}
-                                            <span class="label label-warning"><i class="fa fa-clock-o" aria-hidden="true"></i> Usuário no ambiente</span>
+                                            <span class="label label-warning"><i class="fa fa-clock-o"
+                                                                                 aria-hidden="true"></i> Usuário no ambiente</span>
                                         {% endif %}
                                     </td>
                                     <td>{{ access.environment.name }}</td>
@@ -72,7 +87,9 @@
                                         {{ access.entryDate | date('d/m/Y H:i') }}
                                     </td>
                                     <td>
-                                        {{ access.outDate | date('d/m/Y H:i') }}
+                                        {% if access.outDate %}
+                                            {{ access.outDate | date('d/m/Y H:i') }}
+                                        {% endif %}
                                     </td>
                                     <td>{{ access.user.name }}</td>
                                 </tr>
@@ -90,4 +107,34 @@
         </div>
     </div>
 
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $("#print").click(function (e) {
+            e.preventDefault();
+            $("#form_filter")
+                .attr('target', '_blank')
+                .attr('action', $(this).attr('data-url'))
+                .submit()
+                .attr('action', '')
+                .removeAttr('target')
+            ;
+        });
+    </script>
+    <script type="text/javascript">
+        $(".option_report").click(function (e) {
+            e.preventDefault();
+            $("#dest").val($(this).attr('data-value'));
+            if($(this).attr('data-value') == '1'){
+                $("#form_filter").attr('target', '_blank');
+            }
+            $("#form_filter")
+                .attr('action', $(this).attr('data-url'))
+                .submit()
+                .attr('action', '')
+                .removeAttr('target')
+            ;
+        });
+    </script>
 {% endblock %}

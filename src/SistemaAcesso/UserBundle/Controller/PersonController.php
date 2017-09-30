@@ -4,6 +4,8 @@
 namespace SistemaAcesso\UserBundle\Controller;
 
 
+use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
+use SistemaAcesso\BaseBundle\Form\Type\Filter\UniversalFilterType;
 use SistemaAcesso\UserBundle\Form\PersonType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -30,16 +32,13 @@ class PersonController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $string = $request->get('string');
-        $active = 1;
-        if (isset($string)) {
-            $active = ($request->get('active') != null) ? 1 : 0;
-        }
+        $filter = new UniversalFilter();
+        $form = $this->createForm(new UniversalFilterType(), $filter, ['method' => 'GET']);
+        $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository(User\Person::class)->findAll();
+        $users = $em->getRepository(User\Person::class)->findFilter($filter->isActive(), $filter->getName(), $filter->getActivity());
 
-        $total = count($users);
         $paginator = $this->get('knp_paginator');
 
 
@@ -51,9 +50,8 @@ class PersonController extends Controller
 
         return array(
             'users' => $pagination,
-            'string' => $string,
-            'active' => $active,
-            'total'  => $total
+            'filter' => $filter,
+            'form' => $form->createView()
         );
     }
 

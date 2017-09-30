@@ -18,6 +18,7 @@ use SistemaAcesso\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 
 /**
@@ -60,11 +61,21 @@ class AccessControlController extends Controller
             if($identificationCard and $environmentIdentification){
                 $em = $this->getDoctrine()->getManager();
                 $user = $em->getRepository(User::class)->findOneBy(['identificationCard' => $identificationCard]);
+
+
                 $environment = $em->getRepository(Environment::class)->findOneBy(['identification' => $environmentIdentification]);
+
+                $access = $em->getRepository(Access::class)->findFilter(true, false, false, $environment);
+
+                if(count($access)){
+                    if($access[0]->getUser() != $user){
+                        throw new \Exception('Em uso!');
+                    }
+                }
 
                 $access = $em->getRepository(Access::class)->findOneBy(['environment' => $environment, 'user' => $user, 'isOut' => false]);
 
-                if ($user and $environment and $this->getEnvironmentService()->checkOperation($environment)) {
+                if ($user and $environment and $this->getEnvironmentService()->checkOperation($environment) and $this->checkPassword($user, $password)) {
                     if(!$access){
                         $access = new Access();
                         $access
@@ -74,19 +85,19 @@ class AccessControlController extends Controller
 
                         $em->persist($access);
                         $em->flush();
-
-
-
                     }
 
                     $result = [
                         'c' => 'a5e2y6',
-                        'p' => $user->getName()
+                        'success' => true,
+                        'p' => $user->getName(),
+                        'identificationCard' => $access->getUser()->getIdentificationCard()
                     ];
                 } else {
                     $result = [
-                        'c' => 'a5e2y6',
-                        'p' => 'Usuario Invalido'
+                        'success' => true,
+                        'c' => '00000000',
+                        'p' => 'Usuario Invalido!'
                     ];
                 }
             }else{
@@ -97,14 +108,16 @@ class AccessControlController extends Controller
         } catch (\InvalidArgumentException $e) {
             $httpCode = 500;
             $result = [
+                'success' => false,
                 'c' => '00000000',
-                'p' => "Falha! " . $e->getMessage()
+                'p' => $e->getMessage()
             ];
         } catch (\Exception $e) {
             $httpCode = 500;
             $result = [
+                'success' => false,
                 'c' => '00000000',
-                'p' => "Falha! " . $e->getMessage()
+                'p' => $e->getMessage()
             ];
         }
 
@@ -177,7 +190,65 @@ class AccessControlController extends Controller
             $httpCode = 500;
             $result = [
                 'c' => '00000000',
-                'p' => "Falha! " . $e->getMessage()
+                'p' => $e->getMessage()
+            ];
+        }
+
+
+        return new Response(\json_encode($result), $httpCode);
+    }
+
+    /**
+     * @Route("/status.{_format}", name="access_control_status", defaults={"_format": "json"})
+     * @Method("POST")
+     */
+    public function statusAction(Request $request)
+    {
+        $httpCode = 200;
+        try {
+
+            $str = file_get_contents('php://input');
+            $dados = \json_decode($str);
+
+            $environmentIdentification = '';
+
+            if(property_exists($dados, 'environmentIdentification')){
+                $environmentIdentification = $dados->environmentIdentification;
+            }
+
+            if($environmentIdentification){
+                $em = $this->getDoctrine()->getManager();
+                $environment = $em->getRepository(Environment::class)->findOneBy(['identification' => $environmentIdentification]);
+                $access = $em->getRepository(Access::class)->findOneBy(['environment' => $environment, 'isOut' => false]);
+
+                if ($access) {
+                    $result = [
+                        'user' => $access->getUser()->getName(),
+                        'identificationCard' => $access->getUser()->getIdentificationCard(),
+                        'success' => true,
+                    ];
+                } else {
+                    $result = [
+                        'message' => 'Disponivel',
+                        'success' => false
+                    ];
+                }
+            }else{
+                throw new \InvalidArgumentException('Dados Invalidos!');
+            }
+
+
+        } catch (\InvalidArgumentException $e) {
+            $httpCode = 500;
+            $result = [
+                'message' => $e->getMessage(),
+                'success' => false
+            ];
+        } catch (\Exception $e) {
+            $httpCode = 500;
+            $result = [
+                'message' => $e->getMessage(),
+                'success' => false
             ];
         }
 
@@ -192,4 +263,8 @@ class AccessControlController extends Controller
         return $this->get('environment.service');
     }
 
+    private function checkPassword(User $user, $password){
+        $encoder = $this->container->get('security.password_encoder');
+        return $encoder->isPasswordValid($user, $password);
+    }
 }

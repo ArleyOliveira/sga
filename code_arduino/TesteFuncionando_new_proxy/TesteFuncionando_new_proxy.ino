@@ -8,9 +8,15 @@
 
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFF, 0xED };
 
+<<<<<<< HEAD
 char server[] = "192.168.1.1";
 int port = 3128;
 //char server[] = "sga.dfsolucoes.club";
+=======
+//char server[] = "192.168.1.2";
+int port = 80;
+char server[] = "sga.dfsolucoes.club";
+>>>>>>> master
 
 const byte numRows=4; // Numero de linhas
 const byte numCols=4; // Numero de colunas     
