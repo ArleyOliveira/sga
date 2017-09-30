@@ -29,8 +29,8 @@ class UserAccessType extends AbstractType
                 'second_options' => array('label' => 'Confirmação da senha'),
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
-            ->add('identificationCard', 'text', array('label' => 'Identificador', 'required' => false, 'attr' => array('class' => 'identification_card')));
-
+            ->add('identificationCard', 'text', array('label' => 'Identificador', 'required' => false, 'attr' => array('class' => 'identification_card')))
+            ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'Email', 'translation_domain' => 'FOSUserBundle'));
     }
 
     public function getParent()

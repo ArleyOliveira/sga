@@ -1,4 +1,7 @@
 {{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+<div class="hide">
+    {{ form_widget(form.username) }}
+</div>
 <div class="page-header">
     <h3><i class="fa fa-address-card" aria-hidden="true"></i> Dados pessoais</h3>
 </div>
