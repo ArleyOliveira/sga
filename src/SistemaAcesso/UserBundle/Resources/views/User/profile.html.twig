@@ -1,0 +1,16 @@
+{% extends 'SistemaAcessoBaseBundle::Layout/layout.html.twig' %}
+{% set page_title = 'Perfil' %}
+{% block body %}
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{ include('SistemaAcessoUserBundle::User/_formProfile.html.twig') }}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

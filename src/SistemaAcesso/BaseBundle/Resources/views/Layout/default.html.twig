@@ -43,11 +43,9 @@
     <nav class="sidebar-user__nav">
         <ul class="sidebar__nav">
             <li>
-                <a href="{{ path('user_edit', {'id': app.user.id}) }}"><i class="fa fa-edit"></i> Editar perfil</a>
+                <a href="{{ path('user_profile')}}"><i class="fa fa-edit"></i> Editar perfil</a>
             </li>
-            <li>
-                <a href="#"><i class="fa fa-envelope-o"></i> Mensagens</a>
-            </li>
+
             <li>
                 <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Sair</a>
             </li>

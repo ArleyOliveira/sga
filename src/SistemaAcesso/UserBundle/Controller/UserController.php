@@ -8,6 +8,7 @@ use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
 use SistemaAcesso\BaseBundle\Form\Type\Filter\UniversalFilterType;
 use SistemaAcesso\UserBundle\Entity\User;
 use SistemaAcesso\UserBundle\Form\AdminType;
+use SistemaAcesso\UserBundle\Form\UserProfileType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -123,6 +124,40 @@ class UserController extends Controller
         return array(
             'user' => $user,
             'form' => $editForm->createView(),
+        );
+    }
+
+
+    /**
+     * @Route("/profile", name="user_profile")
+     * @Method({"GET", "POST"})
+     */
+    public function profileAction(Request $request)
+    {
+        $user = $this->getUser();
+
+        $fom = $this->createForm(new UserProfileType(), $user);
+
+        $fom->handleRequest($request);
+
+        if ($fom->isSubmitted() && $fom->isValid()) {
+
+            try {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                $this->addSuccessMessage('user.edit.success');
+
+            } catch (\Exception $e) {
+
+                $this->addErrorMessage('user.edit.error');
+
+            }
+        }
+
+        return array(
+            'user' => $user,
+            'form' => $fom->createView(),
         );
     }
 

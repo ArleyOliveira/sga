@@ -1,0 +1,84 @@
+{{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+<div class="page-header">
+    <h3><i class="fa fa-address-card" aria-hidden="true"></i> Dados pessoais</h3>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="form-group {% if form.name.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+    </div>
+    <div class="col-sm-5 col-md-3">
+        <div class="form-group {% if form.cpf.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.cpf) }}
+            {{ form_widget(form.cpf) }}
+            {{ form_errors(form.cpf) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3 col-md-2">
+        <div class="form-group {% if form.dateBirth.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.dateBirth) }}
+            {{ form_widget(form.dateBirth) }}
+            {{ form_errors(form.dateBirth) }}
+        </div>
+    </div>
+    <div class="col-sm-3 col-md-2">
+        <div class="form-group {% if form.sex.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.sex) }}
+            {{ form_widget(form.sex) }}
+            {{ form_errors(form.sex) }}
+        </div>
+    </div>
+</div>
+
+<div class="page-header">
+    <h3><i class="fa fa-phone" aria-hidden="true"></i> Contato</h3>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="form-group {% if form.email.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+            {{ form_errors(form.email) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3 col-md-2">
+        <div class="form-group {% if form.phone.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.phone) }}
+            {{ form_widget(form.phone) }}
+            {{ form_errors(form.phone) }}
+        </div>
+    </div>
+    <div class="col-sm-3 col-md-2">
+        <div class="form-group {% if form.cellphone.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.cellphone) }}
+            {{ form_widget(form.cellphone) }}
+            {{ form_errors(form.cellphone) }}
+        </div>
+    </div>
+</div>
+
+<hr>
+{{ form_widget(form._token) }}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-actions">
+            <a href="{{ path('user_index') }}" class="btn btn-default waves-effect btn-fw">Cancelar</a>
+
+            <button type="submit" class="btn {{ button_css|default('btn-primary btn-fw ') }} waves-effect">
+                {{ button_label|default('Salvar') }}
+            </button>
+        </div>
+    </div>
+</div>
+

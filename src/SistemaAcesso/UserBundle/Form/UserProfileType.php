@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: arley
- * Date: 13/11/16
- * Time: 15:31
+ * Date: 30/09/17
+ * Time: 09:57
  */
 
 namespace SistemaAcesso\UserBundle\Form;
@@ -17,7 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class UserProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -44,25 +44,11 @@ class UserType extends AbstractType
                     'class' => 'datepicker'
                 ]
             ])
-            ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'Email', 'translation_domain' => 'FOSUserBundle'))
-            ->add('username', null, array('label' => 'Usuário', 'translation_domain' => 'FOSUserBundle'))
-            ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
-                'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
-                'options' => array('translation_domain' => 'FOSUserBundle'),
-                'first_options' => array('label' => 'Senha'),
-                'second_options' => array('label' => 'Confirmação da senha'),
-                'invalid_message' => 'fos_user.password.mismatch',
-            ))
 
             ->add('phone', 'text', array('label' => 'Telefone','required' => false, 'attr' => array('class' => 'phone-mask')))
             ->add('cellphone', 'text', array('label' => 'Celular','required' => false, 'attr' => array('class' => 'cellphone-mask')))
 
-            ->add('active', CheckboxType::class, array(
-                'label' => 'Ativo?',
-                'required' => false,
-            ))
 
-            ->add('identificationCard', 'text', array('label' => 'Identificador','required' => false, 'attr' => array('class' => 'identification_card')))
         ;
 
     }
@@ -92,5 +78,4 @@ class UserType extends AbstractType
             'cascade_validation' => true
         ));
     }
-
 }
