@@ -29,6 +29,7 @@ class PersonController extends Controller
     /**
      * @Route("/", name="person_index")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function indexAction(Request $request)
     {
@@ -70,7 +71,7 @@ class PersonController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             try {
-                $user->setRoles(['ROLE_USER']);
+                $user->setRoles(['ROLE_TEACHER']);
                 $user->setEnabled(true);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);

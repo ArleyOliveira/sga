@@ -27,7 +27,7 @@ class TeacherController extends Controller
 {
     /**
      * @Route("/", name="teacher_index")
-     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_USER')")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_TEACHER')")
      */
     public function indexAction(Request $request)
     {
@@ -69,7 +69,8 @@ class TeacherController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             try {
-                $teacher->setRoles(['ROLE_USER']);
+               // $teacher->setRoles(['ROLE_TEACHER']);
+                $teacher->setRoles(['ROLE_TEACHER']);
                 $teacher->setEnabled(true);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($teacher);

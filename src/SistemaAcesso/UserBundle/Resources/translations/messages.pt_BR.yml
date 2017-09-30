@@ -8,6 +8,12 @@ user:
     delete:
         success: Usuário excluído com sucesso!
         error: Houve um erro ao tentar excluír um usuário!
+    profile:
+        success: Dados de perfil editado com sucesso!
+        error: Houve um erro ao tentar editar os dados de perfil.
+    access:
+        success: Dados de acesso editado com sucesso!
+        error: Houve um erro ao tentar editar os dados de acesso.
 
 news:
     new:

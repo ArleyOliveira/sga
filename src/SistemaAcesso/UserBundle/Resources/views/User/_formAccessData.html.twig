@@ -1,0 +1,43 @@
+{{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+<div class="page-header">
+    <h3> <i class="fa fa-lock" aria-hidden="true"></i> Login</h3>
+</div>
+<div class="row">
+    <div class="col-sm-3 col-md-2">
+        {{ form_label(form.username) }}
+        {{ form_widget(form.username) }}
+        {{ form_errors(form.username) }}
+    </div>
+    <div class="col-sm-3 col-md-2">
+        {{ form_label(form.identificationCard) }}
+        {{ form_widget(form.identificationCard) }}
+        {{ form_errors(form.identificationCard) }}
+    </div>
+</div>
+<div class="page-header">
+    <h3> <i class="fa fa-shield" aria-hidden="true"></i> Segurança</h3>
+</div>
+<div class="row">
+    <div class="col-sm-3 col-md-2">
+        {{ form_label(form.plainPassword.first) }}
+        {{ form_widget(form.plainPassword.first) }}
+        {{ form_errors(form.plainPassword.first) }}
+    </div>
+    <div class="col-sm-3 col-md-2">
+        {{ form_label(form.plainPassword.second) }}
+        {{ form_widget(form.plainPassword.second) }}
+        {{ form_errors(form.plainPassword.second) }}
+    </div>
+</div>
+{{ form_widget(form._token) }}
+<hr>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-actions">
+            <button type="submit" class="btn {{ button_css|default('btn-primary btn-fw ') }} waves-effect">
+                {{ button_label|default('Salvar') }}
+            </button>
+        </div>
+    </div>
+</div>
+

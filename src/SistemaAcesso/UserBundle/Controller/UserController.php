@@ -8,6 +8,7 @@ use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
 use SistemaAcesso\BaseBundle\Form\Type\Filter\UniversalFilterType;
 use SistemaAcesso\UserBundle\Entity\User;
 use SistemaAcesso\UserBundle\Form\AdminType;
+use SistemaAcesso\UserBundle\Form\UserAccessType;
 use SistemaAcesso\UserBundle\Form\UserProfileType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -27,6 +28,7 @@ class UserController extends Controller
     /**
      * @Route("/", name="user_index")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function indexAction(Request $request)
     {
@@ -77,7 +79,6 @@ class UserController extends Controller
                 $this->addSuccessMessage('user.new.success');
 
             } catch (\Exception $e) {
-                //echo $e->getMessage(); die;
                 $this->addErrorMessage('user.new.error');
 
             }
@@ -146,11 +147,44 @@ class UserController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
-                $this->addSuccessMessage('user.edit.success');
+                $this->addSuccessMessage('user.profile.success');
 
             } catch (\Exception $e) {
 
-                $this->addErrorMessage('user.edit.error');
+                $this->addErrorMessage('user.profile.error');
+
+            }
+        }
+
+        return array(
+            'user' => $user,
+            'form' => $fom->createView(),
+        );
+    }
+
+    /**
+     * @Route("/edit-access-data", name="user_edit_access_data")
+     * @Method({"GET", "POST"})
+     */
+    public function editAccessDataAction(Request $request)
+    {
+        $user = $this->getUser();
+
+        $fom = $this->createForm(new UserAccessType(), $user);
+
+        $fom->handleRequest($request);
+
+        if ($fom->isSubmitted() && $fom->isValid()) {
+
+            try {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                $this->addSuccessMessage('user.access.success');
+
+            } catch (\Exception $e) {
+
+                $this->addErrorMessage('user.access.error');
 
             }
         }

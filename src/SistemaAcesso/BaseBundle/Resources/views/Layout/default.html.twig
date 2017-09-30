@@ -43,9 +43,11 @@
     <nav class="sidebar-user__nav">
         <ul class="sidebar__nav">
             <li>
-                <a href="{{ path('user_profile')}}"><i class="fa fa-edit"></i> Editar perfil</a>
+                <a href="{{ path('user_profile') }}"><i class="fa fa-edit"></i> Editar perfil</a>
             </li>
-
+            <li>
+                <a href="{{ path('user_edit_access_data') }}"><i class="fa fa-shield" aria-hidden="true"></i> Segurança</a>
+            </li>
             <li>
                 <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Sair</a>
             </li>
@@ -68,10 +70,12 @@
                     <i class="fa fa-th-list" aria-hidden="true"></i>
                     Semestres
                 </a>
-                <a href="{{ path('teacher_index') }}">
-                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                    Professores
-                </a>
+                {% if app.user.granted('ROLE_ADMIN') %}
+                    <a href="{{ path('teacher_index') }}">
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        Professores
+                    </a>
+                {% endif %}
                 <a href="{{ path('course_index') }}">
                     <i class="fa fa-book" aria-hidden="true"></i>
                     Cursos
@@ -90,10 +94,12 @@
                     <i class="fa fa-calendar-o" aria-hidden="true"></i>
                     Horários
                 </a>
-                <a href="{{ path('access_index') }}">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                    Acessos Realizados
-                </a>
+                {% if app.user.granted('ROLE_ADMIN') %}
+                    <a href="{{ path('access_index') }}">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        Acessos Realizados
+                    </a>
+                {% endif %}
             </li>
         </ul>
 
@@ -106,18 +112,22 @@
                         Ambientes
                     </a>
                 </li>
-                <li>
-                    <a href="{{ path('user_index') }}">
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        Usuários
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('person_index') }}">
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        Usuários Externos
-                    </a>
-                </li>
+                {% if app.user.granted('ROLE_ADMIN') %}
+                    <li>
+                        <a href="{{ path('user_index') }}">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            Usuários
+                        </a>
+                    </li>
+                {% endif %}
+                {% if app.user.granted('ROLE_ADMIN') %}
+                    <li>
+                        <a href="{{ path('person_index') }}">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            Usuários Externos
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         {% endif %}
     </nav>
@@ -137,7 +147,8 @@
                     <div class="collapse navbar-collapse" id="navbar_main">
 
 
-                        <a href="#" class="visible-sm visible-xs btn btn-default navbar-btn navbar-left" id="sidebar__toggle">
+                        <a href="#" class="visible-sm visible-xs btn btn-default navbar-btn navbar-left"
+                           id="sidebar__toggle">
                             <i class="fa fa-bars"></i>
                         </a>
 

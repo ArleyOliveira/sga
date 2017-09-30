@@ -1,11 +1,11 @@
 {% extends 'SistemaAcessoBaseBundle::Layout/layout.html.twig' %}
-{% set page_title = 'Perfil' %}
+{% set page_title = 'Dados de acesso' %}
 {% block body %}
 
     <div class="panel panel-default">
         <div class="panel-body">
             {% include 'SistemaAcessoBaseBundle::Layout/flashMessages.html.twig' %}
-            {{ include('SistemaAcessoUserBundle::User/_formProfile.html.twig') }}
+            {{ include('SistemaAcessoUserBundle::User/_formAccessData.html.twig') }}
         </div>
     </div>
 

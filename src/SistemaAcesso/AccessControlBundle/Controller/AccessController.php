@@ -12,6 +12,7 @@ namespace SistemaAcesso\AccessControlBundle\Controller;
 use mikehaertl\wkhtmlto\Pdf;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use SistemaAcesso\AccessControlBundle\Entity\Access;
 use SistemaAcesso\BaseBundle\Entity\Filter\UniversalFilter;
@@ -31,6 +32,7 @@ class AccessController extends Controller
     /**
      * @Route("/", name="access_index")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function indexAction(Request $request)
     {

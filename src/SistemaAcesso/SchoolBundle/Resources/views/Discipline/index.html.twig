@@ -33,7 +33,8 @@
                                         <button type="submit" class="btn btn-primary btn-sm waves-effect"><i
                                                     class="fa fa-search" aria-hidden="true"></i> Buscar
                                         </button>
-                                        <a href="{{ path('discipline_index') }}" class="btn btn-floating btn-warning title" title="limpar">
+                                        <a href="{{ path('discipline_index') }}"
+                                           class="btn btn-floating btn-warning title" title="limpar">
                                             <i class="fa fa-eraser"></i>
                                         </a>
                                     </div>
@@ -65,10 +66,14 @@
                             {{ discipline.name }}
                         </td>
                         <td>
-                            <strong>{{ discipline.course.sigla }}</strong> <a class="title" title="Ir para o curso"
-                                                                              href="{{ path('course_edit', {'id' : discipline.course.id}) }}"
-                                                                              target="_blank"><i
-                                        class="fa fa-external-link-square" aria-hidden="true"></i></a><br>
+                            <strong>{{ discipline.course.sigla }}</strong>
+                            {% if app.user.granted('ROLE_ADMIN') %}
+                                <a class="title" title="Ir para o curso"
+                                   href="{{ path('course_edit', {'id' : discipline.course.id}) }}"
+                                   target="_blank"><i
+                                            class="fa fa-external-link-square" aria-hidden="true"></i></a>
+                            {% endif %}
+                            <br>
                             {{ discipline.course.name }} | {{ discipline.course.knowledgeArea }}
                         </td>
                         <td>

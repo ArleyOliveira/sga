@@ -27,7 +27,7 @@ class DisciplineController extends Controller
     /**
      * @Route("/", name="discipline_index")
      * @Method("GET")
-     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_USER')")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_TEACHER')")
      */
     public function indexAction(Request $request)
     {

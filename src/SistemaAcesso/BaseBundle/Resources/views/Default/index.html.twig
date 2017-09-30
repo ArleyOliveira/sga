@@ -16,58 +16,60 @@
     </div>#}
 
     <div class="row" style="font-weight: bold" id="count-item" data-url="{{ path('default_get_data') }}">
-        <div class="col-xs-6 col-sm-3">
-            <div class="dashboard-stats__item blue">
-                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                <h3 class="dashboard-stats__title">
+        {% if app.user.granted('ROLE_ADMIN') %}
+            <div class="col-xs-6 col-sm-3">
+                <div class="dashboard-stats__item blue">
+                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                    <h3 class="dashboard-stats__title">
                     <span id="count-teachers">
                         <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
                         <span class="sr-only">Loading...</span>
                     </span>
-                    <small>Professores</small>
-                </h3>
-            </div>
+                        <small>Professores</small>
+                    </h3>
+                </div>
 
-        </div>
-        <div class="col-xs-6 col-sm-3">
-            <div class="dashboard-stats__item amber">
-                <i class="fa fa-users" aria-hidden="true"></i>
-                <h3 class="dashboard-stats__title">
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="dashboard-stats__item amber">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <h3 class="dashboard-stats__title">
                     <span id="count-users">
                         <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
                         <span class="sr-only">Loading...</span>
                     </span>
-                    <small>Usuários</small>
-                </h3>
-            </div>
+                        <small>Usuários</small>
+                    </h3>
+                </div>
 
-        </div>
-        <div class="col-xs-6 col-sm-3">
-            <div class="dashboard-stats__item green">
-                <i class="fa fa-shield" aria-hidden="true"></i>
-                <h3 class="dashboard-stats__title">
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="dashboard-stats__item green">
+                    <i class="fa fa-shield" aria-hidden="true"></i>
+                    <h3 class="dashboard-stats__title">
                     <span id="count-environments">
                         <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
                         <span class="sr-only">Loading...</span>
                     </span>
-                    <small>Ambientes</small>
-                </h3>
-            </div>
+                        <small>Ambientes</small>
+                    </h3>
+                </div>
 
-        </div>
-        <div class="col-xs-6 col-sm-3">
-            <div class="dashboard-stats__item indigo">
-                <i class="fa fa-sign-in" aria-hidden="true"></i>
-                <h3 class="dashboard-stats__title">
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="dashboard-stats__item indigo">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                    <h3 class="dashboard-stats__title">
                     <span id="count-access">
                         <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
                         <span class="sr-only">Loading...</span>
                     </span>
-                    <small>Acessos</small>
-                </h3>
-            </div>
+                        <small>Acessos</small>
+                    </h3>
+                </div>
 
-        </div>
+            </div>
+        {% endif %}
     </div>
     <div class="row">
         <div class="col-sm-5">
@@ -78,7 +80,8 @@
                     </h3>
                     {% if app.user.granted('ROLE_ADMIN') %}
                         <div class="pull-right" align="right">
-                            <a href="{{ path('environment_new') }}" class="btn btn-sm btn-success waves-effect pull-right"> Novo </a>
+                            <a href="{{ path('environment_new') }}"
+                               class="btn btn-sm btn-success waves-effect pull-right"> Novo </a>
                         </div>
                     {% endif %}
                 </div>
@@ -105,9 +108,11 @@
                     <a id="link_get_envirionment" data-url="{{ path('environment_get_list') }}"
                        class="btn btn-primary btn-sm"> <i
                                 class="fa fa-refresh" aria-hidden="true"></i> Atualizar </a>
-                    <a href="{{ path('environment_index') }}" class="btn btn-link btn-sm"><i class="fa fa-cogs"
-                                                                                             aria-hidden="true"></i>
-                        Gerenciar</a>
+                    {% if app.user.granted('ROLE_ADMIN') %}
+                        <a href="{{ path('environment_index') }}" class="btn btn-link btn-sm"><i class="fa fa-cogs"
+                                                                                                 aria-hidden="true"></i>
+                            Gerenciar</a>
+                    {% endif %}
                 </div>
             </div> <!-- / .panel -->
         </div>
@@ -132,9 +137,11 @@
                 <div class="panel-footer">
                     <a id="link_access_load" data-url="{{ path('access_last') }}" class="btn btn-primary btn-sm"> <i
                                 class="fa fa-refresh" aria-hidden="true"></i> Atualizar </a>
-                    <a href="{{ path('access_index') }}" class="btn btn-link btn-sm"> <i class="fa fa-eye"
-                                                                                         aria-hidden="true"></i> Ver
-                        todos</a>
+                    {% if app.user.granted('ROLE_ADMIN') %}
+                        <a href="{{ path('access_index') }}" class="btn btn-link btn-sm"> <i class="fa fa-eye"
+                                                                                             aria-hidden="true"></i> Ver
+                            todos</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
