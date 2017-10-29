@@ -1,14 +1,40 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div style="padding: 20px;">
 
-       <h3>Esqueceu a senha?</h3>
+<div class="row">
+    <div class="col-xs-12">
+        <div style="padding: 20px;">
+            {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+            <h2 class="text-center">Informe sua nova senha</h2>
+            <div class="col-xs-12">
+                <div class="form-group {% if form.plainPassword.first.vars.errors|length %} has-error {% endif %}">
+                    {{ form_label(form.plainPassword.first) }}
+                    {{ form_widget(form.plainPassword.first) }}
+                    {{ form_errors(form.plainPassword.first) }}
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group {% if form.plainPassword.second.vars.errors|length %} has-error {% endif %}">
+                    {{ form_label(form.plainPassword.second) }}
+                    {{ form_widget(form.plainPassword.second) }}
+                    {{ form_errors(form.plainPassword.second) }}
+                </div>
+            </div>
 
-    {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="Alterar senha" class="btn btn-success" />
-    </div>
-    {{ form_end(form) }}
+            <br>
+            <div class="col-xs-12">
+                <div>
+                    <input type="submit" value="Alterar senha" class="btn btn-success btn-block"/>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <a href="{{ path('fos_user_security_login') }}" class="btn btn-link pull-left btn-block"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</a>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
     </div>
 </div>
+</div>
+

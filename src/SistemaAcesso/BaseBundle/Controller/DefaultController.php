@@ -39,22 +39,27 @@ class DefaultController extends Controller
      * @Route("/email-test", name="default_email_test")
      * @Method("GET")
      */
-    public function testEmailAction(){
+    public function testEmailAction(Request $request)
+    {
         $message = \Swift_Message::newInstance()
             ->setSubject('Hello Email')
-            ->setFrom('arley.msn@hotmail.com')
-            ->setTo('arley.msn@hotmail.com')
+            ->setFrom('arley.msn@gmail.com', 'SGA')
+            ->setTo('arley.msn@hotmail.com', 'Arley Oliveira')
             ->setBody(
                 $this->renderView(
                     'email/Hello.html.twig',
-                    array('nome' => 'Arley Oliveira')
-                )
-            )
-        ;
+                    array('name' => 'Arley Oliveira')
+                ),
+                'text/html'
+            );
+
         $this->container->get('mailer')->send($message);
 
 
-        die('!ok');
+        return $this->render(
+            'email/Hello.html.twig',
+            array('name' => 'Arley Oliveira')
+        );
     }
 
     /**
@@ -72,7 +77,7 @@ class DefaultController extends Controller
             $teachers = $em->getRepository(Teacher::class)->findFilter(true);
             $users = $em->getRepository(User\Admin::class)->findBy(['active' => true]);
             $persons = $em->getRepository(User\Person::class)->findBy(['active' => true]);
-            $access = $em->getRepository(Access::class)->findBy(['active' => true ]);
+            $access = $em->getRepository(Access::class)->findBy(['active' => true]);
 
             $data = [
                 'countTeacher' => count($teachers),

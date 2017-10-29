@@ -1,17 +1,24 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "SistemaAcessoUserBundle:Resetting:layout.html.twig" %}
+
+{% set page_title = 'Redefinir senha' %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <div style="padding: 20px;">
+    <div class="row">
+        <div class="col-xs-12">
+            <div style="padding: 20px;">
 
-        <h3>Esqueceu a senha?</h3>
-
-
+                <h2 class="text-center">Redefinição de senha</h2>
                 <br/>
                 <br/>
                 <p class="alert alert-success">
                     {{ 'resetting.check_email'|trans({'%email%': email}) }}
                 </p>
+
+                <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary pull-left btn-block"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</a>
+            </div>
         </div>
+    </div>
+
 {% endblock %}

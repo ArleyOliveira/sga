@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SGA {% if page_title is defined %} - {{ page_title }} {% endif %}</title>
+
+    <!-- CSS Plugins -->
+    <link rel="stylesheet" href="{{ asset('bundles/sistemaacessobase/libs/font-awesome/css/font-awesome.min.css') }}"
+          type="text/css"/>
+    <link rel="stylesheet"
+          href="{{ asset('bundles/sistemaacessobase/libs/perfect-scrollbar/css/perfect-scrollbar.min.css') }}"
+          type="text/css"/>
+
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="{{ asset('bundles/sistemaacessobase/libs/template/css/styles.css') }}"
+          type="text/css"/>
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300,500' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+
+<!-- MAIN CONTENT
+================================================== -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+
+            {% if app.request.hasPreviousSession %}
+                {% for type, messages in app.session.flashbag.all() %}
+                    {% for message in messages %}
+                        <div class="flash-{{ type }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+
+            <div>
+                {% block fos_user_content %}
+                {% endblock fos_user_content %}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScript
+================================================== -->
+
+<!-- JS Global -->
+<script src="{{ asset('bundles/sistemaacessobase/libs/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('bundles/sistemaacessobase/libs/bootstrap/js/bootstrap.min.js') }}"></script>
+
+<!-- JS Plugins -->
+<script src="{{ asset('bundles/sistemaacessobase/libs/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js') }}"></script>
+
+
+<!-- JS Custom -->
+<script src="{{ asset('bundles/sistemaacessobase/libs/template/css/custom.js') }}"></script>
+
+</body>
+</html>

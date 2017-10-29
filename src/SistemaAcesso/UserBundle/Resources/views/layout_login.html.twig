@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="col-sm-6 text-right">
                                     <button type="submit" class="btn btn-primary">
-                                        Entrar
+                                        <i class="fa fa-sign-in" aria-hidden="true"></i> Entrar
                                     </button>
                                 </div>
                             </div>
@@ -86,13 +86,13 @@
                     <div class="panel-footer">
                         <a href="#" data-toggle="collapse" data-target="#sign__resend-password">Esqueceu sua senha?</a>
                         <div class="collapse" id="sign__resend-password">
-                            <form action="{{ path("fos_user_security_check") }}" method="post" class="form-inline">
+                            <form action="{{ path("fos_user_resetting_send_email") }}" method="post" class="form-inline">
                                 <div class="form-group">
                                     <label class="sr-only">Entre com seu e-mail</label>
                                     <input type="email" class="form-control" placeholder="Entre com seu e-mail">
                                 </div>
                                 <button type="submit" class="btn btn-primary">
-                                    Recuperar
+                                    <i class="fa fa-key" aria-hidden="true"></i> Recuperar
                                 </button>
                                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                             </form>

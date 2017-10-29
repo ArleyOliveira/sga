@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>#}
-
+    {% include 'SistemaAcessoBaseBundle::Layout/flashMessages.html.twig' %}
     <div class="row" style="font-weight: bold" id="count-item" data-url="{{ path('default_get_data') }}">
         {% if app.user.granted('ROLE_ADMIN') %}
             <div class="col-xs-6 col-sm-3">
