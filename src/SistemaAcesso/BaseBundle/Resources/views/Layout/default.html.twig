@@ -1,5 +1,7 @@
 <!-- SIDEBAR
 ================================================== -->
+
+{% if app.user is defined %}
 <div class="sidebar">
     <div class="modal-placeholder">
 
@@ -133,6 +135,7 @@
     </nav>
 
 </div>
+{% endif %}
 
 <!-- MAIN CONTENT
 ================================================== -->
