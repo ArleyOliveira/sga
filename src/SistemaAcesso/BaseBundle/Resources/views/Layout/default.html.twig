@@ -1,141 +1,145 @@
 <!-- SIDEBAR
 ================================================== -->
 
-{% if app.user is defined and app.user %}
+
 <div class="sidebar">
     <div class="modal-placeholder">
 
     </div>
+
     <!-- Close button (mobile devices) -->
     <div class="sidebar__close">
         <img src="{{ asset('bundles/sistemaacessobase/imagens/svg/close.svg') }}" alt="Close sidebar">
         {#<i class="fa fa-times fa-2x" style="color: white" aria-hidden="true"></i>#}
     </div>
 
-    <!-- Sidebar user -->
-    <div class="sidebar__user">
+    {% if app.user is defined and app.user %}
 
-        <!-- Sidebar user avatar -->
-        <div class="sidebar-user__avatar">
-            <img src="{{ asset('bundles/sistemaacessobase/imagens/user/avatar_'~app.user.sex~'.png') }}" alt="...">
+        <!-- Sidebar user -->
+        <div class="sidebar__user">
+
+            <!-- Sidebar user avatar -->
+            <div class="sidebar-user__avatar">
+                <img src="{{ asset('bundles/sistemaacessobase/imagens/user/avatar_'~app.user.sex~'.png') }}" alt="...">
+            </div>
+
+            <!-- Sidebar user info -->
+            <a class="sidebar-user__info">
+                <h4>
+                    {% if app.user is defined %}
+                        {{ app.user.name }}
+                    {% else %}
+                        Anônimo
+                    {% endif %}
+                </h4>
+                <p>
+                    {% if app.user is defined %}
+                        {% if app.user.granted('ROLE_ADMIN') %}
+                            Administrador
+                        {% else %}
+                            Professor
+                        {% endif %}{% endif %}
+                    <i class="fa fa-caret-down"></i></p>
+            </a>
+
         </div>
 
-        <!-- Sidebar user info -->
-        <a class="sidebar-user__info">
-            <h4>
-                {% if app.user is defined %}
-                    {{ app.user.name }}
-                {% else %}
-                    Anônimo
-                {% endif %}
-            </h4>
-            <p>
-                {% if app.user is defined %}
-                    {% if app.user.granted('ROLE_ADMIN') %}
-                        Administrador
-                    {% else %}
-                        Professor
-                    {% endif %}{% endif %}
-                <i class="fa fa-caret-down"></i></p>
-        </a>
-
-    </div>
-
-    <!-- Sidebar user nav -->
-    <nav class="sidebar-user__nav">
-        <ul class="sidebar__nav">
-            <li>
-                <a href="{{ path('user_profile') }}"><i class="fa fa-edit"></i> Editar perfil</a>
-            </li>
-            <li>
-                <a href="{{ path('user_edit_access_data') }}"><i class="fa fa-shield" aria-hidden="true"></i> Segurança</a>
-            </li>
-            <li>
-                <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Sair</a>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- Sidebar nav -->
-    <nav>
-        <ul class="sidebar__nav">
-            <li class="sidebar-nav__heading">Dashboard</li>
-            <li>
-                <a href="{{ path('default_index') }}"><i class="fa fa-th-large"></i> Dashboard</a>
-            </li>
-        </ul>
-
-        <ul class="sidebar__nav">
-            <li class="sidebar-nav__heading">Gerenciamento</li>
-            <li>
-                <a href="{{ path('semester_index') }}">
-                    <i class="fa fa-th-list" aria-hidden="true"></i>
-                    Semestres
-                </a>
-                {% if app.user.granted('ROLE_ADMIN') %}
-                    <a href="{{ path('teacher_index') }}">
-                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        Professores
-                    </a>
-                {% endif %}
-                <a href="{{ path('course_index') }}">
-                    <i class="fa fa-book" aria-hidden="true"></i>
-                    Cursos
-                </a>
-                <a href="{{ path('discipline_index') }}">
-                    <i class="fa fa-file-o" aria-hidden="true"></i>
-                    Disciplinas
-                </a>
-            </li>
-        </ul>
-
-        <ul class="sidebar__nav">
-            <li class="sidebar-nav__heading">Acessos</li>
-            <li>
-                <a href="{{ path('schedule_index') }}">
-                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                    Horários
-                </a>
-                {% if app.user.granted('ROLE_ADMIN') %}
-                    <a href="{{ path('access_index') }}">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i>
-                        Acessos Realizados
-                    </a>
-                {% endif %}
-            </li>
-        </ul>
-
-        {% if app.user.granted('ROLE_ADMIN') %}
+        <!-- Sidebar user nav -->
+        <nav class="sidebar-user__nav">
             <ul class="sidebar__nav">
-                <li class="sidebar-nav__heading">Controle de Acesso</li>
                 <li>
-                    <a href="{{ path('environment_index') }}">
-                        <i class="fa fa-shield" aria-hidden="true"></i>
-                        Ambientes
+                    <a href="{{ path('user_profile') }}"><i class="fa fa-edit"></i> Editar perfil</a>
+                </li>
+                <li>
+                    <a href="{{ path('user_edit_access_data') }}"><i class="fa fa-shield" aria-hidden="true"></i>
+                        Segurança</a>
+                </li>
+                <li>
+                    <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Sair</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Sidebar nav -->
+        <nav>
+            <ul class="sidebar__nav">
+                <li class="sidebar-nav__heading">Dashboard</li>
+                <li>
+                    <a href="{{ path('default_index') }}"><i class="fa fa-th-large"></i> Dashboard</a>
+                </li>
+            </ul>
+
+            <ul class="sidebar__nav">
+                <li class="sidebar-nav__heading">Gerenciamento</li>
+                <li>
+                    <a href="{{ path('semester_index') }}">
+                        <i class="fa fa-th-list" aria-hidden="true"></i>
+                        Semestres
+                    </a>
+                    {% if app.user.granted('ROLE_ADMIN') %}
+                        <a href="{{ path('teacher_index') }}">
+                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                            Professores
+                        </a>
+                    {% endif %}
+                    <a href="{{ path('course_index') }}">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                        Cursos
+                    </a>
+                    <a href="{{ path('discipline_index') }}">
+                        <i class="fa fa-file-o" aria-hidden="true"></i>
+                        Disciplinas
                     </a>
                 </li>
-                {% if app.user.granted('ROLE_ADMIN') %}
-                    <li>
-                        <a href="{{ path('user_index') }}">
-                            <i class="fa fa-users" aria-hidden="true"></i>
-                            Usuários
-                        </a>
-                    </li>
-                {% endif %}
-                {% if app.user.granted('ROLE_ADMIN') %}
-                    <li>
-                        <a href="{{ path('person_index') }}">
-                            <i class="fa fa-users" aria-hidden="true"></i>
-                            Usuários Externos
-                        </a>
-                    </li>
-                {% endif %}
             </ul>
-        {% endif %}
-    </nav>
 
+            <ul class="sidebar__nav">
+                <li class="sidebar-nav__heading">Acessos</li>
+                <li>
+                    <a href="{{ path('schedule_index') }}">
+                        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                        Horários
+                    </a>
+                    {% if app.user.granted('ROLE_ADMIN') %}
+                        <a href="{{ path('access_index') }}">
+                            <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            Acessos Realizados
+                        </a>
+                    {% endif %}
+                </li>
+            </ul>
+
+            {% if app.user.granted('ROLE_ADMIN') %}
+                <ul class="sidebar__nav">
+                    <li class="sidebar-nav__heading">Controle de Acesso</li>
+                    <li>
+                        <a href="{{ path('environment_index') }}">
+                            <i class="fa fa-shield" aria-hidden="true"></i>
+                            Ambientes
+                        </a>
+                    </li>
+                    {% if app.user.granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('user_index') }}">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                Usuários
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if app.user.granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('person_index') }}">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                Usuários Externos
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </nav>
+    {% endif %}
 </div>
-{% endif %}
+
 
 <!-- MAIN CONTENT
 ================================================== -->
@@ -159,10 +163,13 @@
                             {% if page_title is defined %} {{ page_title }} {% endif %}
                         </div>
 
-                        <a href="{{ path('fos_user_security_logout') }}"
-                           class="btn btn-primary navbar-btn navbar-right">
-                            Sair
-                        </a>
+                        {% if app.user is defined and app.user %}
+
+                            <a href="{{ path('fos_user_security_logout') }}"
+                               class="btn btn-primary navbar-btn navbar-right">
+                                Sair
+                            </a>
+                        {% endif %}
 
                         {#<ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
