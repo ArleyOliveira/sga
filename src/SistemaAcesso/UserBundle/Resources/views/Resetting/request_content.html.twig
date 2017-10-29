@@ -17,8 +17,8 @@
                     method="POST"
                     class="fos_user_resetting_request">
                 <div class="form-group">
-                    <label for="username">E-mail ou usuário</label>
-                    <input type="email" id="username" name="username" placeholder="E-mail ou usuário" class="form-control"
+                    <label for="username">E-mail</label>
+                    <input type="email" id="username" name="username" placeholder="E-mail" class="form-control"
                            required>
 
                 </div>
@@ -37,7 +37,7 @@
                                 {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                             </a>
                         {% else %}
-                            <a href="{{ path('fos_user_security_login') }}" class="btn btn-link pull-left btn-block">Voltar</a>
+                            <a href="{{ path('fos_user_security_login') }}" class="btn btn-link pull-left btn-block"><i class="fa fa-sign-in" aria-hidden="true"></i> Autenticar-se</a>
                         {% endif %}
                     </div>
                 </div>

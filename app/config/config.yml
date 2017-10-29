@@ -100,5 +100,5 @@ fos_user:
         email:
            template: email/password_resetting.email.twig
            from_email:
-                address:        arley.msn@gmail.com
-                sender_name:    SGA
+                address:        sga.ifnmg@gmail.com
+                sender_name:    SGA - IFNMG
