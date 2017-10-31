@@ -72,7 +72,10 @@
     </div>
 </div>
 
-<div class="row">
+{{ include('SistemaAcessoUserBundle::User/_formAccessData.html.twig') }}
+
+
+{#<div class="row">
     <div class="col-sm-2">
         {{ form_label(form.username) }}
         {{ form_widget(form.username) }}
@@ -93,8 +96,8 @@
         {{ form_widget(form.plainPassword.second) }}
         {{ form_errors(form.plainPassword.second) }}
     </div>
-</div>
-<hr>
+</div>#}
+
 <div class="row">
     <div class="col-sm-12">
         <div class="form-actions">

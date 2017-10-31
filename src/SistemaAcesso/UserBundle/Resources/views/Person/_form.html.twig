@@ -76,7 +76,8 @@
         {{ form_widget(form.active) }}
     </div>
 </div>
-<div class="row">
+{{ include('SistemaAcessoUserBundle::User/_formAccessData.html.twig') }}
+{#<div class="row">
     <div class="col-sm-2">
         <div class="form-group {% if form.plainPassword.first.vars.errors|length %} has-error {% endif %}">
             {{ form_label(form.username) }}
@@ -103,9 +104,9 @@
             {{ form_errors(form.plainPassword.second) }}
         </div>
     </div>
-</div>
+</div>#}
 {{ form_widget(form._token) }}
-<hr>
+
 <div class="row">
     <div class="col-sm-12">
         <div class="form-actions">

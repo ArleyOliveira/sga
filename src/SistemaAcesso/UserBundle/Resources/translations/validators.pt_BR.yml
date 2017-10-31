@@ -4,13 +4,15 @@ user:
     unique_identification_card: Já existe um usuário com identificador!
     black_name: Informe um nome para o usuário!
     blank_email: Informe um e-mail para o usuário!
+    blank_username: Informe o nome do usuário!
     invalid_email: Endereço de e-mail inválido!
     blank_cpf: Informe um cpf para o usuário!
     blank_password: Informe uma senha para o usuário!
     min_length_password: A senha deve ser maior que {{ limit }} caracteres!
     blank_role: Informe um nível de acesso para o usuário!
     black_date_birth: Informe uma data de nascimento para o usuário!
-    blank_sex: Informe o seu sexo!
+    blank_sex: Informe o sexo do usuário!
+
 
 
 person:

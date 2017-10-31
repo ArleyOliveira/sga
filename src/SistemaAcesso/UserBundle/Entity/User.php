@@ -7,9 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use SistemaAcesso\SchoolBundle\Entity\Schedule;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use SistemaAcesso\BaseBundle\Validator\Constraints as AssertBaseBundle;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity
@@ -396,6 +398,18 @@ abstract class User extends BaseUser
     public function setIdentificationCard($identificationCard)
     {
         $this->identificationCard = $identificationCard;
+    }
+
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('username', new Assert\NotNull(['message' => 'user.blank_username']));
+        $metadata->addPropertyConstraint('plainPassword', new Assert\NotNull(['message' => 'user.blank_password']));
+        $metadata->addPropertyConstraint('email', new Assert\NotNull(['message' => 'user.blank_email']));
+        $metadata->addPropertyConstraint('email', new Assert\Email(array(
+            'message' => 'O valor "{{ value }}" não é um válido.',
+            'checkMX' => true,
+        )));
     }
 
 }

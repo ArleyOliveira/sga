@@ -89,7 +89,7 @@ class UniversalFilterType extends AbstractType
             ->add('mode', ChoiceType::class, [
                 'label' => 'Modo',
                 'choices' => [
-                    1 => "Vizualização",
+                    1 => "Visualização",
                     2 => "Edição"
                 ],
             ])
