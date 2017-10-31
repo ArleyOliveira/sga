@@ -404,7 +404,7 @@ abstract class User extends BaseUser
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
         $metadata->addPropertyConstraint('username', new Assert\NotNull(['message' => 'user.blank_username']));
-        $metadata->addPropertyConstraint('plainPassword', new Assert\NotNull(['message' => 'user.blank_password']));
+        //$metadata->addPropertyConstraint('plainPassword', new Assert\NotNull(['message' => 'user.blank_password']));
         $metadata->addPropertyConstraint('email', new Assert\NotNull(['message' => 'user.blank_email']));
         $metadata->addPropertyConstraint('email', new Assert\Email(array(
             'message' => 'O valor "{{ value }}" não é um válido.',
