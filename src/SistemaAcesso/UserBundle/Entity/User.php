@@ -407,7 +407,7 @@ abstract class User extends BaseUser
         //$metadata->addPropertyConstraint('plainPassword', new Assert\NotNull(['message' => 'user.blank_password']));
         $metadata->addPropertyConstraint('email', new Assert\NotNull(['message' => 'user.blank_email']));
         $metadata->addPropertyConstraint('email', new Assert\Email(array(
-            'message' => 'O valor "{{ value }}" não é um válido.',
+            'message' => 'O valor "{{ value }}" não é válido para email.',
             'checkMX' => true,
         )));
     }
