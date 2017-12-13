@@ -26,7 +26,7 @@ class Person extends User
     const ACTIVITIES = [
         1 => "Limpeza",
         2 => "Monitoria",
-        3 => "Cursos",
+        3 => "Curso",
         4 => "Pelestra",
         5 => "Outros",
     ];

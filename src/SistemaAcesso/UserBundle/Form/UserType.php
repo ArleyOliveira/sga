@@ -39,7 +39,7 @@ class UserType extends AbstractType
                 'horizontal_label_class' => '',
                 'format' => 'dd/MM/y',
                 'widget' => 'single_text',
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'class' => 'datepicker'
                 ]

@@ -59,7 +59,6 @@ abstract class User extends BaseUser
     /**
      * @var \DateTime $dateBirth
      * @ORM\Column(type="datetime", nullable=true, name="date_birth")
-     * @Assert\NotBlank(message="user.black_date_birth")
      */
     private $dateBirth;
 
