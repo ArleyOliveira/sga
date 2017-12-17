@@ -92,6 +92,7 @@ class UniversalFilterType extends AbstractType
                     1 => "Visualização",
                     2 => "Edição"
                 ],
+                'required' => false,
             ])
 
             ->add('startDate', 'date', [
@@ -121,7 +122,8 @@ class UniversalFilterType extends AbstractType
             ->add('activity', ChoiceType::class, [
                 'label' => 'Atividade a ser Realizada',
                 'choices' => User\Person::ACTIVITIES,
-                'placeholder' => "Atividade"
+                'placeholder' => "Atividade",
+                'required' => false
             ])
 
         ;

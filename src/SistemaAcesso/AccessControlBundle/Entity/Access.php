@@ -278,4 +278,37 @@ class Access
         return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getDiffInAndOut(){
+        $in = $this->entryDate;
+        $out = ($this->isIsOut()) ? $this->outDate : new DateTime('now');
+
+        $diff = $out->diff($in);
+
+        $str  = "";
+
+        if($diff->y){
+            $str .= "{$diff->y} ano(s) ";
+        }
+
+        if($diff->m){
+            $str .= "{$diff->m} mes(es) ";
+        }
+
+        if($diff->d){
+            $str .= "{$diff->d} dia(s) ";
+        }
+
+        if($diff->h){
+            $str .= "{$diff->h} hora(s) ";
+        }
+
+        if($diff->i){
+            $str .= "{$diff->i} minutos(s) ";
+        }
+
+        return $str;
+    }
 }

@@ -65,6 +65,7 @@
                 <th>Ambiente</th>
                 <th>Entrada em</th>
                 <th>Saída em</th>
+                <th>Tempo de uso</th>
                 <th>Usuário</th>
             </tr>
 
@@ -86,6 +87,7 @@
                             {{ access.outDate | date('d/m/Y H:i') }}
                         {% endif %}
                     </td>
+                    <th>{{ access.diffInAndOut }}</th>
                     <td>{{ access.user.name }}</td>
                 </tr>
             {% endfor %}
