@@ -78,17 +78,32 @@
                             <strong class="text-danger">Não</strong>
                         {% endif %}
                     </td>
-                    <td>{{ access.environment.name }}</td>
                     <td>
-                        {{ access.entryDate | date('d/m/Y H:i') }}
+                    <td class="text-help">
+                        <small>
+                            {{ access.environment.name }}
+                        </small>
                     </td>
                     <td>
-                        {% if access.outDate %}
-                            {{ access.outDate | date('d/m/Y H:i') }}
-                        {% endif %}
+                    <td class="text-help">
+                        <small>
+                            {{ access.entryDate | date('d/m/Y H:i') }}
+                        </small>
                     </td>
-                    <td class="text-help"><small>{{ access.diffInAndOut }}</small></td>
-                    <td>{{ access.user.name }}</td>
+                    <td>
+                    <td class="text-help">
+                        <small>
+                            {% if access.outDate %}
+                                {{ access.outDate | date('d/m/Y H:i') }}
+                            {% endif %}
+                        </small>
+                    </td>
+                    <td class="text-help">
+                        <small>{{ access.diffInAndOut }}</small>
+                    </td>
+                    <td class="text-help">
+                        <small>{{ access.user.name }}</small>
+                    </td>
                 </tr>
             {% endfor %}
 
