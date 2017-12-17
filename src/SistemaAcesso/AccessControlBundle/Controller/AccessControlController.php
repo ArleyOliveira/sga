@@ -37,6 +37,7 @@ class AccessControlController extends Controller
     public function checkAction(Request $request)
     {
         $httpCode = 200;
+        
         try {
 
             $str = file_get_contents('php://input');
