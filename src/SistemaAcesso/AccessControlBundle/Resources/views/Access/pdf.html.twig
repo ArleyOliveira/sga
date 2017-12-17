@@ -87,7 +87,7 @@
                             {{ access.outDate | date('d/m/Y H:i') }}
                         {% endif %}
                     </td>
-                    <th>{{ access.diffInAndOut }}</th>
+                    <td class="text-help"><small>{{ access.diffInAndOut }}</small></td>
                     <td>{{ access.user.name }}</td>
                 </tr>
             {% endfor %}
