@@ -102,3 +102,46 @@ fos_user:
            from_email:
                 address:        sga.ifnmg@gmail.com
                 sender_name:    SGA - IFNMG
+
+
+monolog:
+    handlers:
+        # this "file_log" key could be anything
+        filter_for_errors:
+            type: fingers_crossed
+            # if *one* log is error or higher, pass *all* to file_log
+            action_level: error
+            handler: file_log
+        file_log:
+            type: stream
+            # log to app/logs/(environment).log
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            # log *all* messages (debug is lowest level)
+            level: debug
+
+        syslog_handler:
+            type: syslog
+            # log error-level messages and higher
+            level: error
+        mail:
+            type:         fingers_crossed
+            # 500 errors are logged at the critical level
+            action_level: critical
+            # to also log 400 level errors (but not 404's):
+            # action_level: error
+            # excluded_404s:
+            #     - ^/
+            handler:      deduplicated
+        deduplicated:
+            type:    deduplication
+            handler: swift
+        swift:
+            type:       swift_mailer
+            from_email: 'sga.ifnmg@gmail.com'
+            to_email:   'arley.msn@hotmail.com'
+            # or list of recipients
+            # to_email:   ['dev1@example.com', 'dev2@example.com', ...]
+            subject:    'An Error Occurred! %%message%%'
+            level:      debug
+            formatter:  monolog.formatter.html
+            content_type: text/html

@@ -248,7 +248,13 @@ String getSenha(){
                String auxiliar (keypressed);
                senha = senha + auxiliar; 
            }
-           msgDisplayLine2(senha); 
+           
+           String asterisco = "";
+           for (int i=0; i <= senha.length(); i++){
+              asterisco = asterisco + "*";
+           }
+           msgDisplayLine2(asterisco);
+            
         }  
       }while(1);
 }

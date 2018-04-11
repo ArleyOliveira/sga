@@ -36,7 +36,7 @@
                                         <button type="submit" class="btn btn-primary btn-sm waves-effect"><i
                                                     class="fa fa-search" aria-hidden="true"></i> Buscar
                                         </button>
-                                        <a href="{{ path('access_index') }}" class="btn btn-floating btn-warning title" title="limpar">
+                                        <a href="{{ path('access_index') }}" class="btn btn-floating btn-default title" title="limpar">
                                             <i class="fa fa-eraser"></i>
                                         </a>
                                     </div>
@@ -70,6 +70,7 @@
                                 <th>Ambiente</th>
                                 <th>Entrada em</th>
                                 <th>Saída em</th>
+                                <th>Tempo de uso</th>
                                 <th>Usuário</th>
                             </tr>
                             </thead>
@@ -94,6 +95,7 @@
                                             {{ access.outDate | date('d/m/Y H:i') }}
                                         {% endif %}
                                     </td>
+                                    <td>{{ access.diffInAndOut }}</td>
                                     <td>{{ access.user.name }}</td>
                                 </tr>
                             {% endfor %}

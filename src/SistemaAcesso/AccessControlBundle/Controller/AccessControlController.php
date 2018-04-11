@@ -37,6 +37,7 @@ class AccessControlController extends Controller
     public function checkAction(Request $request)
     {
         $httpCode = 200;
+        
         try {
 
             $str = file_get_contents('php://input');
@@ -75,7 +76,7 @@ class AccessControlController extends Controller
 
                 $access = $em->getRepository(Access::class)->findOneBy(['environment' => $environment, 'user' => $user, 'isOut' => false]);
 
-                if ($user and $environment and $this->getEnvironmentService()->checkOperation($environment) and $this->checkPassword($user, $password)) {
+                if ($user and $this->userOk($user) and $environment and $this->getEnvironmentService()->checkOperation($environment) and $this->checkPassword($user, $password)) {
                     if(!$access){
                         $access = new Access();
                         $access
@@ -266,5 +267,20 @@ class AccessControlController extends Controller
     private function checkPassword(User $user, $password){
         $encoder = $this->container->get('security.password_encoder');
         return $encoder->isPasswordValid($user, $password);
+    }
+
+    /**
+     * @param User $user
+     * @return bool
+     */
+    private function userOk(User $user){
+        $ok = true;
+        if($user->getType() == "PERSON"){
+            if($user->getExpirationDate() &&
+                strtotime((new \DateTime('now'))->format('Y-m-d')) > strtotime($user->getExpirationDate()->format('Y-m-d'))){
+                $ok = false;
+            }
+        }
+        return $user->isActive() && $ok;
     }
 }
